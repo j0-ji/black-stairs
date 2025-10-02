@@ -7,7 +7,7 @@ var node_states: Dictionary = {}
 var current_node_state: NodeState
 var current_node_state_name: String
 
-# A child is the child-element int the scene.
+# A child is the child-element in the scene.
 # This script is atatched to a StateMachine Node.
 # The StateMachine Node has child nodes of type NodeState.
 # The child nodes are gathered on initialization and saved in

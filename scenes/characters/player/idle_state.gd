@@ -15,8 +15,8 @@ func _on_physics_process(_delta: float) -> void:
 		animated_sprite_2d.play('idle_left')
 	elif player.anim_direction == Vector2.RIGHT:
 		animated_sprite_2d.play('idle_right')
-	# else:
-		# animated_sprite_2d.play('idle_front') 
+	else:
+		animated_sprite_2d.play('idle_right') 
 
 func _on_next_transitions() -> void:
 	GameInputEvents.movement_input()
