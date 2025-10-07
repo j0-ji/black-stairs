@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Black Stairs"
-run/main_scene="uid://dl60476mdsshd"
+run/main_scene="uid://bt655o67edoh3"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

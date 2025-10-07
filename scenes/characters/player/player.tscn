@@ -107,12 +107,13 @@ y_sort_enabled = true
 script = ExtResource("1_t61fv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_hv5x3")
 animation = &"idle_left"
 frame_progress = 0.1237764
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qd3e3")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]

@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://tilesets/terrain_tileset.tres" id="1_nwghf"]
 [ext_resource type="Script" uid="uid://b6fxanx63hgwi" path="res://scripts/world generation/ground_generation.gd" id="2_k0ym7"]
-[ext_resource type="Script" uid="uid://dydgwni8x7t6b" path="res://scripts/world generation/fauna_generation.gd" id="3_cm680"]
+[ext_resource type="Script" uid="uid://dydgwni8x7t6b" path="res://scripts/world generation/flora_generation.gd" id="3_cm680"]
 [ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://scenes/characters/player/player.tscn" id="3_dknty"]
 
 [node name="TestScene" type="Node2D"]
@@ -14,8 +14,20 @@ y_sort_enabled = true
 [node name="Ground" type="TileMapLayer" parent="WorldTileMap"]
 tile_set = ExtResource("1_nwghf")
 script = ExtResource("2_k0ym7")
+border_width = null
+base_map_size = null
+noise_scale = null
+ground_seed = null
+frequency = null
+octaves = null
+lacunarity = null
+gain = null
+atlas_source_id = null
+t_water = null
+t_sand = null
+t_grass = null
 
-[node name="Fauna" type="TileMapLayer" parent="WorldTileMap"]
+[node name="Flora" type="TileMapLayer" parent="WorldTileMap"]
 y_sort_enabled = true
 tile_set = ExtResource("1_nwghf")
 script = ExtResource("3_cm680")
