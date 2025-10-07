@@ -148,13 +148,13 @@ func _get_multiplier(x, y) -> float:
 	
 	return mult
 
-# types[y][x] contains your ground type (e.g., enum {ROCK=0, GRASS=1, ...})
+# types-array contains the ground type (e.g., ground.GRASS, ground.ROCK, etc.)
 # Call this after you’ve generated `types` and before writing cells to the TileMap.
 func _prune_rock_holes(types: PackedByteArray, min_keep_size := INF, keep_pos: Vector2i = Vector2i(-1, -1)) -> void:
 	var visited := PackedByteArray()
 	visited.resize(map_width * map_height)
 
-	var holes: Array = []  # each item: {cells: PackedVector2Array, size: int}
+	var components: Array = []  # each item: {cells: PackedVector2Array, size: int}
 	
 	var keep_component_i := -1
 	
@@ -162,6 +162,7 @@ func _prune_rock_holes(types: PackedByteArray, min_keep_size := INF, keep_pos: V
 		ground.ROCK
 	]
 	
+	# STEP 1: find all components
 	for y in range(map_height):
 		for x in range(map_width):
 			var p := Vector2i(x, y)
@@ -179,43 +180,43 @@ func _prune_rock_holes(types: PackedByteArray, min_keep_size := INF, keep_pos: V
 
 				for d in [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]:
 					var n : Vector2i = c + d
-					if _in_bounds(n) and visited[_idx(n)] == 0 and types[_idx(Vector2i(n.x, n.y))] not in floor_types_to_fill_out:
+					if _in_bounds(n) and visited[_idx(n)] == 0 and types[_idx(n)] not in floor_types_to_fill_out:
 						visited[_idx(n)] = 1
 						q.push_back(n)
 
-			holes.append({ "cells": comp_cells, "size": comp_cells.size() })
+			components.append({ "cells": comp_cells, "size": comp_cells.size() })
 
-	# Decide which component to keep
-	if holes.is_empty():
+	# STEP 2: decide which component to keep
+	if components.is_empty():
 		return
 
+	# keep the component that contains keep_pos (e.g. the spawn or map center)
 	if keep_pos != Vector2i(-1, -1):
-		# keep the component that contains keep_pos (e.g. your spawn or map center)
-		for i in range(holes.size()):
+		for i in range(components.size()):
 			# cheap membership test
-			for c in holes[i]["cells"]:
+			for c in components[i]["cells"]:
 				if c == keep_pos:
 					keep_component_i = i
 					break
 			if keep_component_i != -1:
 				break
-
+	
+	# otherwise: keep the largest component as the mainland
 	if keep_component_i == -1:
-		# otherwise: keep the largest component as the mainland
 		var best_i := 0
-		var best_sz : int = holes[0]["size"]
-		for i in range(1, holes.size()):
-			if holes[i]["size"] > best_sz:
+		var best_sz : int = components[0]["size"]
+		for i in range(1, components.size()):
+			if components[i]["size"] > best_sz:
 				best_i = i
-				best_sz = holes[i]["size"]
+				best_sz = components[i]["size"]
 		keep_component_i = best_i
 
 	# Convert all other components that are too small into ROCK
-	for i in range(holes.size()):
+	for i in range(components.size()):
 		if i == keep_component_i: continue
-		if holes[i]["size"] >= min_keep_size: continue  # optional: allow multiple big continents
-		for c in holes[i]["cells"]:
-			types[_idx(Vector2i(c.x, c.y))] = floor_types_to_fill_out[0]
+		if components[i]["size"] >= min_keep_size: continue  # optional: allow multiple big continents
+		for c in components[i]["cells"]:
+			types[_idx(c)] = floor_types_to_fill_out[0]
 
 func _idx (p: Vector2i) -> int: 
 	return p.y * map_width + p.x
