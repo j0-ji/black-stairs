@@ -22,7 +22,7 @@ var map_height: int = (base_map_size + 2 * border_width)
 @export var atlas_source_id: int = 2  # <- check in the TileSet inspector
 # Map your placeholder tiles (atlas coordinates in the atlas grid)
 var y_atlas_coord_tree: int = 0
-var y_atals_coord_bush_base: int = 0
+var y_atlas_coord_bush_base: int = 0
 var y_atlas_coord_bush_berry: int = 1
 
 # Thresholds decide flora by noise value in [-1, 1]
@@ -67,7 +67,7 @@ func generate_world() -> void:
 						set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 					if flora_type == 2:
 						var x_atlas_coord_bush_base = rng.randi_range(5, 7)
-						var atlas_coords := Vector2i(x_atlas_coord_bush_base, y_atals_coord_bush_base)
+						var atlas_coords := Vector2i(x_atlas_coord_bush_base, y_atlas_coord_bush_base)
 						set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 					if flora_type == 3:
 						var x_atlas_coord_bush_berry = rng.randi_range(5, 7)
