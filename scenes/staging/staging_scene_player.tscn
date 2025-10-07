@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://tilesets/terrain_tileset.tres" id="1_nwghf"]
 [ext_resource type="Script" uid="uid://b6fxanx63hgwi" path="res://scripts/world generation/ground_generation.gd" id="2_k0ym7"]
-[ext_resource type="Script" uid="uid://dydgwni8x7t6b" path="res://scripts/world generation/flora_generation.gd" id="3_cm680"]
+[ext_resource type="Script" path="res://scripts/world generation/flora_generation.gd" id="3_cm680"]
 [ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://scenes/characters/player/player.tscn" id="3_dknty"]
 
 [node name="TestScene" type="Node2D"]
