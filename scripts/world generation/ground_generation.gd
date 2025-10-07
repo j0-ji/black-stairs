@@ -4,7 +4,7 @@ extends TileMapLayer
 signal generation_done
 
 # Flags
-@export var feature_flag_hole_filling = false
+@export var feature_flag_hole_filling = true
 
 # Map gen config
 @export var border_width: int = 20 # min width 5
