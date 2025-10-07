@@ -154,7 +154,7 @@ func _prune_rock_holes(types: PackedByteArray, min_keep_size := INF, keep_pos: V
 	var visited := PackedByteArray()
 	visited.resize(map_width * map_height)
 
-	var holes: Array = []  # each item: {cells: PoolVector2iArray, size: int}
+	var holes: Array = []  # each item: {cells: PackedVector2Array, size: int}
 	
 	var keep_component_i := -1
 	
