@@ -12,6 +12,7 @@ texture = ExtResource("1_bwt1d")
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+5:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rhel3"]
 resource_name = "Basic Terrain"
@@ -28,11 +29,13 @@ texture = ExtResource("2_p1tlh")
 texture = ExtResource("3_2kgig")
 1:0/size_in_atlas = Vector2i(1, 2)
 1:0/0 = 0
-1:0/0/y_sort_origin = 13
+1:0/0/texture_origin = Vector2i(0, 8)
+1:0/0/y_sort_origin = 5
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 15, -5, 14, -4, 13, -2, 13, -1, 14, -2, 15)
 2:0/size_in_atlas = Vector2i(1, 2)
 2:0/0 = 0
-2:0/0/y_sort_origin = 5
+2:0/0/texture_origin = Vector2i(0, 8)
+2:0/0/y_sort_origin = -3
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, 7, 1, 6, 2, 5, 4, 5, 5, 6, 4, 7, 2, 7)
 5:0/0 = 0
 5:0/0/y_sort_origin = 3
@@ -53,15 +56,18 @@ texture = ExtResource("3_2kgig")
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, 5, 0, 4, 1, 3, 3, 3, 4, 4, 3, 5)
 3:0/size_in_atlas = Vector2i(1, 2)
 3:0/0 = 0
-3:0/0/y_sort_origin = 8
+3:0/0/texture_origin = Vector2i(0, 8)
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 10, -5, 9, -4, 8, -2, 8, -1, 9, -2, 10, -4, 10, -4, 10, -4, 10)
 4:0/size_in_atlas = Vector2i(1, 2)
 4:0/0 = 0
-4:0/0/y_sort_origin = 13
+4:0/0/texture_origin = Vector2i(0, 8)
+4:0/0/y_sort_origin = 5
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, 15, 1, 14, 2, 13, 4, 13, 5, 14, 4, 15)
 0:0/size_in_atlas = Vector2i(1, 2)
+0:0/animation_columns = 1
 0:0/0 = 0
-0:0/0/y_sort_origin = 10
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/y_sort_origin = 2
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 12, -2, 11, -1, 10, 1, 10, 2, 11, 1, 12)
 
 [resource]

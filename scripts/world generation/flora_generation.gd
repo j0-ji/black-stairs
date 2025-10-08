@@ -25,8 +25,15 @@ var y_atlas_coord_tree: int = 0
 var y_atlas_coord_bush_base: int = 0
 var y_atlas_coord_bush_berry: int = 1
 
+# The probabiliy array is the percentage range from 1-100 that a class can have either - [one_cell, two_cell]
+var flora_probabilities := {
+	tree = [31, 100],
+	bush_base = [11, 30],
+	bush_berries = [1, 10],
+}
+
 # Thresholds decide flora by noise value in [-1, 1]
-@export var t_tree: float = 0.2
+@export var t_flora: float = 0.2
 
 var _noise := FastNoiseLite.new()
 
@@ -56,20 +63,19 @@ func generate_world() -> void:
 	for y in map_height:
 		for x in map_width:
 			var n := _noise.get_noise_2d(float(x) / noise_scale, float(y) / noise_scale)
-			
-			if n > t_tree:
+			if n > t_flora:
 				var cell := _ground.get_cell_atlas_coords(Vector2i(x, y))
 				if cell == Vector2i(1, 0):
-					var flora_type = rng.randi_range(0, 3)
-					if flora_type == 0 || flora_type == 1:
+					var flora_type = rng.randi_range(1, 100)
+					if flora_type >= flora_probabilities.tree[0] and flora_type <= flora_probabilities.tree[1]:
 						var x_atlas_coord_tree = rng.randi_range(0, 4)
 						var atlas_coords := Vector2i(x_atlas_coord_tree, y_atlas_coord_tree)
 						set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
-					if flora_type == 2:
+					if flora_type >= flora_probabilities.bush_base[0] and flora_type <= flora_probabilities.bush_base[1]:
 						var x_atlas_coord_bush_base = rng.randi_range(5, 7)
 						var atlas_coords := Vector2i(x_atlas_coord_bush_base, y_atlas_coord_bush_base)
 						set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
-					if flora_type == 3:
+					if flora_type >= flora_probabilities.bush_berries[0] and flora_type <= flora_probabilities.bush_berries[1]:
 						var x_atlas_coord_bush_berry = rng.randi_range(5, 7)
 						var atlas_coords := Vector2i(x_atlas_coord_bush_berry, y_atlas_coord_bush_berry)
 						set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
