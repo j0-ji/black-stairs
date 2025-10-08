@@ -25,7 +25,7 @@ var y_atlas_coord_tree: int = 0
 var y_atlas_coord_bush_base: int = 0
 var y_atlas_coord_bush_berry: int = 1
 
-# The probabiliy array is the percentage range from 1-100 that a class can have either - [one_cell, two_cell]
+# The probability array is the percentage range from 1-100 that a class can have either - [one_cell, two_cell]
 var flora_probabilities := {
 	tree = [31, 100],
 	bush_base = [11, 30],
