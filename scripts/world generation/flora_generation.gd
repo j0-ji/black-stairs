@@ -25,11 +25,12 @@ var y_atlas_coord_tree: int = 0
 var y_atlas_coord_bush_base: int = 0
 var y_atlas_coord_bush_berry: int = 1
 
-# The probability array is the percentage range from 1-100 that a class can have either - [one_cell, two_cell]
+# The flora_probabilities dictionary maps each flora type to a probability range [min, max] (from 1 to 100), 
+# where the probability ranges should not overlap (!!!)
 var flora_probabilities := {
-	tree = [31, 100],
-	bush_base = [11, 30],
-	bush_berries = [1, 10],
+	tree = [31, 100], # 100 - 31 = 69 ; 69 + 1 = 70
+	bush_base = [11, 30], # 30 - 11 = 19 ; 19 + 1 = 20
+	bush_berries = [1, 10], # 10 - 1 = 9 ; 9 + 1 = 10
 }
 
 # Thresholds decide flora by noise value in [-1, 1]
@@ -59,6 +60,7 @@ func _configure_noise() -> void:
 	_noise.fractal_gain = gain
 
 func generate_world() -> void:
+	_is_flora_probabilities_ok()
 	self.clear()
 	for y in map_height:
 		for x in map_width:
@@ -79,3 +81,11 @@ func generate_world() -> void:
 						var x_atlas_coord_bush_berry = rng.randi_range(5, 7)
 						var atlas_coords := Vector2i(x_atlas_coord_bush_berry, y_atlas_coord_bush_berry)
 						set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
+
+func _is_flora_probabilities_ok() -> void:
+	var sum : int = 0
+	for key in flora_probabilities:
+		var diff_min_max = (flora_probabilities[key][1] - flora_probabilities[key][0]) + 1
+		sum = sum + diff_min_max
+	
+	assert(sum == 100, "flora_probabilities not configured correctly. Percantege sums need to add up to 100")
