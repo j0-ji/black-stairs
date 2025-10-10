@@ -1,36 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl60476mdsshd"]
+[gd_scene load_steps=4 format=3 uid="uid://srhjiirg6ycu"]
 
 [ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://tilesets/terrain_tileset.tres" id="1_nwghf"]
 [ext_resource type="Script" uid="uid://b6fxanx63hgwi" path="res://scripts/world generation/ground_generation.gd" id="2_k0ym7"]
 [ext_resource type="Script" uid="uid://dydgwni8x7t6b" path="res://scripts/world generation/flora_generation.gd" id="3_cm680"]
-[ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://scenes/characters/player/player.tscn" id="3_dknty"]
 
 [node name="TestScene" type="Node2D"]
 y_sort_enabled = true
 
 [node name="WorldTileMap" type="Node2D" parent="."]
-y_sort_enabled = true
 
 [node name="Ground" type="TileMapLayer" parent="WorldTileMap"]
 tile_set = ExtResource("1_nwghf")
 script = ExtResource("2_k0ym7")
-border_width = null
-base_map_size = null
-noise_scale = null
-ground_seed = null
-frequency = null
-octaves = null
-lacunarity = null
-gain = null
-atlas_source_id = null
-t_water = null
-t_sand = null
-t_grass = null
 
 [node name="Flora" type="TileMapLayer" parent="WorldTileMap"]
-y_sort_enabled = true
 tile_set = ExtResource("1_nwghf")
 script = ExtResource("3_cm680")
 
-[node name="Player" parent="." instance=ExtResource("3_dknty")]
-position = Vector2(389, 368)
+[node name="Test-Camera" type="Camera2D" parent="."]
+offset = Vector2(-50, -50)
+anchor_mode = 0
+zoom = Vector2(0.38, 0.38)

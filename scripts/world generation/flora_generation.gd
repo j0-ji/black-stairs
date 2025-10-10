@@ -1,14 +1,20 @@
 extends TileMapLayer
 
+# Ground layer path - used to read grounds and decide if fauna is allowed on each cell
+var ground_layer_path = "../Ground"
+@onready var _ground: TileMapLayer = get_node(ground_layer_path) as TileMapLayer
+
+# Custom signals
+signal generation_done
+
 # Random number generator for variations
 var rng = RandomNumberGenerator.new()
 
-# Ground layer path - used to read grounds and decide if fauna is allowed on each cell
-var ground_layer_path = "../Ground"
+# From external world_gen_config.gd file
+var base_map_size : int = WorldGenConfig.base_map_size
+var border_width : int = WorldGenConfig.border_width
 
 # Map gen config
-@export var border_width: int = 20 # min width 3
-@export var base_map_size: int = 64
 var map_width: int = (base_map_size + 2 * border_width)
 var map_height: int = (base_map_size + 2 * border_width)
 @export var noise_scale: float = 1    # Bigger = smoother continents
@@ -38,17 +44,18 @@ var flora_probabilities := {
 
 var _noise := FastNoiseLite.new()
 
-@onready var _ground: TileMapLayer = get_node(ground_layer_path) as TileMapLayer
-
 func _ready() -> void:
 	_ground.generation_done.connect(_on_ground_generation_done)
-	_configure_noise()
-	generate_world()
+	_on_ground_generation_done()
 
 func _on_ground_generation_done() -> void:
+	# for all following generation iterations
 	ground_seed = randi()
 	_configure_noise()
 	generate_world()
+	
+	update_internals()
+	generation_done.emit()
 
 func _configure_noise() -> void:
 	_noise.seed = ground_seed

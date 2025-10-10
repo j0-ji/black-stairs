@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Black Stairs"
-run/main_scene="uid://bt655o67edoh3"
+run/main_scene="uid://b6gh6dnvodoyv"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+WorldGenConfig="*res://scripts/world generation/world_gen_config.gd"
 
 [display]
 

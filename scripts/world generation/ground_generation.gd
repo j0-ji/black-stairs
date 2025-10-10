@@ -4,13 +4,15 @@ extends TileMapLayer
 signal generation_done
 
 # Flags
-@export var feature_flag_hole_filling = true
+@export var feature_flag_hole_filling = true 
+
+# From external world_gen_config.gd file
+var base_map_size : int = WorldGenConfig.base_map_size
+var border_width : int = WorldGenConfig.border_width
 
 # Map gen config
-@export var border_width: int = 20 # min width 5
 @export var border_base_additive: float = border_width * pow(1.2 * border_width, -2)
 @export var border_base_multiplicator: float = 1 + border_base_additive / 0.2
-@export var base_map_size: int = 64
 var map_width: int = (base_map_size + 2 * border_width)
 var map_height: int = (base_map_size + 2 * border_width)
 @export var noise_scale: float = 1.0    # Bigger = smoother continents
@@ -54,13 +56,12 @@ var custom_seeds : Array = [
 var _noise := FastNoiseLite.new()
 
 func _ready() -> void:
-	print(border_width)
-	print(border_base_additive)
-	print(border_base_multiplicator)
-	
 	ground_type_map.resize(map_width * map_height)
 	_configure_noise()
 	generate_world()
+	
+	update_internals()
+	generation_done.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") or (event is InputEventKey and event.pressed and event.keycode == KEY_R):
@@ -69,9 +70,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			custom_seed_id = custom_seed_id + 1
 		else:
 			ground_seed = randi()
-		print(ground_seed)
 		_configure_noise()
 		generate_world()
+		
+		update_internals()
+		generation_done.emit()
 
 func _configure_noise() -> void:
 	_noise.seed = ground_seed
@@ -104,9 +107,6 @@ func generate_world() -> void:
 	for y in map_height:
 		for x in map_width:
 			_update_cell(x, y)
-	
-	update_internals()
-	generation_done.emit()
 
 func _pick_tile(n: float) -> int:
 	# n is in [-1, 1]
