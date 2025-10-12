@@ -31,7 +31,6 @@ animations = [{
 script = ExtResource("1_gj73b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
 sprite_frames = SubResource("SpriteFrames_gj73b")
 animation = &"idle"
 frame_progress = 0.8192689

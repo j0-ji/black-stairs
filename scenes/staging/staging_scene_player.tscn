@@ -44,3 +44,4 @@ slime_count = 25
 goblin_count = 25
 slime_scene = ExtResource("6_i63hj")
 goblin_scene = ExtResource("7_uiyo5")
+player_path = NodePath("../Player")
