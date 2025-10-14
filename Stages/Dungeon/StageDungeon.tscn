@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://jxo3hjq5iesm"]
+[gd_scene load_steps=9 format=3 uid="uid://jxo3hjq5iesm"]
 
+[ext_resource type="Script" uid="uid://b4nsyy8rvqmj1" path="res://Stages/Dungeon/dungeon_manager.gd" id="1_qfv56"]
 [ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
 [ext_resource type="Script" uid="uid://nl30wiux14kb" path="res://Stages/Dungeon/generate_ground_layer.gd" id="3_vlp3l"]
 [ext_resource type="Script" uid="uid://buluvb74fxv7o" path="res://Stages/Dungeon/generate_flora_layer.gd" id="4_kocfg"]
@@ -8,7 +9,9 @@
 [ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://Stages/Tilesets/Terrain/terrain_tileset.tres" id="5_kocfg"]
 [ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="6_qfv56"]
 
-[node name="StageDungeon" type="Node2D"]
+[node name="StageDungeon" type="Node2D" node_paths=PackedStringArray("_map_generator")]
+script = ExtResource("1_qfv56")
+_map_generator = NodePath("MapGenerator")
 
 [node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("initial_map_layer")]
 script = ExtResource("2_mwpf2")

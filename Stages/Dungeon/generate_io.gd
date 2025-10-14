@@ -53,6 +53,8 @@ func generate() -> void:
 	_exit.global_position = exit_local * 16
 
 	_entrance.get_child(0).global_rotation_degrees = spawn_dict.rotation_degrees
+	
+	transition.emit()
 
 func _find_spawn() -> Dictionary:
 	var rng = RandomNumberGenerator.new()

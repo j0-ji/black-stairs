@@ -78,7 +78,7 @@ func generate() -> void:
 			_update_cell(x, y)
 	
 	tile_map_layer.update_internals()
-	transition.emit('Flora')
+	transition.emit()
 
 func _configure_noise() -> void:
 	# Update seed

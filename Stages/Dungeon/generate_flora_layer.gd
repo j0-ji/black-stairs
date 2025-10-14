@@ -61,7 +61,7 @@ func generate() -> void:
 						tile_map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 	
 	tile_map_layer.update_internals()
-	transition.emit("IO")
+	transition.emit()
 
 func _configure_noise() -> void:
 	_noise.seed = randi()
