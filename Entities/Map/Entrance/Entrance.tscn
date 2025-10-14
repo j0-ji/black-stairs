@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2qns8maswhf3"]
+
+[ext_resource type="Texture2D" uid="uid://c53b15jyde48y" path="res://Entities/Map/Entrance/entrance.png" id="1_cn8nh"]
+[ext_resource type="Script" uid="uid://c5oolopcbi6gt" path="res://Entities/Map/Entrance/entrance.gd" id="1_w7ymb"]
+
+[node name="Entrance" type="Node2D" node_paths=PackedStringArray("_sprite")]
+script = ExtResource("1_w7ymb")
+_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_cn8nh")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

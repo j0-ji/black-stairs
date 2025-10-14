@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceaa2fbvdltue"]
+
+[ext_resource type="Script" uid="uid://baley0nf8ttwm" path="res://Utilities/dungeon_manager.gd" id="1_jpwnk"]
+[ext_resource type="PackedScene" uid="uid://dqug758g32tpc" path="res://Utilities/level_map.tscn" id="2_pg2ra"]
+[ext_resource type="PackedScene" uid="uid://r5ui44mr11n" path="res://Utilities/stairs_map.tscn" id="3_vcdec"]
+
+[node name="Dungeon" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_jpwnk")
+
+[node name="LevelMap" parent="." instance=ExtResource("2_pg2ra")]
+
+[node name="StairsMap" parent="." instance=ExtResource("3_vcdec")]
+
+[node name="Test-Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.4, 0.4)
+
+[connection signal="generate_level" from="." to="LevelMap" method="initialize_generation" flags=3]

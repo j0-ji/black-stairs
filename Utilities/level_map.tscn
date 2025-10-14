@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqug758g32tpc"]
+
+[ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://Stages/Tilesets/Terrain/terrain_tileset.tres" id="1_e6kkp"]
+[ext_resource type="Script" uid="uid://cunu6lkioicn3" path="res://_Deprecated/level_map_manager.gd" id="1_kpbwq"]
+[ext_resource type="Script" uid="uid://b6fxanx63hgwi" path="res://_Deprecated/ground_generation.gd" id="1_vexx8"]
+[ext_resource type="Script" uid="uid://dydgwni8x7t6b" path="res://_Deprecated/flora_generation.gd" id="2_e6kkp"]
+[ext_resource type="Script" uid="uid://btss6e31mjipu" path="res://_Deprecated/io_generation.gd" id="3_kpbwq"]
+
+[node name="LevelMap" type="Node2D"]
+script = ExtResource("1_kpbwq")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_e6kkp")
+script = ExtResource("1_vexx8")
+
+[node name="Flora" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_e6kkp")
+script = ExtResource("2_e6kkp")
+
+[node name="Stuff" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_e6kkp")
+
+[node name="IO" type="Node2D" parent="."]
+script = ExtResource("3_kpbwq")
+
+[connection signal="generate_level_flora" from="." to="Flora" method="generate_world" flags=3]
+[connection signal="generate_level_ground" from="." to="Ground" method="generate_world" flags=3]
+[connection signal="generate_level_io" from="." to="IO" method="generate_world" flags=3]
+[connection signal="generation_done" from="Ground" to="." method="on_ground_generation_done"]
+[connection signal="generation_done" from="Flora" to="." method="on_flora_generation_done"]

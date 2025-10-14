@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://jxo3hjq5iesm"]
+
+[ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
+[ext_resource type="Script" uid="uid://nl30wiux14kb" path="res://Stages/Dungeon/generate_ground_layer.gd" id="3_vlp3l"]
+[ext_resource type="Script" uid="uid://buluvb74fxv7o" path="res://Stages/Dungeon/generate_flora_layer.gd" id="4_kocfg"]
+[ext_resource type="Script" uid="uid://cnwamcio87rt5" path="res://Stages/Dungeon/generate_io.gd" id="4_mvs5v"]
+[ext_resource type="PackedScene" uid="uid://c2qns8maswhf3" path="res://Entities/Map/Entrance/Entrance.tscn" id="5_0tjni"]
+[ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://Stages/Tilesets/Terrain/terrain_tileset.tres" id="5_kocfg"]
+[ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="6_qfv56"]
+
+[node name="StageDungeon" type="Node2D"]
+
+[node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("initial_map_layer")]
+script = ExtResource("2_mwpf2")
+initial_map_layer = NodePath("Ground")
+
+[node name="Ground" type="Node" parent="MapGenerator" node_paths=PackedStringArray("tile_map_layer")]
+script = ExtResource("3_vlp3l")
+tile_map_layer = NodePath("../../Ground")
+
+[node name="Flora" type="Node" parent="MapGenerator" node_paths=PackedStringArray("ground", "tile_map_layer")]
+script = ExtResource("4_kocfg")
+ground = NodePath("../../Ground")
+tile_map_layer = NodePath("../../Flora")
+
+[node name="IO" type="Node" parent="MapGenerator" node_paths=PackedStringArray("_ground", "_flora", "_entrance", "_exit", "tile_map_layer")]
+script = ExtResource("4_mvs5v")
+_ground = NodePath("../../Ground")
+_flora = NodePath("../../Flora")
+_entrance = NodePath("../../IO/Entrance")
+_exit = NodePath("../../IO/Exit")
+tile_map_layer = NodePath("../../IO")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("5_kocfg")
+
+[node name="Flora" type="TileMapLayer" parent="."]
+tile_set = ExtResource("5_kocfg")
+
+[node name="IO" type="Node2D" parent="."]
+
+[node name="Entrance" parent="IO" instance=ExtResource("5_0tjni")]
+
+[node name="Exit" parent="IO" instance=ExtResource("6_qfv56")]
