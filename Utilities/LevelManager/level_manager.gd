@@ -7,8 +7,11 @@ extends Node
 func _ready() -> void:
 	_dungeon.generation_done.connect(placeholder)
 	
-	print("MAIN: map generation initiated")
+	print("LEVEL_MANAGER: map generation initiated")
 	_dungeon.initiate_generation()
 
 func placeholder() -> void:
-	print("MAIN: map generation done")
+	print("LEVEL_MANAGER: map generation done")
+	
+	_dungeon.entrance.update_spawn_point()
+	_player.position = _dungeon.entrance.spawn_point

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var _map_generator : Node
+@export var entrance : Node2D
 
 signal generation_done
 

@@ -9,9 +9,11 @@
 [ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://Stages/Tilesets/Terrain/terrain_tileset.tres" id="5_kocfg"]
 [ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="6_qfv56"]
 
-[node name="StageDungeon" type="Node2D" node_paths=PackedStringArray("_map_generator")]
+[node name="StageDungeon" type="Node2D" node_paths=PackedStringArray("_map_generator", "entrance")]
+y_sort_enabled = true
 script = ExtResource("1_qfv56")
 _map_generator = NodePath("MapGenerator")
+entrance = NodePath("IO/Entrance")
 
 [node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("initial_map_layer")]
 script = ExtResource("2_mwpf2")
@@ -38,6 +40,7 @@ tile_map_layer = NodePath("../../IO")
 tile_set = ExtResource("5_kocfg")
 
 [node name="Flora" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 tile_set = ExtResource("5_kocfg")
 
 [node name="IO" type="Node2D" parent="."]

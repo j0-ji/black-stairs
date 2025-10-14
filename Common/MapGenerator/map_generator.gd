@@ -28,8 +28,8 @@ func transition():
 	print("MAP_GENERATOR: generated layer: ", current_layer)
 	
 	if current_layer >= map_layers.size():
-		generation_done.emit()
 		print("MAP_GENERATOR: map generation done")
+		generation_done.emit()
 		return
 	
 	map_layers[current_layer].generate()

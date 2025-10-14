@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://Entities/Player/player.tscn" id="3_m3wgy"]
 
 [node name="StageMain" type="Node2D" node_paths=PackedStringArray("_dungeon", "_stairs", "_player")]
+y_sort_enabled = true
 script = ExtResource("1_m3wgy")
 _dungeon = NodePath("StageDungeon")
 _stairs = NodePath("StageStairs")
@@ -17,9 +18,4 @@ _player = NodePath("Player")
 position = Vector2(-1000, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_m3wgy")]
-visible = false
 position = Vector2(153, -193)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(-800, -200)
-zoom = Vector2(0.2, 0.2)
