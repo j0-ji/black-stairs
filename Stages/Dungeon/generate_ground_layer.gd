@@ -49,14 +49,13 @@ var _noise := FastNoiseLite.new()
 
 func initialize() -> void:
 	assert(is_instance_valid(tile_map_layer), "tile_map_layer is not set!")
-	_configure_noise()
-	tile_map_layer.clear()
-	
 	border_base_additive = border_width * pow(1.2 * border_width, -2)
 	border_base_multiplicator = 1 + border_base_additive / 0.2
 	ground_type_map.resize(map_size * map_size)
 
 func generate() -> void:
+	_configure_noise()
+	tile_map_layer.clear()
 	# BETTER GROUND GENERATION
 	# STEP 1.1: generate noise map
 	# STEP 1.2: translate noise map to valid ground types
@@ -82,11 +81,13 @@ func generate() -> void:
 
 func _configure_noise() -> void:
 	# Update seed
-	if custom_seed_id in range(custom_seeds.size()):
-		noise_seed = custom_seeds[custom_seed_id]
-		custom_seed_id = custom_seed_id + 1
-	else:
-		noise_seed = randi()
+	# if custom_seed_id in range(custom_seeds.size()):
+		# noise_seed = custom_seeds[custom_seed_id]
+		# custom_seed_id += 1
+	# else:
+		# noise_seed = randi()
+	
+	noise_seed = randi()
 	
 	# Noise configuration
 	_noise.seed = noise_seed

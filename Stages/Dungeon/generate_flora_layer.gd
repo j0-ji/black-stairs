@@ -36,10 +36,10 @@ var _noise := FastNoiseLite.new()
 func initialize() -> void:
 	assert(is_instance_valid(tile_map_layer), "tile_map_layer is not set!")
 	_is_flora_probabilities_ok()
-	_configure_noise()
-	tile_map_layer.clear()
 
 func generate() -> void:
+	_configure_noise()
+	tile_map_layer.clear()
 	for y in range(map_size):
 		for x in range(map_size):
 			var n := _noise.get_noise_2d(float(x) / noise_scale, float(y) / noise_scale)

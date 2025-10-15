@@ -20,6 +20,7 @@ func _ready() -> void:
 
 func initiate_generation() -> void:
 	print("MAP_GENERATOR: map generation initiated")
+	current_layer = 0
 	map_layers[current_layer].generate()
 
 func transition():

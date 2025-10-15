@@ -27,7 +27,7 @@ func _get_relative_spawn() -> Vector2i:
 		return _pos_0
 
 func _get_global_spawn() -> Vector2i:
-	return self.position as Vector2i + _get_relative_spawn()
+	return self.global_position as Vector2i + _get_relative_spawn()
 
 func update_spawn_point() -> void:
 	spawn_point = _get_global_spawn()

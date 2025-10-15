@@ -1,17 +1,12 @@
 extends Node2D
 
-@export var _map_generator : Node
+@export var map_generator : Node
 @export var entrance : Node2D
-
-signal generation_done
+@export var exit : Area2D
 
 func _ready() -> void:
-	_map_generator.generation_done.connect(_generation_done_repeater)
+	pass
 
-func _generation_done_repeater() -> void:
-	print("DUNGEON_MANAGER.REPEATER: map generation done")
-	generation_done.emit()
-
-func initiate_generation() -> void:
+func generate() -> void:
 	print("DUNGEON_MANAGER: map generation initiated")
-	_map_generator.initiate_generation()
+	map_generator.initiate_generation()
