@@ -25,9 +25,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iii5c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipj2"]
+size = Vector2(12, 8)
 
 [node name="Slime" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_gj73b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -36,4 +39,5 @@ animation = &"idle"
 frame_progress = 0.8192689
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_iii5c")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_tipj2")

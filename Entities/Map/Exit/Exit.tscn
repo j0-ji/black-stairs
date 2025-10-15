@@ -9,7 +9,7 @@ size = Vector2(16, 16)
 
 [node name="Exit" type="Area2D" node_paths=PackedStringArray("_hint")]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 2
 script = ExtResource("1_b6l0y")
 _hint = NodePath("HintEnter")
 

@@ -97,8 +97,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7eb5"]
+radius = 7.0
 
 [node name="Goblin" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_hqea3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
