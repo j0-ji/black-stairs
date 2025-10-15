@@ -16,15 +16,6 @@ var gain: float = 0.5
 # TileSet atlas info
 var atlas_source_id: int = 1  # <- check in the TileSet inspector
 
-# X-atlas coordinates in the atlas grid for the different grounds
-enum ground {
-	SAND = 0,
-	GRASS = 1,
-	DIRT = 2,
-	WATER = 3,
-	ROCK = 4,
-}
-
 # Thresholds decide biome by noise value in [-1, 1]
 var t_water: float = -0.35
 var t_sand:  float = -0.25
@@ -48,14 +39,14 @@ var custom_seeds : Array = [
 var _noise := FastNoiseLite.new()
 
 func initialize() -> void:
-	assert(is_instance_valid(tile_map_layer), "tile_map_layer is not set!")
+	assert(is_instance_valid(map_layer), "tile_map_layer is not set!")
 	border_base_additive = border_width * pow(1.2 * border_width, -2)
 	border_base_multiplicator = 1 + border_base_additive / 0.2
 	ground_type_map.resize(map_size * map_size)
 
 func generate() -> void:
 	_configure_noise()
-	tile_map_layer.clear()
+	map_layer.clear()
 	# BETTER GROUND GENERATION
 	# STEP 1.1: generate noise map
 	# STEP 1.2: translate noise map to valid ground types
@@ -63,9 +54,9 @@ func generate() -> void:
 		for x in range(map_size):
 			var mult := _get_multiplier(x, y)
 			var n := _noise.get_noise_2d(float(x) / noise_scale, float(y) / noise_scale)
-			var ground_type = _pick_tile(n + (border_base_additive * mult))
+			var type = _pick_tile(n + (border_base_additive * mult))
 			var p = Vector2i(x, y)
-			ground_type_map[_idx(p)] = ground_type
+			ground_type_map[_idx(p)] = type
 	
 	# STEP 2: post gen processing
 	if feature_flag_hole_filling:
@@ -76,7 +67,7 @@ func generate() -> void:
 		for x in range(map_size):
 			_update_cell(x, y)
 	
-	tile_map_layer.update_internals()
+	map_layer.update_internals()
 	transition.emit()
 
 func _configure_noise() -> void:
@@ -101,18 +92,18 @@ func _configure_noise() -> void:
 func _pick_tile(n: float) -> int:
 	# n is in [-1, 1]
 	if n < t_water:
-		return ground.WATER
+		return ground_type.WATER
 	elif n < t_sand:
-		return ground.SAND
+		return ground_type.SAND
 	elif n < t_grass:
-		return ground.GRASS
+		return ground_type.GRASS
 	else:
-		return ground.ROCK
+		return ground_type.ROCK
 
 func _update_cell(x, y):
-	var ground_type : int = ground_type_map[_idx(Vector2i(x, y))]
-	var atlas_coords := Vector2i(ground_type, 0)
-	tile_map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
+	var type : int = ground_type_map[_idx(Vector2i(x, y))]
+	var atlas_coords := Vector2i(type, 0)
+	map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 
 func _get_multiplier(x, y) -> float:
 	var mult: float = 0.0
@@ -149,7 +140,7 @@ func _prune_rock_holes(types: PackedByteArray, min_keep_size := INF, keep_pos: V
 	var keep_component_i := -1
 	
 	var floor_types_to_fill_out = [
-		ground.ROCK
+		ground_type.ROCK
 	]
 	
 	# STEP 1: find all components

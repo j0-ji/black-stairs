@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var wander_speed := 40.0        # normal wandering speed
 @export var burst_speed := 150.0        # speed during lunge
 @export var detection_radius := 80.0    # player aggro range
-@export var burst_duration := 0.3       # seconds the burst lasts
+@export var burst_duration := 0.25       # seconds the burst lasts
 @export var burst_cooldown := 1.5       # time between bursts
 
 var player: Node2D

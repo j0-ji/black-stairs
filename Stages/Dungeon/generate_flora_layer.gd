@@ -34,12 +34,12 @@ var flora_probabilities := {
 var _noise := FastNoiseLite.new()
 
 func initialize() -> void:
-	assert(is_instance_valid(tile_map_layer), "tile_map_layer is not set!")
+	assert(is_instance_valid(map_layer), "tile_map_layer is not set!")
 	_is_flora_probabilities_ok()
 
 func generate() -> void:
 	_configure_noise()
-	tile_map_layer.clear()
+	map_layer.clear()
 	for y in range(map_size):
 		for x in range(map_size):
 			var n := _noise.get_noise_2d(float(x) / noise_scale, float(y) / noise_scale)
@@ -50,17 +50,17 @@ func generate() -> void:
 					if flora_type >= flora_probabilities.tree[0] and flora_type <= flora_probabilities.tree[1]:
 						var x_atlas_coord_tree = rng.randi_range(0, 4)
 						var atlas_coords := Vector2i(x_atlas_coord_tree, y_atlas_coord_tree)
-						tile_map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
+						map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 					if flora_type >= flora_probabilities.bush_base[0] and flora_type <= flora_probabilities.bush_base[1]:
 						var x_atlas_coord_bush_base = rng.randi_range(5, 7)
 						var atlas_coords := Vector2i(x_atlas_coord_bush_base, y_atlas_coord_bush_base)
-						tile_map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
+						map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 					if flora_type >= flora_probabilities.bush_berries[0] and flora_type <= flora_probabilities.bush_berries[1]:
 						var x_atlas_coord_bush_berry = rng.randi_range(5, 7)
 						var atlas_coords := Vector2i(x_atlas_coord_bush_berry, y_atlas_coord_bush_berry)
-						tile_map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
+						map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
 	
-	tile_map_layer.update_internals()
+	map_layer.update_internals()
 	transition.emit()
 
 func _configure_noise() -> void:
