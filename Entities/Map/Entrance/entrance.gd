@@ -4,10 +4,10 @@ extends Node2D
 
 var spawn_point := Vector2i(0, 0)
 
-var _pos_0 := Vector2i(8, 24)
-var _pos_90 := Vector2i(-8, 8)
-var _pos_180 := Vector2i(8, -8)
-var _pos_270 := Vector2i(24, 8)
+var _pos_0 := Vector2i(0, 16)
+var _pos_90 := Vector2i(-16, 0)
+var _pos_180 := Vector2i(0, -16)
+var _pos_270 := Vector2i(16, 0)
 
 func _ready() -> void:
 	pass
@@ -22,7 +22,7 @@ func _get_relative_spawn() -> Vector2i:
 	elif sprite_rotation == 270:
 		return _pos_270
 	else:
-		push_error("Invalid rotation of entrance encountert")
+		push_error("Invalid rotation of entrance encountered")
 		# maybe find a way to not return anything in case of error ?
 		return _pos_0
 

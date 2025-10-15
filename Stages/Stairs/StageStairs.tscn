@@ -15,9 +15,9 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAEAAAAAAABAAAAAQAEAAAAAAACAAAAAQAEAAA
 tile_set = ExtResource("1_yqsrh")
 
 [node name="Entrance" parent="." instance=ExtResource("2_dkl33")]
-position = Vector2(16, 72)
+position = Vector2(24, 64)
 rotation = -1.5707964
 sprite_rotation = 270
 
 [node name="Exit" parent="." instance=ExtResource("3_7tc4h")]
-position = Vector2(40, 135)
+position = Vector2(56, 143)

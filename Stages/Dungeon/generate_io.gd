@@ -12,7 +12,10 @@ var valid_grounds = [
 	Vector2i(2, 0),
 ]
 
-var directions = [
+var directions : Array[Dictionary]
+
+func initialize() -> void:
+	directions = [
 	{
 		"dir": Vector2i(0, 1),
 		"base": Vector2i(1, 0),
@@ -39,18 +42,15 @@ var directions = [
 	},
 ]
 
-func initialize() -> void:
-	pass
-
 func generate() -> void:
 	var spawn_dict : Dictionary = _find_spawn()
 	var exit_point : Vector2i = _find_exit(spawn_dict.coord)
 
-	var entrance_local : Vector2i = _ground.to_local(spawn_dict.coord)
-	var exit_local : Vector2i = _ground.to_local(exit_point)
+	var entrance_local : Vector2i = _ground.map_to_local(spawn_dict.coord)
+	var exit_local : Vector2i = _ground.map_to_local(exit_point)
 
-	_entrance.global_position = entrance_local * 16
-	_exit.global_position = exit_local * 16
+	_entrance.global_position = _ground.to_global(entrance_local)
+	_exit.global_position = _ground.to_global(exit_local)
 
 	_entrance.get_child(0).global_rotation_degrees = spawn_dict.rotation_degrees
 	_entrance.sprite_rotation = spawn_dict.rotation_degrees
