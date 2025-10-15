@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bng0docrk8use"]
+
+[ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
+[ext_resource type="Texture2D" uid="uid://cxkke6a4vgn78" path="res://Entities/Enemies/Slimes/spritesheet_slime.png" id="2_iii5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh2bl"]
+atlas = ExtResource("2_iii5c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbx5x"]
+atlas = ExtResource("2_iii5c")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gj73b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh2bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbx5x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipj2"]
+size = Vector2(12, 8)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_gj73b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gj73b")
+animation = &"idle"
+frame_progress = 0.8192689
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_tipj2")

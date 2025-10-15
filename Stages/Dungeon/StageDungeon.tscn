@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://jxo3hjq5iesm"]
+
+[ext_resource type="Script" uid="uid://b4nsyy8rvqmj1" path="res://Stages/Dungeon/dungeon_manager.gd" id="1_qfv56"]
+[ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
+[ext_resource type="Script" uid="uid://nl30wiux14kb" path="res://Stages/Dungeon/generate_ground_layer.gd" id="3_vlp3l"]
+[ext_resource type="Script" uid="uid://buluvb74fxv7o" path="res://Stages/Dungeon/generate_flora_layer.gd" id="4_kocfg"]
+[ext_resource type="Script" uid="uid://cnwamcio87rt5" path="res://Stages/Dungeon/generate_io.gd" id="4_mvs5v"]
+[ext_resource type="PackedScene" uid="uid://c2qns8maswhf3" path="res://Entities/Map/Entrance/Entrance.tscn" id="5_0tjni"]
+[ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://Stages/Tilesets/Terrain/terrain_tileset.tres" id="5_kocfg"]
+[ext_resource type="Script" uid="uid://cf1d1q0laudj1" path="res://Stages/Dungeon/generate_enemies.gd" id="6_mjdru"]
+[ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="6_qfv56"]
+[ext_resource type="PackedScene" uid="uid://bng0docrk8use" path="res://Entities/Enemies/Slimes/slime.tscn" id="7_aalgh"]
+[ext_resource type="PackedScene" uid="uid://cw4wl8xc6okyy" path="res://Entities/Enemies/Goblins/goblin.tscn" id="8_jx5wx"]
+
+[node name="StageDungeon" type="Node2D" node_paths=PackedStringArray("map_generator", "entrance", "exit")]
+y_sort_enabled = true
+script = ExtResource("1_qfv56")
+map_generator = NodePath("MapGenerator")
+entrance = NodePath("IO/Entrance")
+exit = NodePath("IO/Exit")
+
+[node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("initial_map_layer")]
+script = ExtResource("2_mwpf2")
+initial_map_layer = NodePath("Ground")
+
+[node name="Ground" type="Node" parent="MapGenerator" node_paths=PackedStringArray("map_layer")]
+script = ExtResource("3_vlp3l")
+map_layer = NodePath("../../Ground")
+
+[node name="Flora" type="Node" parent="MapGenerator" node_paths=PackedStringArray("ground", "map_layer")]
+script = ExtResource("4_kocfg")
+ground = NodePath("../../Ground")
+map_layer = NodePath("../../Flora")
+
+[node name="IO" type="Node" parent="MapGenerator" node_paths=PackedStringArray("_ground", "_flora", "_entrance", "_exit", "map_layer")]
+script = ExtResource("4_mvs5v")
+_ground = NodePath("../../Ground")
+_flora = NodePath("../../Flora")
+_entrance = NodePath("../../IO/Entrance")
+_exit = NodePath("../../IO/Exit")
+map_layer = NodePath("../../IO")
+
+[node name="Enemies" type="Node" parent="MapGenerator" node_paths=PackedStringArray("_ground", "_flora", "_io", "map_layer")]
+script = ExtResource("6_mjdru")
+_ground = NodePath("../../Ground")
+_flora = NodePath("../../Flora")
+_io = NodePath("../../IO")
+slime_scene = ExtResource("7_aalgh")
+goblin_scene = ExtResource("8_jx5wx")
+map_layer = NodePath("../../Enemies")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("5_kocfg")
+
+[node name="Flora" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("5_kocfg")
+
+[node name="IO" type="Node2D" parent="."]
+
+[node name="Entrance" parent="IO" instance=ExtResource("5_0tjni")]
+
+[node name="Exit" parent="IO" instance=ExtResource("6_qfv56")]
+
+[node name="Enemies" type="Node2D" parent="."]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw3e00mv7mbto"]
+
+[ext_resource type="Script" uid="uid://bfr5yja8l8ep0" path="res://Utilities/LevelManager/level_manager.gd" id="1_m3wgy"]
+[ext_resource type="PackedScene" uid="uid://jxo3hjq5iesm" path="res://Stages/Dungeon/StageDungeon.tscn" id="1_x1tu5"]
+[ext_resource type="PackedScene" uid="uid://b0lgpcbuvi3vr" path="res://Stages/Stairs/StageStairs.tscn" id="2_031fh"]
+[ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://Entities/Player/player.tscn" id="3_m3wgy"]
+
+[node name="StageMain" type="Node2D" node_paths=PackedStringArray("_dungeon", "_stairs", "_player")]
+y_sort_enabled = true
+script = ExtResource("1_m3wgy")
+_dungeon = NodePath("StageDungeon")
+_stairs = NodePath("StageStairs")
+_player = NodePath("Player")
+
+[node name="StageDungeon" parent="." instance=ExtResource("1_x1tu5")]
+
+[node name="StageStairs" parent="." instance=ExtResource("2_031fh")]
+position = Vector2(-1000, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_m3wgy")]
+position = Vector2(153, -193)

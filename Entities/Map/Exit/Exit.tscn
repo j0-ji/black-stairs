@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvctap60e3v5l"]
+
+[ext_resource type="Script" uid="uid://coaf8ss85y14f" path="res://Entities/Map/Exit/exit.gd" id="1_b6l0y"]
+[ext_resource type="PackedScene" uid="uid://cl1y8y0fwdmpr" path="res://UI/Hints/HintEnter.tscn" id="2_dq7dy"]
+[ext_resource type="Texture2D" uid="uid://c8ulro0vkxjmt" path="res://Entities/Map/Exit/exit.png" id="2_xqhb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nif8h"]
+size = Vector2(16, 16)
+
+[node name="Exit" type="Area2D" node_paths=PackedStringArray("_hint")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_b6l0y")
+_hint = NodePath("HintEnter")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xqhb7")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nif8h")
+
+[node name="HintEnter" parent="." instance=ExtResource("2_dq7dy")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 72.0
+offset_bottom = 13.999996
+grow_vertical = 0
