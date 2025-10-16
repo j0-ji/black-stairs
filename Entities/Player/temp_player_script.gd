@@ -84,6 +84,6 @@ func play_movement_anim(dir: String, movement: bool, flip: bool):
 	else:
 		anim.play('idle_' + dir)
 	
-	
+
 
 	

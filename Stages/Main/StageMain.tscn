@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw3e00mv7mbto"]
+[gd_scene load_steps=9 format=3 uid="uid://cw3e00mv7mbto"]
 
 [ext_resource type="Script" uid="uid://bfr5yja8l8ep0" path="res://Utilities/LevelManager/level_manager.gd" id="1_m3wgy"]
 [ext_resource type="PackedScene" uid="uid://jxo3hjq5iesm" path="res://Stages/Dungeon/StageDungeon.tscn" id="1_x1tu5"]
 [ext_resource type="PackedScene" uid="uid://b0lgpcbuvi3vr" path="res://Stages/Stairs/StageStairs.tscn" id="2_031fh"]
 [ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://Entities/Player/player.tscn" id="3_m3wgy"]
+[ext_resource type="Script" uid="uid://dk00yxbdqai2i" path="res://Stages/Main/canvas_layer.gd" id="5_1q01y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q01y"]
+bg_color = Color(1, 0.3846701, 0.24168548, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxhh2"]
+bg_color = Color(1, 0, 0.0627451, 1)
+
+[sub_resource type="GDScript" id="GDScript_dxhh2"]
+script/source = "extends ProgressBar
+
+"
 
 [node name="StageMain" type="Node2D" node_paths=PackedStringArray("_dungeon", "_stairs", "_player")]
 y_sort_enabled = true
@@ -19,3 +31,20 @@ position = Vector2(-1000, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_m3wgy")]
 position = Vector2(153, -193)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_1q01y")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 100.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(0.74546784, 0, 0.060895473, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_1q01y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxhh2")
+max_value = 20.0
+step = 1.0
+value = 20.0
+fill_mode = 1
+show_percentage = false
+script = SubResource("GDScript_dxhh2")

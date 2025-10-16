@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bng0docrk8use"]
+[gd_scene load_steps=8 format=3 uid="uid://bng0docrk8use"]
 
 [ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
 [ext_resource type="Texture2D" uid="uid://cxkke6a4vgn78" path="res://Entities/Enemies/Slimes/spritesheet_slime.png" id="2_iii5c"]
+[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_a2gep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uh2bl"]
 atlas = ExtResource("2_iii5c")
@@ -28,7 +29,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipj2"]
 size = Vector2(12, 8)
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_gj73b")
@@ -41,3 +42,7 @@ frame_progress = 0.8192689
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tipj2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_a2gep")
+metadata/_custom_type_script = "uid://dplgw62coxdtx"

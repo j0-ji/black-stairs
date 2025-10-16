@@ -1,7 +1,33 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw4wl8xc6okyy"]
+[gd_scene load_steps=23 format=3 uid="uid://cw4wl8xc6okyy"]
 
 [ext_resource type="Script" uid="uid://byqgw38hpf0i7" path="res://Entities/Enemies/Goblins/goblin.gd" id="1_hqea3"]
+[ext_resource type="Texture2D" uid="uid://cetmw06vtncsu" path="res://Entities/Enemies/Goblins/goblin_attack.png" id="2_2y7st"]
 [ext_resource type="Texture2D" uid="uid://d0c3vv0tup0lc" path="res://Entities/Enemies/Goblins/globlin_spritesheet.png" id="2_vjdn2"]
+[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="4_ag0ao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag0ao"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(0, 0, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81slq"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(35, 0, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_varqx"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(0, 20, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oti5c"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(35, 20, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puaen"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(0, 40, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1xli"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(35, 40, 35, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62nou"]
 atlas = ExtResource("2_vjdn2")
@@ -45,6 +71,29 @@ region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4mosj"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag0ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81slq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_varqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oti5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puaen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1xli")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_62nou")
@@ -99,16 +148,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7eb5"]
 radius = 7.0
 
-[node name="Goblin" type="CharacterBody2D"]
+[node name="Goblin" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_hqea3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4mosj")
-animation = &"idle_left"
-frame = 1
-frame_progress = 0.6685671
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r7eb5")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_ag0ao")
+metadata/_custom_type_script = "uid://dplgw62coxdtx"
