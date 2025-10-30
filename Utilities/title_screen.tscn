@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvkm6gbga6yui"]
 
-[ext_resource type="Script" uid="uid://csbpto2l6hlb2" path="res://UI/TitleScreen/title_screen.gd" id="1_sd5it"]
+[ext_resource type="Script" uid="uid://csbpto2l6hlb2" path="res://UI/Menu/TitleScreen/title_screen.gd" id="1_sd5it"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
