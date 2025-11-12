@@ -23,6 +23,7 @@ func load_location(location: String) -> void:
 	
 	if scene_path == null:
 		push_error("Invalid location")
+		return
 	
 	var location_stage: Node = load(scene_path).instantiate()
 	var location_root: Node = get_node(main_scene_location_root_path)
@@ -30,7 +31,7 @@ func load_location(location: String) -> void:
 	if location_root != null:
 		var nodes = location_root.get_children()
 		
-		if nodes != null:
+		if !nodes.is_empty():
 			for node: Node in nodes:
 				node.queue_free()
 		

@@ -45,13 +45,18 @@ func _set_player_on_spawn_point() -> void:
 
 func _set_listener_for_exit() -> void:
 	var location = _location_root.get_child(0)
-	if location != null:
-		if location.exit != null:
-			location.exit.went_through_exit.connect(_next)
-		else: 
-			push_error("Location does not have valid exit...")
-	else: 
+	if location == null:
 		push_error("No valid location in location root...")
+		return
+	
+	if location.exit != null:
+		push_error("Location does not have valid exit...")
+		return
+	
+	if location.exit.went_through_exit.is_connected(_next):
+		location.exit.went_through_exit.disconnect(_next)
+	
+	location.exit.went_through_exit.connect(_next)
 
 func _next() -> void:
 	if current_location == "Dungeon":

@@ -8,7 +8,6 @@ func _ready() -> void:
 
 func _on_continue_pressed() -> void:
 	GameManager.continue_from_pause()
-	queue_free()
 
 func _on_save_pressed() -> void:
 	GameManager.save_game()
