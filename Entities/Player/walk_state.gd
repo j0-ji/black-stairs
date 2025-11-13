@@ -2,8 +2,6 @@ extends NodeState
 
 @export var player: Player
 @export var animated_sprite_2d : AnimatedSprite2D
-@export var speed: int = 50
-
 
 func _on_process(_delta : float) -> void:
 	pass
@@ -27,7 +25,7 @@ func _on_physics_process(_delta : float) -> void:
 	if !move_direction.is_normalized():
 		move_direction = move_direction.normalized()
 		
-	player.velocity = move_direction * speed
+	player.velocity = move_direction * player.speed
 	player.move_and_slide()
 
 func _on_next_transitions() -> void:

@@ -55,6 +55,8 @@ func generate() -> void:
 	_entrance.get_child(0).global_rotation_degrees = spawn_dict.rotation_degrees
 	_entrance.sprite_rotation = spawn_dict.rotation_degrees
 	
+	_entrance.update_spawn_point()
+	
 	transition.emit()
 
 func _find_spawn() -> Dictionary:
@@ -89,37 +91,6 @@ func _find_spawn() -> Dictionary:
 				base += dir
 	
 	if not found: push_error("IO_GENERATOR: no spawn point found...")
-	return {"coord" : base, "dir" : dir, "rotation_degrees": rotation_degrees}
-
-func _find_spawn_deprecated() -> Dictionary:
-	var rng = RandomNumberGenerator.new()
-	var side = rng.randi_range(0, 3)
-	var base_multiplicator = rng.randi_range(border_width - 1, map_size - border_width - 1)
-	var base : Vector2i
-	var dir : Vector2i
-	var rotation_degrees : int
-	
-	var found = false
-	for i in range(directions.size()):
-		if found: continue
-		
-		var skip = false
-		side += i
-		side = side % 4
-		dir = directions[side].dir
-		
-		base = directions[side].base * base_multiplicator + directions[side].base_additive
-		rotation_degrees = directions[side].rotation_degrees
-		
-		while not found and not skip:
-			if valid_grounds.has(_ground.get_cell_atlas_coords(base + dir)):
-				if _flora.get_cell_atlas_coords(base + dir) != Vector2i(-1, -1):
-					skip = true
-				else:
-					found = true
-			else:
-				base += dir
-	
 	return {"coord" : base, "dir" : dir, "rotation_degrees": rotation_degrees}
 
 func _find_exit(spawn_point : Vector2i) -> Vector2i:
