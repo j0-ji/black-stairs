@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://biubca7lr7sv8"]
+
+[ext_resource type="TileSet" uid="uid://dpw47cvk6hhls" path="res://Stages/Tilesets/Buildings/buildings.tres" id="1_5ngps"]
+
+[node name="Building" type="Node2D"]
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_5ngps")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_5ngps")
+
+[node name="Interior" type="TileMapLayer" parent="."]
