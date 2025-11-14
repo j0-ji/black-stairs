@@ -1,5 +1,5 @@
 class_name InteractableComponent
-extends Node2D
+extends Area2D
 
 signal interactable_activated
 signal interactable_deactivated
