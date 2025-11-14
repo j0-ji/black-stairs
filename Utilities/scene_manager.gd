@@ -6,7 +6,8 @@ var main_scene_location_root_path : String = "/root/StageMain/GameRoot/LocationR
 
 var location_stages : Dictionary = {
 	"Dungeon" : "res://Stages/Dungeon/StageDungeon.tscn",
-	"Stairs" : "res://Stages/Stairs/StageStairs.tscn"
+	"Stairs" : "res://Stages/Stairs/StageStairs.tscn",
+	"Village" : "res://Stages/Village/Village.tscn"
 }
 
 func load_main_stage_container() -> void:

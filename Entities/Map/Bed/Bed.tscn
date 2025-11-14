@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dikfi1ok1uc7d"]
+
+[ext_resource type="Script" uid="uid://ijc50ndlvgwq" path="res://Entities/Map/Bed/bed.gd" id="1_eu865"]
+[ext_resource type="Texture2D" uid="uid://cyvppp31jui7j" path="res://Entities/Map/Bed/bed.png" id="2_w40kh"]
+
+[node name="Bed" type="Node2D" node_paths=PackedStringArray("spawn_marker")]
+script = ExtResource("1_eu865")
+spawn_marker = NodePath("PlayerSpawn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w40kh")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(8, -16)
