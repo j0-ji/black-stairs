@@ -49,7 +49,7 @@ func _set_listener_for_exit() -> void:
 		push_error("No valid location in location root...")
 		return
 	
-	if location.exit != null:
+	if location.exit == null:
 		push_error("Location does not have valid exit...")
 		return
 	
