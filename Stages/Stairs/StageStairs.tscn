@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2qns8maswhf3" path="res://Entities/Map/Entrance/Entrance.tscn" id="2_dkl33"]
 [ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="3_7tc4h"]
 
-[node name="StageStairs" type="Node2D" node_paths=PackedStringArray("entrance", "exit")]
+[node name="Stairs" type="Node2D" node_paths=PackedStringArray("entrance", "exit")]
 script = ExtResource("1_dkl33")
 entrance = NodePath("Entrance")
 exit = NodePath("Exit")
@@ -17,7 +17,16 @@ tile_set = ExtResource("1_yqsrh")
 [node name="Entrance" parent="." instance=ExtResource("2_dkl33")]
 position = Vector2(24, 64)
 rotation = -1.5707964
-sprite_rotation = 270
+exit_enabled = true
+
+[node name="HintComponent" parent="Entrance" index="1"]
+offset_left = 18.0
+offset_top = -11.0
+offset_right = 127.99999
+offset_bottom = 28.999992
+rotation = 1.5707964
 
 [node name="Exit" parent="." instance=ExtResource("3_7tc4h")]
 position = Vector2(56, 143)
+
+[editable path="Entrance"]

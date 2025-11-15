@@ -4,7 +4,7 @@ extends MapLayer
 @export var _flora : TileMapLayer
 
 @export var _entrance : Node2D
-@export var _exit : Area2D
+@export var _exit : Node2D
 
 var valid_grounds = [
 	Vector2i(0, 0),
@@ -52,9 +52,7 @@ func generate() -> void:
 	_entrance.global_position = _ground.to_global(entrance_local)
 	_exit.global_position = _ground.to_global(exit_local)
 
-	_entrance.get_child(0).global_rotation_degrees = spawn_dict.rotation_degrees
-	_entrance.sprite_rotation = spawn_dict.rotation_degrees
-	
+	_entrance.rotation_degrees = spawn_dict.rotation_degrees	
 	_entrance.update_spawn_point()
 	
 	transition.emit()

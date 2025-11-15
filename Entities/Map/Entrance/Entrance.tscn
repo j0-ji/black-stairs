@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2qns8maswhf3"]
+[gd_scene load_steps=6 format=3 uid="uid://c2qns8maswhf3"]
 
 [ext_resource type="Texture2D" uid="uid://c53b15jyde48y" path="res://Entities/Map/Entrance/entrance.png" id="1_cn8nh"]
 [ext_resource type="Script" uid="uid://c5oolopcbi6gt" path="res://Entities/Map/Entrance/entrance.gd" id="1_w7ymb"]
+[ext_resource type="PackedScene" uid="uid://cl1y8y0fwdmpr" path="res://Components/HintComponent/HintComponent.tscn" id="3_yxs5s"]
+[ext_resource type="PackedScene" uid="uid://vtpeed7japi1" path="res://Components/InteractableComponent/InteractableComponent.tscn" id="4_d2tlf"]
 
-[node name="Entrance" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57xq"]
+size = Vector2(16, 16)
+
+[node name="Entrance" type="Node2D" node_paths=PackedStringArray("spawn_marker", "hint")]
 script = ExtResource("1_w7ymb")
+spawn_marker = NodePath("SpawnMarker")
+hint = NodePath("HintComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cn8nh")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
+
+[node name="HintComponent" parent="." instance=ExtResource("3_yxs5s")]
+offset_left = -10.999999
+offset_top = -18.000002
+offset_right = 98.99999
+offset_bottom = 21.99999
+message = "[E] Exit"
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="InteractableComponent" parent="." instance=ExtResource("4_d2tlf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_p57xq")
+
+[connection signal="interactable_activated" from="InteractableComponent" to="." method="_on_interactable_activated"]
+[connection signal="interactable_deactivated" from="InteractableComponent" to="." method="_on_interactable_deactivated"]
