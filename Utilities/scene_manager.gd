@@ -1,8 +1,8 @@
 extends Node
 
 var main_scene_path : String = "res://Stages/Main/StageMain.tscn"
-var main_scene_root_path : String = "/root/StageMain"
-var main_scene_location_root_path : String = "/root/StageMain/GameRoot/LocationRoot"
+var main_scene_root_path : String = "Main"
+var main_scene_location_root_path : String = "/root/Main/GameRoot/LocationRoot"
 
 var location_stages : Dictionary = {
 	"Dungeon" : "res://Stages/Dungeon/StageDungeon.tscn",
@@ -36,6 +36,5 @@ func load_location(location: String) -> void:
 			for node: Node in nodes:
 				node.queue_free()
 		
-		await get_tree().process_frame
-		
 		location_root.add_child(location_stage)
+		await get_tree().process_frame

@@ -1,11 +1,15 @@
-[gd_scene format=3 uid="uid://cl1y8y0fwdmpr"]
+[gd_scene load_steps=2 format=3 uid="uid://cl1y8y0fwdmpr"]
 
-[node name="Background" type="ColorRect"]
+[ext_resource type="Script" uid="uid://puefma4vfipd" path="res://Components/HintComponent/hint_component.gd" id="1_ie7pi"]
+
+[node name="Background" type="ColorRect" node_paths=PackedStringArray("label")]
 z_index = 2
 offset_right = 109.99999
 offset_bottom = 39.999996
 scale = Vector2(0.2, 0.2)
 color = Color(0, 0, 0, 0.5294118)
+script = ExtResource("1_ie7pi")
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 z_index = 1
