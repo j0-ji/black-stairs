@@ -69,8 +69,8 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_advq7")
 hint = NodePath("HintComponent")
-min_walk_cycle = 5
-max_walk_cycle = 1
+min_walk_cycle = 1
+max_walk_cycle = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)

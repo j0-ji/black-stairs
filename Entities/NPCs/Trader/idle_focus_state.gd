@@ -18,7 +18,7 @@ func _on_process(_delta: float) -> void:
 	pass
 
 func _on_physics_process(_delta: float) -> void:
-	if character.is_focused:
+	if character.is_focused and _player != null:
 		if _player.global_position.x - character.global_position.x < 0:
 			animated_sprite_2d.flip_h = true
 		else:
@@ -27,14 +27,13 @@ func _on_physics_process(_delta: float) -> void:
 func _on_next_transitions() -> void:
 	if !character.is_focused:
 		transition.emit("Walk")
-	if _idle_state_timeout:
+	elif _idle_state_timeout:
 		transition.emit("Walk")
 
 func _on_enter() -> void:
-	print("IDLE FOCUS")
 	animated_sprite_2d.play("idle")
 	_idle_state_timeout = false
-	idle_focus_state_timer.wait_time = randf_range(min_idle_focus_state_time_interval, min_idle_focus_state_time_interval)
+	idle_focus_state_timer.wait_time = randf_range(min_idle_focus_state_time_interval, max_idle_focus_state_time_interval)
 	idle_focus_state_timer.start()
 
 func _on_exit() -> void:

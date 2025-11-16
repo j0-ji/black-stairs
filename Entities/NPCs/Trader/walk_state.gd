@@ -51,7 +51,7 @@ func on_safe_velocity_computed(safe_velocity : Vector2) -> void:
 func _on_next_transitions() -> void:
 	if character.is_focused:
 		transition.emit("IdleFocus")
-	if character.current_walk_cycle == character.walk_cycles:
+	elif character.current_walk_cycle == character.walk_cycles:
 		transition.emit("Idle")
 
 func _on_enter() -> void:

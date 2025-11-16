@@ -21,11 +21,10 @@ func _on_physics_process(_delta: float) -> void:
 func _on_next_transitions() -> void:
 	if character.is_focused:
 		transition.emit("IdleFocus")
-	if _idle_state_timeout:
+	elif _idle_state_timeout:
 		transition.emit("Walk")
 
 func _on_enter() -> void:
-	print("IDLE")
 	animated_sprite_2d.play("idle")
 	_idle_state_timeout = false
 	idle_state_timer.wait_time = randf_range(min_idle_state_time_interval, max_idle_state_time_interval)
