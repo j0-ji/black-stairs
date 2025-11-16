@@ -33,7 +33,6 @@ y_sort_enabled = true
 position = Vector2(272, 432)
 
 [node name="BuildingTrader" parent="Map/Buildings" instance=ExtResource("4_4msl7")]
-y_sort_enabled = false
 position = Vector2(321, 272)
 
 [node name="Exit" parent="." instance=ExtResource("2_srxlc")]

@@ -24,8 +24,7 @@ SceneManager="*res://Utilities/scene_manager.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=480
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
 [file_customization]
@@ -87,9 +86,11 @@ toggle_pause_menu={
 [layer_names]
 
 2d_physics/layer_1="static"
+2d_navigation/layer_1="Trader Navigation"
 2d_physics/layer_2="player"
 2d_physics/layer_3="interactables"
 2d_physics/layer_4="enemies"
+avoidance/layer_1="Human NPC"
 
 [navigation]
 
@@ -101,4 +102,5 @@ toggle_pause_menu={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

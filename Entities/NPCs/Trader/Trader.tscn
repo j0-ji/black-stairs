@@ -1,0 +1,140 @@
+[gd_scene load_steps=17 format=3 uid="uid://6ywuvds6mef2"]
+
+[ext_resource type="Script" uid="uid://cpegjal10d3wq" path="res://Entities/NPCs/Trader/trader.gd" id="1_advq7"]
+[ext_resource type="Texture2D" uid="uid://bc26phpdue20s" path="res://Entities/NPCs/Trader/demo-trader.png" id="1_ss4jp"]
+[ext_resource type="Script" uid="uid://bw1kmt57qkjbf" path="res://Common/StateMachine/node_state_machine.gd" id="2_ib60h"]
+[ext_resource type="Script" uid="uid://cvxjmin3d7ils" path="res://Entities/NPCs/Trader/idle_state.gd" id="3_advq7"]
+[ext_resource type="Script" uid="uid://c2rfc1nheneoy" path="res://Entities/NPCs/Trader/walk_state.gd" id="4_ib60h"]
+[ext_resource type="Script" uid="uid://cpaq1k83sf4g2" path="res://Entities/NPCs/Trader/idle_focus_state.gd" id="5_q163y"]
+[ext_resource type="PackedScene" uid="uid://vtpeed7japi1" path="res://Components/InteractableComponent/InteractableComponent.tscn" id="6_vuccs"]
+[ext_resource type="PackedScene" uid="uid://cl1y8y0fwdmpr" path="res://Components/HintComponent/HintComponent.tscn" id="7_q163y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrtn4"]
+atlas = ExtResource("1_ss4jp")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuccs"]
+atlas = ExtResource("1_ss4jp")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q163y"]
+atlas = ExtResource("1_ss4jp")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0mys"]
+atlas = ExtResource("1_ss4jp")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_patyj"]
+atlas = ExtResource("1_ss4jp")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qt3ds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrtn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuccs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q163y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0mys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_patyj")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2duc6"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0mys"]
+radius = 14.0
+
+[node name="Trader" type="CharacterBody2D" node_paths=PackedStringArray("hint")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_advq7")
+hint = NodePath("HintComponent")
+min_walk_cycle = 5
+max_walk_cycle = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_qt3ds")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_2duc6")
+debug_color = Color(0, 0.95427334, 1.1053394, 0.41960785)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 6.0
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_ib60h")
+initial_node_state = NodePath("Walk")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d", "interactable_component", "idle_state_timer")]
+script = ExtResource("3_advq7")
+character = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+interactable_component = NodePath("../../InteractableComponent")
+idle_state_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Idle"]
+
+[node name="IdleFocus" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d", "interactable_component", "idle_focus_state_timer")]
+script = ExtResource("5_q163y")
+character = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+interactable_component = NodePath("../../InteractableComponent")
+idle_focus_state_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/IdleFocus"]
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d", "navigation_agent_2d", "interactable_component")]
+script = ExtResource("4_ib60h")
+character = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+navigation_agent_2d = NodePath("../../NavigationAgent2D")
+interactable_component = NodePath("../../InteractableComponent")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("6_vuccs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_o0mys")
+debug_color = Color(0.71442765, 0.4051258, 0.6916874, 0.41960785)
+
+[node name="HintComponent" parent="." instance=ExtResource("7_q163y")]
+visible = false
+offset_left = -11.0
+offset_top = -24.0
+offset_right = 98.99999
+offset_bottom = 15.999996
+message = "[E] Trade"
+
+[connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_idle_state_timeout"]
+[connection signal="timeout" from="StateMachine/IdleFocus/Timer" to="StateMachine/IdleFocus" method="_on_idle_focus_state_timeout"]
+[connection signal="interactable_activated" from="InteractableComponent" to="." method="_on_interactable_activated"]
+[connection signal="interactable_activated" from="InteractableComponent" to="StateMachine/IdleFocus" method="_on_interactable_activated"]
+[connection signal="interactable_deactivated" from="InteractableComponent" to="." method="_on_interactable_deactivated"]
+[connection signal="interactable_deactivated" from="InteractableComponent" to="StateMachine/IdleFocus" method="_on_interactable_deactivated"]

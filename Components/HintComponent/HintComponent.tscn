@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://puefma4vfipd" path="res://Components/HintComponent/hint_component.gd" id="1_ie7pi"]
 
-[node name="Background" type="ColorRect" node_paths=PackedStringArray("label")]
+[node name="HintComponent" type="ColorRect" node_paths=PackedStringArray("label")]
 z_index = 2
 offset_right = 109.99999
 offset_bottom = 39.999996
@@ -20,6 +20,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-text = "[E] Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
