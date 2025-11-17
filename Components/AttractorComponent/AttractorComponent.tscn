@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkanlrbeuwe5o"]
+
+[ext_resource type="Script" uid="uid://43t45t04es63" path="res://Components/AttractorComponent/attractor_component.gd" id="1_tmg4u"]
+
+[node name="AttractorComponent" type="Area2D"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_tmg4u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

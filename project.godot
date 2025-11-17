@@ -40,6 +40,8 @@ folder_colors={
 
 player=""
 enemies=""
+collector="use for entities that should be able to collect objects that use the collectable component"
+attractable="use for entities that should be able to get attracted by objects that use the attractor component"
 
 [input]
 
@@ -90,6 +92,8 @@ toggle_pause_menu={
 2d_physics/layer_2="player"
 2d_physics/layer_3="interactables"
 2d_physics/layer_4="enemies"
+2d_physics/layer_5="items"
+2d_physics/layer_6="attractor"
 avoidance/layer_1="Human NPC"
 
 [navigation]

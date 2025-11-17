@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhhgyyjn5dmaf"]
+
+[ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://Entities/Player/player.tscn" id="1_mpw6d"]
+[ext_resource type="PackedScene" uid="uid://cqijtxq0dgwm4" path="res://Entities/Items/Coin/ItemCoin.tscn" id="2_2xwa2"]
+
+[node name="StageTestCoin" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_mpw6d")]
+position = Vector2(-25, -16)
+
+[node name="Coin 1" parent="." instance=ExtResource("2_2xwa2")]
+position = Vector2(10, 10)
+
+[node name="Coin 2" parent="." instance=ExtResource("2_2xwa2")]
+position = Vector2(27, -31)
+
+[node name="Coin 3" parent="." instance=ExtResource("2_2xwa2")]
+position = Vector2(27, 46)
+
+[node name="Coin 4" parent="." instance=ExtResource("2_2xwa2")]
+position = Vector2(71, -19)
+
+[node name="Coin 5" parent="." instance=ExtResource("2_2xwa2")]
+position = Vector2(-25, 40)
