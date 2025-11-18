@@ -46,17 +46,20 @@ animations = [{
 radius = 3.0
 
 [node name="ItemCoin" groups=["attractable"] instance=ExtResource("1_bkct7")]
-collision_layer = 16
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_2dog8")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_l5i28")
 autoplay = "default"
 
-[node name="CollectableComponent" parent="." index="2" node_paths=PackedStringArray("thing")]
-thing = NodePath("..")
+[node name="CollectableComponent" parent="." index="2"]
+collectable_name = "coin"
 
 [node name="CollisionShape2D" parent="CollectableComponent" index="0"]
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_5dulv")

@@ -9,9 +9,11 @@ extends Area2D
 ## 
 ## For proper use, add a collision shape as a child node to the collectable component. 
 
-@export var thing : Node2D
+@export var collectable_name : String
 
 # currently just deletes the object
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("collector"):
-		thing.queue_free()
+		InventoryManager.add_collectable(collectable_name)
+		get_parent().queue_free()
+						  
