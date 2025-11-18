@@ -56,7 +56,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Your entire wealth "
+tooltip_text = "Level of total HP"
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/BaseHealthUpgrades"]
@@ -76,7 +76,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Your entire wealth "
+tooltip_text = "Level of HP regeneration"
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HealthRegenUpgrades"]
@@ -96,7 +96,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Your entire wealth "
+tooltip_text = "Level of Damage"
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/DamageUpgrades"]
@@ -116,7 +116,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Your entire wealth "
+tooltip_text = "Level of movement speed"
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/SpeedUpgrades"]
@@ -136,7 +136,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Your entire wealth "
+tooltip_text = "Level of stamina regeneration"
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/StaminaUpgrades"]
