@@ -122,8 +122,7 @@ animation = &"walk_left"
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_qd3e3")
 
-[node name="AttractorComponent" parent="." node_paths=PackedStringArray("thing") instance=ExtResource("3_4wf4l")]
-thing = NodePath("..")
+[node name="AttractorComponent" parent="." instance=ExtResource("3_4wf4l")]
 attraction = 75.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent"]

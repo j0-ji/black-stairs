@@ -3,15 +3,19 @@ extends Area2D
 
 ## Enables attracting objects from the attractable group
 ##
-## For proper use, add a collision shape as a child node to the collectable component. 
+## For proper use, add a collision shape as a child node to the collectable component.
+## Furthermore all attractable things should be of nodetype "CharacterBody2D" (!!!).
 ## Objects that use this component can attract other objects that fit the collision layer
 ## mask AND are in the attractable group.
 ## Adding further collision masks extends who the object can potentially attract.
 
-@export var thing : Node2D
 @export var attraction : float = 150.0
 
+var parent : Node2D
 var bodies : Array[Node2D] = []
+
+func _ready() -> void:
+	parent = get_parent()
 
 # adds a body to the bodies array after it enters the attraction area,
 # so it can be moved towards the node passed in "thing"
@@ -32,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 			bodies.erase(body)
 			continue
 		
-		var direction = body.global_position.direction_to(thing.global_position)
+		var direction = body.global_position.direction_to(parent.global_position)
 		
 		if body.has_method("apply_attraction_force"):
 			body.apply_attraction_force(direction * attraction)
