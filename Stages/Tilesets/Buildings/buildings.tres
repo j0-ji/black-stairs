@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dpw47cvk6hhls"]
+
+[ext_resource type="Texture2D" uid="uid://oeohha7edn7y" path="res://Stages/Tilesets/Buildings/wood.png" id="1_uc7nm"]
+[ext_resource type="PackedScene" uid="uid://dpk6bglhgdaae" path="res://Entities/Map/Door/Door.tscn" id="2_ou2he"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ou2he"]
+texture = ExtResource("1_uc7nm")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ou2he"]
+scenes/1/scene = ExtResource("2_ou2he")
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ou2he")
+sources/2 = SubResource("TileSetScenesCollectionSource_ou2he")

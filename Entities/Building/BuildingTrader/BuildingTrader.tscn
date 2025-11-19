@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=4 uid="uid://c37hhq6bbhpdi"]
+
+[ext_resource type="PackedScene" uid="uid://biubca7lr7sv8" path="res://Entities/Building/Building.tscn" id="1_1odly"]
+[ext_resource type="PackedScene" uid="uid://6ywuvds6mef2" path="res://Entities/NPCs/Trader/Trader.tscn" id="2_j8atw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_j8atw"]
+vertices = PackedVector2Array(89, 21.882813, 89, 75, 22, 75, 22, 21.109375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(12, 85, 12, 11, 99, 12, 99, 85)])
+
+[node name="Building" instance=ExtResource("1_1odly")]
+
+[node name="Ground" parent="." index="0"]
+tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAADAAUAAAAAAAAAAAA=")
+
+[node name="Walls" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAGAAEAAAABAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAGAAQAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAgAAAAAAAQA=")
+
+[node name="NPCs" type="Node2D" parent="." index="3"]
+y_sort_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NPCs" index="0"]
+navigation_polygon = SubResource("NavigationPolygon_j8atw")
+
+[node name="Trader" parent="NPCs" index="1" instance=ExtResource("2_j8atw")]
+position = Vector2(55, 40)

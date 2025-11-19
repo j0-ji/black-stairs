@@ -21,6 +21,7 @@ func _ready() -> void:
 	if initial_node_state:
 		initial_node_state._on_enter()
 		current_node_state = initial_node_state
+		current_node_state_name = current_node_state.name.to_lower()
 
 # Calls the process funtion of the current node state.
 func _process(delta: float) -> void:

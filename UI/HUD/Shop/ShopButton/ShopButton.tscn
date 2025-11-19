@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://jh2hkkw45rf6"]
+
+[ext_resource type="Texture2D" uid="uid://cyluchwsnbaxc" path="res://Entities/Items/Coin/gold-coin.png" id="1_62uwy"]
+[ext_resource type="Script" uid="uid://beksjenc1w1wa" path="res://UI/HUD/Shop/ShopButton/shop_button.gd" id="2_2csss"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06n7y"]
+atlas = ExtResource("1_62uwy")
+region = Rect2(5, 5, 6, 6)
+
+[node name="ShopButton" type="Button"]
+size_flags_vertical = 4
+theme_type_variation = &"ShopBuyButton"
+text = "5"
+icon = SubResource("AtlasTexture_06n7y")
+script = ExtResource("2_2csss")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

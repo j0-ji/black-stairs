@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pp7c3mhe6m2o" path="res://Entities/Player/character_attack.png" id="2_01a4e"]
 [ext_resource type="Texture2D" uid="uid://byk3x86tgnbcj" path="res://Entities/Player/demo-character.png" id="2_686vu"]
 [ext_resource type="Texture2D" uid="uid://cy7iobxyswtve" path="res://Entities/Player/demo-character_bow_attack.png" id="3_ap3xn"]
+[ext_resource type="PackedScene" uid="uid://dkanlrbeuwe5o" path="res://Components/AttractorComponent/AttractorComponent.tscn" id="3_4wf4l"]
 [ext_resource type="Script" uid="uid://bw1kmt57qkjbf" path="res://Common/StateMachine/node_state_machine.gd" id="3_qd3e3"]
 [ext_resource type="Script" uid="uid://fmnkmf1e1uwc" path="res://Entities/Player/idle_state.gd" id="4_6avc5"]
 [ext_resource type="Script" uid="uid://bugr6jfcnh27v" path="res://Entities/Player/hitbox.gd" id="4_lub02"]
@@ -244,20 +245,33 @@ func _shoot_arrow_delayed() -> void:
 	get_tree().current_scene.add_child(arrow)
 "
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_01a4e"]
+radius = 22.022715
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["collector", "player"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_t61fv")
+camera = NodePath("Camera")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hv5x3")
-animation = &"attack_ranged"
+animation = &"idle_left"
+frame_progress = 0.1237764
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player_hitbox"]]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qd3e3")
+
+[node name="AttractorComponent" parent="." instance=ExtResource("3_4wf4l")]
+attraction = 75.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_01a4e")
+debug_color = Color(0.6497809, 0.39833644, 0.857044, 0.41960785)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 15
@@ -283,7 +297,6 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 script = ExtResource("5_mk55u")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-speed = 100
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("7_7a1se")
@@ -292,8 +305,8 @@ script = ExtResource("7_7a1se")
 script = SubResource("GDScript_lub02")
 arrow_scene = ExtResource("9_x1y6q")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
