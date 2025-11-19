@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byk3x86tgnbcj"
-path="res://.godot/imported/demo-character.png-aefb7b74dfa7ff7b68e856f678ae740f.ctex"
+uid="uid://30dlnvrwpucd"
+path="res://.godot/imported/globlin_death.png-c743d41014d5b7fa018058ee1f8789cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/demo-character.png"
-dest_files=["res://.godot/imported/demo-character.png-aefb7b74dfa7ff7b68e856f678ae740f.ctex"]
+source_file="res://Entities/Enemies/Goblins/Goblin Nahkampf/globlin_death.png"
+dest_files=["res://.godot/imported/globlin_death.png-c743d41014d5b7fa018058ee1f8789cd.ctex"]
 
 [params]
 

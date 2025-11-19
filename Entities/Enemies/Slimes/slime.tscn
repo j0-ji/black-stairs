@@ -1,7 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bng0docrk8use"]
+[gd_scene load_steps=13 format=3 uid="uid://bng0docrk8use"]
 
 [ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
 [ext_resource type="Texture2D" uid="uid://cxkke6a4vgn78" path="res://Entities/Enemies/Slimes/spritesheet_slime.png" id="2_iii5c"]
+[ext_resource type="Texture2D" uid="uid://dksxg45kvk4fg" path="res://Entities/Enemies/Slimes/slime_death.png" id="2_nqm2k"]
+[ext_resource type="Script" path="res://Common/health.gd" id="3_a2gep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h8lh"]
+atlas = ExtResource("2_nqm2k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5pty"]
+atlas = ExtResource("2_nqm2k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv0ap"]
+atlas = ExtResource("2_nqm2k")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omx7a"]
+atlas = ExtResource("2_nqm2k")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uh2bl"]
 atlas = ExtResource("2_iii5c")
@@ -13,6 +31,23 @@ region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gj73b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h8lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5pty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv0ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omx7a")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uh2bl")
@@ -28,16 +63,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipj2"]
 size = Vector2(12, 8)
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_gj73b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gj73b")
-animation = &"idle"
-frame_progress = 0.8192689
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tipj2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_a2gep")

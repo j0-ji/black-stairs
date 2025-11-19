@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byk3x86tgnbcj"
-path="res://.godot/imported/demo-character.png-aefb7b74dfa7ff7b68e856f678ae740f.ctex"
+uid="uid://cetmw06vtncsu"
+path="res://.godot/imported/goblin_attack.png-b867e0080038b81c6822ac8d8b2662d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/demo-character.png"
-dest_files=["res://.godot/imported/demo-character.png-aefb7b74dfa7ff7b68e856f678ae740f.ctex"]
+source_file="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin_attack.png"
+dest_files=["res://.godot/imported/goblin_attack.png-b867e0080038b81c6822ac8d8b2662d8.ctex"]
 
 [params]
 

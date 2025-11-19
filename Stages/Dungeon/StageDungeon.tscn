@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jxo3hjq5iesm"]
+[gd_scene load_steps=13 format=3 uid="uid://jxo3hjq5iesm"]
 
 [ext_resource type="Script" uid="uid://b4nsyy8rvqmj1" path="res://Stages/Dungeon/dungeon_manager.gd" id="1_qfv56"]
 [ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
@@ -10,7 +10,8 @@
 [ext_resource type="Script" uid="uid://cf1d1q0laudj1" path="res://Stages/Dungeon/generate_enemies.gd" id="6_mjdru"]
 [ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="6_qfv56"]
 [ext_resource type="PackedScene" uid="uid://bng0docrk8use" path="res://Entities/Enemies/Slimes/slime.tscn" id="7_aalgh"]
-[ext_resource type="PackedScene" uid="uid://cw4wl8xc6okyy" path="res://Entities/Enemies/Goblins/goblin.tscn" id="8_jx5wx"]
+[ext_resource type="PackedScene" uid="uid://cw4wl8xc6okyy" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.tscn" id="8_jx5wx"]
+[ext_resource type="PackedScene" uid="uid://fu5q07fvmno1" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/goblin_variant.tscn" id="9_jx5wx"]
 
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("map_generator", "entrance", "exit")]
 y_sort_enabled = true
@@ -45,8 +46,12 @@ script = ExtResource("6_mjdru")
 _ground = NodePath("../../Ground")
 _flora = NodePath("../../Flora")
 _io = NodePath("../../IO")
+slime_count = 20
+goblin_count = 0
+variant_goblin_count = 0
 slime_scene = ExtResource("7_aalgh")
 goblin_scene = ExtResource("8_jx5wx")
+goblin_variant_scene = ExtResource("9_jx5wx")
 map_layer = NodePath("../../Enemies")
 
 [node name="Ground" type="TileMapLayer" parent="."]

@@ -4,10 +4,12 @@ extends MapLayer
 @export var _flora : TileMapLayer
 @export var _io : Node2D # TODO: check if enemy spawn is too close to player spawn
 
-@export var slime_count := 5
-@export var goblin_count := 3
+@export var slime_count := 0
+@export var goblin_count := 20
+@export var variant_goblin_count := 5
 @export var slime_scene: PackedScene
 @export var goblin_scene: PackedScene
+@export var goblin_variant_scene: PackedScene
 
 
 
@@ -40,6 +42,16 @@ func generate() -> void:
 		goblin_instance.position = pos
 		map_layer.add_child.call_deferred(goblin_instance)
 		print("Spawned goblin at: ", goblin_instance.position)
+		
+	for i in range(variant_goblin_count):
+		var pos = _random_position()
+		if pos == Vector2i(-1, -1):
+			continue
+		
+		var goblin_variant_instance = goblin_variant_scene.instantiate()
+		goblin_variant_instance.position = pos
+		map_layer.add_child.call_deferred(goblin_variant_instance)
+		print("Spawned variant goblin at: ", goblin_variant_instance.position)
 	
 	transition.emit()
 
