@@ -13,11 +13,11 @@ var direction := Vector2.ZERO
 var can_damage := false
 
 func _ready():
-	# Stelle sicher, dass die Kollisionsform aktiv ist
+	# Ensure the collision shape  is active
 	collision.set_deferred("disabled", false)
-	# Signal verbinden
+	# connect signal
 	connect("body_entered", Callable(self, "_on_body_entered"))
-	# Timer starten, nach dem der Pfeil Schaden machen darf
+	# start timer, after which the arrow can actually make damage
 	_start_invincibility_timer()
 
 func _physics_process(delta):
@@ -33,21 +33,22 @@ func _start_invincibility_timer():
 
 func _on_body_entered(body: Node) -> void:
 	if not can_damage:
-		return  # noch unberührbar
+		return  # still invincible
 
 	if body.is_in_group("enemies"):
 		print("Arrow hit enemy!")
 		if body.has_node("Health"):
 			body.get_node("Health").take_damage(damage)
-		queue_free()  # Pfeil verschwindet nach Treffer
+		queue_free()  # arrow removed after hit
 
 	if body.is_in_group("player"):
 		print("Arrow hit player!")
 		if body.has_node("Health"):
 			body.get_node("Health").take_damage(damage)
 		queue_free()
-
+		return
 	elif not body.is_in_group("player"):
-		# Wenn er auf eine Wand oder ein anderes Objekt trifft
+		# if the arrow collides with a wall or non enemy object
 		print("Arrow hit wall or other object.")
 		queue_free()
+		return

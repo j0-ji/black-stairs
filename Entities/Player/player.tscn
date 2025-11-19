@@ -220,9 +220,9 @@ script/source = "extends NodeState
 
 @onready var anim: AnimatedSprite2D = $\"../../AnimatedSprite2D\"
 
-@export var attack_delay := 0.2         # Animation spielt ein bisschen
-@export var arrow_scene: PackedScene    # Pfeil-Szene
-@export var attack_speed := 300.0       # Pfeilgeschwindigkeit
+@export var attack_delay := 0.2         # animation plays for a bit
+@export var arrow_scene: PackedScene    # arrow scene
+@export var attack_speed := 300.0       # arrow speed
 
 func _on_enter() -> void:
 	anim.flip_h = owner.anim_direction.x < 0
@@ -241,7 +241,7 @@ func _shoot_arrow_delayed() -> void:
 	await get_tree().create_timer(attack_delay).timeout
 	var arrow = arrow_scene.instantiate()
 	arrow.position = owner.global_position
-	# Richtung zum Mauszeiger
+	# direction to mouse pointer
 	var target = owner.get_global_mouse_position()
 	arrow.direction = (target - owner.global_position).normalized()
 	arrow.speed = attack_speed
