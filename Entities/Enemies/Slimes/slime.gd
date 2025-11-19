@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var burst_cooldown := 1.5       # time between bursts
 
 # --- Health / combat ---
-@export var contact_damage := 3       # damage to player on contact
+@export var contact_damage := 3         # damage to player on contact
 @export var dash_speed := 120.0         # speed when dashing away after hit
 @export var dash_duration := 0.3        # duration of dash-away
 @export var max_health := 3.0           # slime HP
@@ -16,6 +16,7 @@ extends CharacterBody2D
 # --- State variables ---
 var player: Node2D
 var is_aggro := false
+var is_dead := false  # new variable
 
 var wander_direction := Vector2.ZERO
 var wander_timer := 0.0
@@ -39,6 +40,11 @@ func _ready():
 	health.health_changed.connect(_on_health_changed)
 
 func _physics_process(delta):
+	if is_dead:
+		# Stop all movement if dead
+		velocity = Vector2.ZERO
+		return
+
 	if not player:
 		return
 
@@ -69,7 +75,6 @@ func _physics_process(delta):
 		move_and_slide()
 		_play_move_animation()
 	elif is_aggro:
-		# Approach player slowly if not bursting
 		velocity = (player.global_position - global_position).normalized() * wander_speed
 		move_and_slide()
 		_play_move_animation()
@@ -113,10 +118,14 @@ func _hit_player():
 
 # --- Animations ---
 func _play_move_animation():
+	if is_dead:
+		return
 	anim.play("idle")
 	anim.flip_h = velocity.x < 0
 
 func _play_idle_animation():
+	if is_dead:
+		return
 	anim.play("idle")
 	anim.flip_h = false
 
@@ -125,4 +134,8 @@ func _on_health_changed(new_hp):
 	pass  # optional: add hit flash effect here
 
 func _on_died():
-	queue_free()  # despawn slime
+	is_dead = true       # prevent further actions
+	velocity = Vector2.ZERO
+	anim.play("death") # play death animation
+	await anim.animation_finished
+	queue_free()   

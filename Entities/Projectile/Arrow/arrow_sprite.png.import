@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0c3vv0tup0lc"
-path="res://.godot/imported/globlin_spritesheet.png-a72ddd1331b7954779c87e0bc17591d9.ctex"
+uid="uid://ccucon5smmow4"
+path="res://.godot/imported/arrow_sprite.png-3b266c2aeae6951ed2990f2f02962f7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Goblins/globlin_spritesheet.png"
-dest_files=["res://.godot/imported/globlin_spritesheet.png-a72ddd1331b7954779c87e0bc17591d9.ctex"]
+source_file="res://Entities/Projectile/Arrow/arrow_sprite.png"
+dest_files=["res://.godot/imported/arrow_sprite.png-3b266c2aeae6951ed2990f2f02962f7d.ctex"]
 
 [params]
 

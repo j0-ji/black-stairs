@@ -13,6 +13,10 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		state_machine.transition_to("attack")
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			print("Ranged")
+			state_machine.transition_to("attack_ranged")
 		
 func _on_died():
 	await get_tree().create_timer(0.5).timeout  # half-second delay

@@ -14,7 +14,6 @@ bg_color = Color(1, 0, 0.0627451, 1)
 
 [sub_resource type="GDScript" id="GDScript_dxhh2"]
 script/source = "extends ProgressBar
-
 "
 
 [node name="StageMain" type="Node2D" node_paths=PackedStringArray("_dungeon", "_stairs", "_player")]
