@@ -17,6 +17,6 @@ func _on_body_entered(body: Node2D) -> void:
 		if collectable_name.contains("coin"):
 			WalletManager.add_coin()
 		else:
-			InventoryManager.add_collectable(collectable_name)#
+			InventoryManager.add_collectable(collectable_name)
 		
 		get_parent().queue_free()

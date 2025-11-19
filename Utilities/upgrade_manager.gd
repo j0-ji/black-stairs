@@ -19,9 +19,10 @@ func _ready() -> void:
 
 func add_upgrade_level(upgrade_name : String) -> void:
 	var upgrade = _upgrades.get(upgrade_name)
+	
 	var wealth = WalletManager.get_wealth()
 	
-	if  wealth >= upgrade.price:
+	if wealth >= upgrade.price:
 		# updating wealth has to happen first to get the correct price 
 		# before it gets increased by adding a level
 		WalletManager.update_wealth(-upgrade.price)
@@ -36,8 +37,8 @@ func get_upgrade_price(upgrade_name : String) -> int:
 func get_upgrade_level(upgrade_name : String) -> int:
 	return _upgrades.get(upgrade_name).level
 
-func get_upgrade_multiplicator(upgrade_name : String) -> float:
-	return _upgrades.get(upgrade_name).multiplicator
+func get_upgrade_multiplier(upgrade_name : String) -> float:
+	return _upgrades.get(upgrade_name).multiplier
 
 func has_upgrade(upgrade_name : String) -> bool:
 	return _upgrades.has(upgrade_name)
