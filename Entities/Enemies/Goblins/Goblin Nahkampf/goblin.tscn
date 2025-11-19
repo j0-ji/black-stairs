@@ -1,0 +1,209 @@
+[gd_scene load_steps=30 format=3 uid="uid://cw4wl8xc6okyy"]
+
+[ext_resource type="Script" uid="uid://byqgw38hpf0i7" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.gd" id="1_hqea3"]
+[ext_resource type="Texture2D" uid="uid://cetmw06vtncsu" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin_attack.png" id="2_2y7st"]
+[ext_resource type="Shader" uid="uid://dbc8qlc4hudwd" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.gdshader" id="2_varqx"]
+[ext_resource type="Texture2D" uid="uid://d0c3vv0tup0lc" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/globlin_spritesheet.png" id="2_vjdn2"]
+[ext_resource type="Texture2D" uid="uid://30dlnvrwpucd" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/globlin_death.png" id="3_81slq"]
+[ext_resource type="Script" path="res://Common/health.gd" id="4_ag0ao"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oti5c"]
+shader = ExtResource("2_varqx")
+shader_parameter/flash_amount = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag0ao"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(0, 0, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81slq"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(35, 0, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_varqx"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(0, 20, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oti5c"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(35, 20, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puaen"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(0, 40, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1xli"]
+atlas = ExtResource("2_2y7st")
+region = Rect2(35, 40, 35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcyp6"]
+atlas = ExtResource("3_81slq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tnb1"]
+atlas = ExtResource("3_81slq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dstic"]
+atlas = ExtResource("3_81slq")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62nou"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm25v"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r17r"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un686"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6xcr"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqfb2"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rys46"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gqer"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5c2a"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s850j"]
+atlas = ExtResource("2_vjdn2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mosj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag0ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81slq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_varqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oti5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puaen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1xli")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcyp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tnb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dstic")
+}],
+"loop": false,
+"name": &"death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62nou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm25v")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r17r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un686")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6xcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqfb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rys46")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gqer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5c2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s850j")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag0ao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7eb5"]
+radius = 7.0
+
+[node name="Goblin" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_hqea3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_oti5c")
+sprite_frames = SubResource("SpriteFrames_4mosj")
+animation = &"death"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(13, -5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_ag0ao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r7eb5")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_ag0ao")

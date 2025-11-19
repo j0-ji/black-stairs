@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byk3x86tgnbcj"
-path="res://.godot/imported/demo-character.png-aefb7b74dfa7ff7b68e856f678ae740f.ctex"
+uid="uid://dksxg45kvk4fg"
+path="res://.godot/imported/slime_death.png-1355b7db551f145b711433f11ff37012.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/demo-character.png"
-dest_files=["res://.godot/imported/demo-character.png-aefb7b74dfa7ff7b68e856f678ae740f.ctex"]
+source_file="res://Entities/Enemies/Slimes/slime_death.png"
+dest_files=["res://.godot/imported/slime_death.png-1355b7db551f145b711433f11ff37012.ctex"]
 
 [params]
 
