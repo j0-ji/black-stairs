@@ -95,7 +95,7 @@ func _shoot_arrow():
 	var arrow = arrow_scene.instantiate()
 	arrow.direction = direction
 
-	# Spawn außerhalb des Goblin-Körpers
+	# Spawn outside the goblin's body
 	var spawn_offset = direction * 18
 	arrow.global_position = global_position + spawn_offset
 
