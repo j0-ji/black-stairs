@@ -20,16 +20,16 @@ func _update_wallet() -> void:
 
 func _update_upgrades() -> void:
 	if UpgradeManager.has_upgrade("base_health"):
-		base_health_upgrade_label.text = str(UpgradeManager.get_upgrade_count("base_health"))
+		base_health_upgrade_label.text = str(UpgradeManager.get_upgrade_level("base_health"))
 	
 	if UpgradeManager.has_upgrade("health_regen"):
-		health_regen_upgrade_label.text = str(UpgradeManager.get_upgrade_count("health_regen"))
+		health_regen_upgrade_label.text = str(UpgradeManager.get_upgrade_level("health_regen"))
 	
 	if UpgradeManager.has_upgrade("damage"):
-		damage_upgrade_label.text = str(UpgradeManager.get_upgrade_count("damage"))
+		damage_upgrade_label.text = str(UpgradeManager.get_upgrade_level("damage"))
 	
 	if UpgradeManager.has_upgrade("speed"):
-		speed_upgrade_label.text = str(UpgradeManager.get_upgrade_count("speed"))
+		speed_upgrade_label.text = str(UpgradeManager.get_upgrade_level("speed"))
 	
 	if UpgradeManager.has_upgrade("stamina"):
-		stamina_upgrade_label.text = str(UpgradeManager.get_upgrade_count("stamina"))
+		stamina_upgrade_label.text = str(UpgradeManager.get_upgrade_level("stamina"))
