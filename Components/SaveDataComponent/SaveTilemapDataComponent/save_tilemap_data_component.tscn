@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c625jbhjyyx63"]
+
+[ext_resource type="PackedScene" uid="uid://vgeylh5un0iq" path="res://Components/SaveDataComponent/save_data_component.tscn" id="1_wtagu"]
+[ext_resource type="Resource" uid="uid://bdfur3qlm8e6a" path="res://Common/Resources/tilemap_layer_data_resource.tres" id="2_435e3"]
+
+[node name="SaveTilemapDataComponent" instance=ExtResource("1_wtagu")]
+save_data_resource = ExtResource("2_435e3")
