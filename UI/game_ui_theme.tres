@@ -1,11 +1,23 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bmbel8a7ricx8"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bmbel8a7ricx8"]
 
-[ext_resource type="Texture2D" uid="uid://bkti54rrkasxm" path="res://UI/UI Ressources/ui_dark_frame.png" id="1_tplrb"]
-[ext_resource type="Texture2D" uid="uid://rj4hltdwvf3k" path="res://UI/UI Ressources/ui_light_button.png" id="2_ufipx"]
+[ext_resource type="Texture2D" uid="uid://bkti54rrkasxm" path="res://UI/UI Ressources/ui_dark_frame.png" id="1_5q4n0"]
+[ext_resource type="Texture2D" uid="uid://rj4hltdwvf3k" path="res://UI/UI Ressources/ui_light_button.png" id="2_sesrp"]
 [ext_resource type="FontVariation" uid="uid://bthaf4iue0stl" path="res://Assets/Fonts/zx_palm_variation.tres" id="3_5q4n0"]
+[ext_resource type="Texture2D" uid="uid://cyluchwsnbaxc" path="res://Entities/Items/Coin/gold-coin.png" id="4_sesrp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxs55"]
+atlas = ExtResource("2_sesrp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcik5"]
+texture = SubResource("AtlasTexture_vxs55")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufipx"]
-atlas = ExtResource("1_tplrb")
+atlas = ExtResource("1_5q4n0")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ufipx"]
@@ -17,7 +29,7 @@ texture_margin_bottom = 7.0
 region_rect = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5q4n0"]
-atlas = ExtResource("2_ufipx")
+atlas = ExtResource("2_sesrp")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sesrp"]
@@ -27,7 +39,33 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 6.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4no5k"]
+atlas = ExtResource("4_sesrp")
+region = Rect2(5, 5, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sesrp"]
+atlas = ExtResource("2_sesrp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxs55"]
+texture = SubResource("AtlasTexture_sesrp")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+
 [resource]
+default_font = ExtResource("3_5q4n0")
+Button/colors/font_color = Color(0.94509804, 0.8352941, 0.7647059, 1)
+Button/colors/font_hover_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
+Button/colors/font_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("3_5q4n0")
+Button/styles/disabled = SubResource("StyleBoxTexture_jcik5")
+Button/styles/focus = SubResource("StyleBoxTexture_jcik5")
+Button/styles/hover = SubResource("StyleBoxTexture_jcik5")
+Button/styles/normal = SubResource("StyleBoxTexture_jcik5")
+Button/styles/pressed = SubResource("StyleBoxTexture_jcik5")
 DarkWoodPanel/base_type = &"PanelContainer"
 DarkWoodPanel/styles/panel = SubResource("StyleBoxTexture_ufipx")
 InventoryItemPanel/base_type = &"PanelContainer"
@@ -36,6 +74,20 @@ InventoryLabel/base_type = &"Label"
 InventoryLabel/font_sizes/font_size = 8
 InventoryLabel/fonts/font = ExtResource("3_5q4n0")
 MarginContainer/constants/margin_bottom = 10
-MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_left = 230
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+ShopBuyButton/base_type = &"Button"
+ShopBuyButton/colors/font_color = Color(0.9458446, 0.83364606, 0.766111, 1)
+ShopBuyButton/colors/font_disabled_color = Color(0.42365062, 0.42365065, 0.42365062, 1)
+ShopBuyButton/colors/font_hover_color = Color(1, 1, 1, 1)
+ShopBuyButton/colors/font_hover_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
+ShopBuyButton/colors/font_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
+ShopBuyButton/font_sizes/font_size = 8
+ShopBuyButton/fonts/font = ExtResource("3_5q4n0")
+ShopBuyButton/icons/icon = SubResource("AtlasTexture_4no5k")
+ShopBuyButton/styles/disabled = SubResource("StyleBoxTexture_vxs55")
+ShopBuyButton/styles/focus = SubResource("StyleBoxTexture_vxs55")
+ShopBuyButton/styles/hover = SubResource("StyleBoxTexture_vxs55")
+ShopBuyButton/styles/normal = SubResource("StyleBoxTexture_vxs55")
+ShopBuyButton/styles/pressed = SubResource("StyleBoxTexture_vxs55")

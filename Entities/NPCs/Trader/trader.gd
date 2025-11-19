@@ -1,7 +1,5 @@
 extends NonPlayableCharacter
 
-signal interacted_with_trader
-
 @export var hint : ColorRect
 
 var is_focused : bool = false
@@ -14,7 +12,7 @@ func update_walk_cycles() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if is_focused and event.is_action_pressed("interaction"):
-		interacted_with_trader.emit()
+		EventBus.shop_open_requested.emit()
 
 func _on_interactable_activated(body : Node2D) -> void:
 	if body.is_in_group("player"):
@@ -25,6 +23,3 @@ func _on_interactable_deactivated(body : Node2D) -> void:
 	if body.is_in_group("player"):
 		hint.visible = false
 		is_focused = false
-		
-
-	
