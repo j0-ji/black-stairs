@@ -1,11 +1,41 @@
 extends Node
 
-var upgrades : Dictionary = Dictionary()
-
 signal upgrades_changed
+signal not_wealthy_enough
 
-func add_upgrade(upgrade_name : String) -> void:
-	upgrades.get_or_add(upgrade_name, 0)
-	upgrades[upgrade_name] += 1
+var _upgrades : Dictionary = Dictionary()
+
+var _upgrade_list : Array[String] = [
+	"base_health",
+	"health_regen",
+	"damage",
+	"stamina",
+	"speed"
+]
+
+func _ready() -> void:
+	for upgrade in _upgrade_list:
+		_upgrades.get_or_add(upgrade, Upgrade.new())
+
+func add_upgrade_level(upgrade_name : String) -> void:
+	print(upgrade_name)
+	var upgrade = _upgrades.get(upgrade_name)
+	var wealth = WalletManager.get_wealth()
 	
-	upgrades_changed.emit()
+	if  wealth >= upgrade.price:
+		# updating wealth has to happen first to get the correct price 
+		# before it gets increased by adding a level
+		WalletManager.update_wealth(-upgrade.price)
+		upgrade.add_level()
+		upgrades_changed.emit()
+	else:
+		not_wealthy_enough.emit()
+
+func get_upgrade_price(upgrade_name : String) -> int:
+	return _upgrades.get(upgrade_name).price
+
+func get_upgrade_count(upgrade_name : String) -> int:
+	return _upgrades.get(upgrade_name).count
+
+func has_upgrade(upgrade_name : String) -> bool:
+	return _upgrades.has(upgrade_name)

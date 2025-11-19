@@ -5,7 +5,8 @@ var inventory : Dictionary = Dictionary()
 signal inventory_changed
 
 func add_collectable(collectable_name : String) -> void:
-	inventory.get_or_add(collectable_name, 0)
-	inventory[collectable_name] += 1
+	if !collectable_name.contains("coin"):
+		inventory.get_or_add(collectable_name, 0)
+		inventory[collectable_name] += 1
 	
-	inventory_changed.emit()
+		inventory_changed.emit()

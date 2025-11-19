@@ -21,6 +21,8 @@ GameManager="*res://Utilities/game_manager.gd"
 SceneManager="*res://Utilities/scene_manager.gd"
 InventoryManager="*res://Utilities/inventory_manager.gd"
 UpgradeManager="*res://Utilities/upgrade_manager.gd"
+WalletManager="*res://Utilities/wallet_manager.gd"
+EventBus="*res://Utilities/event_bus.gd"
 
 [display]
 
