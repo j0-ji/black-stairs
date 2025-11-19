@@ -33,4 +33,4 @@ func _update_upgrade_multiplier() -> void:
 
 func _on_died():
 	await get_tree().create_timer(0.5).timeout  # half-second delay
-	get_tree().reload_current_scene()
+	SceneManager.load_location("Village")

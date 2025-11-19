@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dbc8qlc4hudwd" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.gdshader" id="2_varqx"]
 [ext_resource type="Texture2D" uid="uid://d0c3vv0tup0lc" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/globlin_spritesheet.png" id="2_vjdn2"]
 [ext_resource type="Texture2D" uid="uid://30dlnvrwpucd" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/globlin_death.png" id="3_81slq"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="4_ag0ao"]
+[ext_resource type="Script" path="res://Common/health.gd" id="4_ag0ao"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oti5c"]
 shader = ExtResource("2_varqx")
@@ -184,7 +184,7 @@ radius = 7.0
 
 [node name="Goblin" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_hqea3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -193,8 +193,8 @@ sprite_frames = SubResource("SpriteFrames_4mosj")
 animation = &"death"
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 15
-collision_mask = 15
+collision_layer = 8
+collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -207,4 +207,3 @@ shape = SubResource("CircleShape2D_r7eb5")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_ag0ao")
-metadata/_custom_type_script = "uid://dplgw62coxdtx"

@@ -41,4 +41,4 @@ func _shoot_arrow_delayed() -> void:
 	# Pfeil spawn direkt am Spawnpunkt vorne
 	arrow.global_position = arrow_spawn_point.global_position
 
-	get_tree().current_scene.add_child(arrow)
+	get_parent().add_child(arrow)

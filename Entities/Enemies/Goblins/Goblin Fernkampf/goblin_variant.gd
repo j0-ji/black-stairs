@@ -99,7 +99,7 @@ func _shoot_arrow():
 	var spawn_offset = direction * 18
 	arrow.global_position = global_position + spawn_offset
 
-	get_tree().current_scene.add_child(arrow)
+	get_parent().add_child(arrow)
 
 
 func _play_move():

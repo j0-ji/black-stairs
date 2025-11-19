@@ -4,7 +4,7 @@ class_name Arrow
 @export var speed := 200.0
 var direction := Vector2.ZERO
 @export var damage := 3.0
-@export var invincible_time := 0.02  
+@export var invincible_time := 0.05  
 
 # Nodes
 @onready var sprite: Sprite2D = $Sprite2D

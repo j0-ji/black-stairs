@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
 [ext_resource type="Texture2D" uid="uid://cxkke6a4vgn78" path="res://Entities/Enemies/Slimes/spritesheet_slime.png" id="2_iii5c"]
 [ext_resource type="Texture2D" uid="uid://dksxg45kvk4fg" path="res://Entities/Enemies/Slimes/slime_death.png" id="2_nqm2k"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_a2gep"]
+[ext_resource type="Script" path="res://Common/health.gd" id="3_a2gep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h8lh"]
 atlas = ExtResource("2_nqm2k")
@@ -78,4 +78,3 @@ shape = SubResource("RectangleShape2D_tipj2")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_a2gep")
-metadata/_custom_type_script = "uid://dplgw62coxdtx"
