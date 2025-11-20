@@ -12,8 +12,7 @@ func _on_new_game_pressed() -> void:
 	
 func _on_continue_pressed() -> void:
 	GameManager.continue_game()
-	# TODO: enable queue_free() when functionality actually implemented...
-	# queue_free()
+	queue_free()
 
 func _on_options_pressed() -> void:
 	pass # Replace with function body.

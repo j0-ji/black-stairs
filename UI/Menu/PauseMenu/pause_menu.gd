@@ -1,10 +1,4 @@
-extends Control
-
-@export var _menu_camera : Camera2D
-
-func _ready() -> void:
-	if _menu_camera:
-		_menu_camera.make_current()
+extends CanvasLayer
 
 func _on_continue_pressed() -> void:
 	GameManager.continue_from_pause()

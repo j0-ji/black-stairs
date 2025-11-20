@@ -1,95 +1,112 @@
 [gd_scene load_steps=3 format=3 uid="uid://db8603oojhcai"]
 
 [ext_resource type="Script" uid="uid://bmx8u4c140sg0" path="res://UI/Menu/PauseMenu/pause_menu.gd" id="1_ko5qu"]
-[ext_resource type="PackedScene" uid="uid://c07tu1kqw4a4k" path="res://UI/Menu/background.tscn" id="2_nv1it"]
+[ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="2_nv1it"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("_menu_camera")]
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+layer = 2
+script = ExtResource("1_ko5qu")
+
+[node name="menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1440.0
-offset_top = -960.0
-offset_right = -1440.0
-offset_bottom = -960.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ko5qu")
-_menu_camera = NodePath("MenuCamera")
+theme = ExtResource("2_nv1it")
 
-[node name="Background" parent="." instance=ExtResource("2_nv1it")]
+[node name="ColorRect" type="ColorRect" parent="menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.40784314)
 
-[node name="MenuCamera" type="Camera2D" parent="."]
-process_priority = 1
-offset = Vector2(360, 240)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="menu"]
 top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1440.0
-offset_top = -960.0
-offset_right = -1440.0
-offset_bottom = -960.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 120
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="GameTitle" type="Label" parent="menu/MarginContainer"]
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="GameTitle" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.16438991, 0.35785383, 0.17159131, 1)
+theme_override_colors/font_shadow_color = Color(0.6603956, 0.66039556, 0.66039556, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 48
 text = "Black Stairs"
 
-[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="menu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="menu/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MenuOptions" type="VBoxContainer" parent="menu/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/separation = 10
 
-[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="Continue" type="Button" parent="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "Continue"
 
-[node name="Save" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="Save" type="Button" parent="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "Save"
 
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="Options" type="Button" parent="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "Options"
 
-[node name="ReturnToMainMenu" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="ReturnToMainMenu" type="Button" parent="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "Return to main menu
 "
 
-[node name="Version" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Version" type="Label" parent="menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.19607843)
 text = "v0.1"
 
-[node name="Credits" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Credits" type="Label" parent="menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.19607843)
 text = "Georgi Gerov, Lena Hartmann"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/ReturnToMainMenu" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions/ReturnToMainMenu" to="." method="_on_quit_pressed"]

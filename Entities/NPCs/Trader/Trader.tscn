@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://6ywuvds6mef2"]
+[gd_scene load_steps=18 format=3 uid="uid://6ywuvds6mef2"]
 
 [ext_resource type="Script" uid="uid://cpegjal10d3wq" path="res://Entities/NPCs/Trader/trader.gd" id="1_advq7"]
 [ext_resource type="Texture2D" uid="uid://bc26phpdue20s" path="res://Entities/NPCs/Trader/demo-trader.png" id="1_ss4jp"]
 [ext_resource type="Script" uid="uid://bw1kmt57qkjbf" path="res://Common/StateMachine/node_state_machine.gd" id="2_ib60h"]
+[ext_resource type="PackedScene" uid="uid://m4gtuwjs5ddw" path="res://Components/SaveDataComponent/SaveSceneDataComponent/save_scene_data_component.tscn" id="2_o0mys"]
 [ext_resource type="Script" uid="uid://cvxjmin3d7ils" path="res://Entities/NPCs/Trader/idle_state.gd" id="3_advq7"]
 [ext_resource type="Script" uid="uid://c2rfc1nheneoy" path="res://Entities/NPCs/Trader/walk_state.gd" id="4_ib60h"]
 [ext_resource type="Script" uid="uid://cpaq1k83sf4g2" path="res://Entities/NPCs/Trader/idle_focus_state.gd" id="5_q163y"]
@@ -71,6 +72,8 @@ script = ExtResource("1_advq7")
 hint = NodePath("HintComponent")
 min_walk_cycle = 1
 max_walk_cycle = 5
+
+[node name="SaveSceneDataComponent" parent="." instance=ExtResource("2_o0mys")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
