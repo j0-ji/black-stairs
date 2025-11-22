@@ -25,6 +25,8 @@ var stage_main_root_path : String = "/root/Main"
 var menu_main_root_path : String = "/root/MainMenu"
 var menu_pause_root_path : String = "/root/PauseMenu"
 
+var player : Player
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -33,10 +35,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		_toggle_menu_pause()
 
 func new_game() -> void:
-	SceneManager.load_main_stage_container()
+	SaveGameManager.global_data.current_location = "Village"
+	SaveGameManager.global_data.current_level = 0
+	SaveGameManager.global_data.generate_dungeon = true
+	SceneManager.load_main_stage_container(true, true)
 
 func continue_game() -> void:
+	# TODO: work on logic. probably not gonna work properly
 	SceneManager.load_main_stage_container()
+	# TODO: load the right location here
 	SaveGameManager.load_game()
 
 func continue_from_pause() -> void:
@@ -46,6 +53,8 @@ func save_game() -> void:
 	SaveGameManager.save_game()
 
 func return_to_main_menu() -> void:
+	_toggle_menu_pause()
+	
 	SaveGameManager.save_game()
 	
 	if get_tree().root.has_node(stage_main_root_path):

@@ -1,10 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bng0docrk8use"]
+[gd_scene load_steps=16 format=3 uid="uid://bng0docrk8use"]
 
 [ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
 [ext_resource type="PackedScene" uid="uid://m4gtuwjs5ddw" path="res://Components/SaveDataComponent/SaveSceneDataComponent/save_scene_data_component.tscn" id="2_8h8lh"]
 [ext_resource type="Texture2D" uid="uid://cxkke6a4vgn78" path="res://Entities/Enemies/Slimes/spritesheet_slime.png" id="2_iii5c"]
 [ext_resource type="Texture2D" uid="uid://dksxg45kvk4fg" path="res://Entities/Enemies/Slimes/slime_death.png" id="2_nqm2k"]
 [ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_a2gep"]
+[ext_resource type="Script" uid="uid://cp5kdstmyr5ml" path="res://Common/Resources/scene_data_resource.gd" id="3_h5pty"]
+
+[sub_resource type="Resource" id="Resource_uv0ap"]
+script = ExtResource("3_h5pty")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h8lh"]
 atlas = ExtResource("2_nqm2k")
@@ -70,6 +74,7 @@ collision_mask = 7
 script = ExtResource("1_gj73b")
 
 [node name="SaveSceneDataComponent" parent="." instance=ExtResource("2_8h8lh")]
+save_data_resource = SubResource("Resource_uv0ap")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gj73b")

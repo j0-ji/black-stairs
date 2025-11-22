@@ -104,7 +104,7 @@ func _update_cell(x, y):
 	var type : int = ground_type_map[_idx(Vector2i(x, y))]
 	var atlas_coords := Vector2i(type, 0)
 	map_layer.set_cell(Vector2i(x, y), atlas_source_id, atlas_coords)
-
+	
 func _get_multiplier(x, y) -> float:
 	var mult: float = 0.0
 	var mult_y: float = 0.0

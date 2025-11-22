@@ -46,7 +46,10 @@ func _physics_process(delta):
 		return
 
 	if not player:
-		return
+		if GameManager.player:
+			player = GameManager.player
+		else:
+			return
 
 	var distance = global_position.distance_to(player.global_position)
 	is_aggro = distance <= detection_radius

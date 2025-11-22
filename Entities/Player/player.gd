@@ -22,6 +22,10 @@ func _ready() -> void:
 	# Connect health signals
 	health.died.connect(_on_died)
 	
+	# set reference to oneself in the game manager
+	GameManager.player = self
+	
+	
 func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		state_machine.transition_to("attack")

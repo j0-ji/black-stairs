@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://jxo3hjq5iesm"]
+[gd_scene load_steps=22 format=3 uid="uid://jxo3hjq5iesm"]
 
 [ext_resource type="Script" uid="uid://b4nsyy8rvqmj1" path="res://Stages/Dungeon/dungeon_manager.gd" id="1_qfv56"]
 [ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
+[ext_resource type="Script" uid="uid://cp5kdstmyr5ml" path="res://Common/Resources/scene_data_resource.gd" id="3_tumq0"]
 [ext_resource type="Script" uid="uid://nl30wiux14kb" path="res://Stages/Dungeon/generate_ground_layer.gd" id="3_vlp3l"]
 [ext_resource type="Script" uid="uid://buluvb74fxv7o" path="res://Stages/Dungeon/generate_flora_layer.gd" id="4_kocfg"]
 [ext_resource type="Script" uid="uid://cnwamcio87rt5" path="res://Stages/Dungeon/generate_io.gd" id="4_mvs5v"]
@@ -14,13 +15,37 @@
 [ext_resource type="PackedScene" uid="uid://fu5q07fvmno1" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/goblin_variant.tscn" id="9_jx5wx"]
 [ext_resource type="PackedScene" uid="uid://c625jbhjyyx63" path="res://Components/SaveDataComponent/SaveTilemapDataComponent/save_tilemap_data_component.tscn" id="11_1rxun"]
 [ext_resource type="PackedScene" uid="uid://m4gtuwjs5ddw" path="res://Components/SaveDataComponent/SaveSceneDataComponent/save_scene_data_component.tscn" id="13_8wjqi"]
+[ext_resource type="Script" uid="uid://6qxbss60fe62" path="res://Common/Resources/tilemap_layer_data_resource.gd" id="14_emtq1"]
 
-[node name="Dungeon" type="Node2D" node_paths=PackedStringArray("map_generator", "entrance", "exit")]
+[sub_resource type="Resource" id="Resource_lpkf7"]
+script = ExtResource("3_tumq0")
+
+[sub_resource type="Resource" id="Resource_ygrfe"]
+script = ExtResource("14_emtq1")
+cell_source_ids = null
+cell_alternative_ids = null
+
+[sub_resource type="Resource" id="Resource_l0ac4"]
+script = ExtResource("14_emtq1")
+cell_source_ids = null
+cell_alternative_ids = null
+
+[sub_resource type="Resource" id="Resource_tumq0"]
+script = ExtResource("3_tumq0")
+
+[sub_resource type="Resource" id="Resource_emtq1"]
+script = ExtResource("3_tumq0")
+
+[node name="Dungeon" type="Node2D" node_paths=PackedStringArray("map_generator", "entrance", "exit", "initial_tilemap_layer")]
 y_sort_enabled = true
 script = ExtResource("1_qfv56")
 map_generator = NodePath("MapGenerator")
 entrance = NodePath("IO/Entrance")
 exit = NodePath("IO/Exit")
+initial_tilemap_layer = NodePath("Ground")
+
+[node name="SaveSceneDataComponent" parent="." instance=ExtResource("13_8wjqi")]
+save_data_resource = SubResource("Resource_lpkf7")
 
 [node name="MapGenerator" type="Node" parent="." node_paths=PackedStringArray("initial_map_layer")]
 script = ExtResource("2_mwpf2")
@@ -60,21 +85,25 @@ map_layer = NodePath("../../Enemies")
 tile_set = ExtResource("5_kocfg")
 
 [node name="SaveTilemapDataComponent" parent="Ground" instance=ExtResource("11_1rxun")]
+save_data_resource = SubResource("Resource_ygrfe")
 
 [node name="Flora" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 tile_set = ExtResource("5_kocfg")
 
 [node name="SaveTilemapDataComponent" parent="Flora" instance=ExtResource("11_1rxun")]
+save_data_resource = SubResource("Resource_l0ac4")
 
 [node name="IO" type="Node2D" parent="."]
 
 [node name="Entrance" parent="IO" instance=ExtResource("5_0tjni")]
 
 [node name="SaveSceneDataComponent" parent="IO/Entrance" instance=ExtResource("13_8wjqi")]
+save_data_resource = SubResource("Resource_tumq0")
 
 [node name="Exit" parent="IO" instance=ExtResource("6_qfv56")]
 
 [node name="SaveSceneDataComponent" parent="IO/Exit" instance=ExtResource("13_8wjqi")]
+save_data_resource = SubResource("Resource_emtq1")
 
 [node name="Enemies" type="Node2D" parent="."]
