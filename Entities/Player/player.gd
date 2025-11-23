@@ -44,7 +44,6 @@ func _unhandled_input(event):
 		state_machine.transition_to("attack")
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			print("Ranged")
 			state_machine.transition_to("attack_ranged")
 	if Input.is_action_just_pressed("dash"):
 		state_machine.transition_to("dash")		

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxkke6a4vgn78"
-path="res://.godot/imported/spritesheet_slime.png-f3e11e82b9c04ff65c27a994d6f51de1.ctex"
+uid="uid://d0r2s3vv78bha"
+path="res://.godot/imported/goblin_boss_spritesheet.png-797e1bcd0b9043cb29f0fb156942f1a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Slimes/spritesheet_slime.png"
-dest_files=["res://.godot/imported/spritesheet_slime.png-f3e11e82b9c04ff65c27a994d6f51de1.ctex"]
+source_file="res://Entities/Enemies/Goblins/Goblin Boss/goblin_boss_spritesheet.png"
+dest_files=["res://.godot/imported/goblin_boss_spritesheet.png-797e1bcd0b9043cb29f0fb156942f1a3.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bmbel8a7ricx8"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dd1pwuwgg8x6q"]
 
 [ext_resource type="Texture2D" uid="uid://bkti54rrkasxm" path="res://UI/UI Ressources/ui_dark_frame.png" id="1_5q4n0"]
 [ext_resource type="Texture2D" uid="uid://rj4hltdwvf3k" path="res://UI/UI Ressources/ui_light_button.png" id="2_sesrp"]
