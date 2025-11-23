@@ -314,10 +314,11 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Camera" type="Camera2D" parent="."]
 visible = false
-zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_7a1se")
-max_health = 20
+
+[connection signal="player_dashed" from="StateMachine/Dash" to="." method="_on_dash_player_dashed"]
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

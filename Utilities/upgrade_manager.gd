@@ -1,12 +1,12 @@
 extends Node
 
-signal upgrades_changed
+signal upgrades_changed(upgrade_name : String)
 signal not_wealthy_enough
 
-var _upgrades : Dictionary = Dictionary()
+var _upgrades : Dictionary
 
 var _upgrade_list : Array[String] = [
-	"base_health",
+	"health",
 	"health_regen",
 	"damage",
 	"stamina",
@@ -14,8 +14,15 @@ var _upgrade_list : Array[String] = [
 ]
 
 func _ready() -> void:
-	for upgrade in _upgrade_list:
-		_upgrades.get_or_add(upgrade, Upgrade.new())
+	reset_or_initialize()
+
+func reset_or_initialize() -> void:
+	_upgrades = Dictionary()
+	_upgrades.get_or_add("health", Upgrade.new("health"))
+	_upgrades.get_or_add("health_regen", Upgrade.new("health_regen"))
+	_upgrades.get_or_add("damage", Upgrade.new("damage"))
+	_upgrades.get_or_add("stamina", Upgrade.new("stamina", 5, 0, 0, 1, 1))
+	_upgrades.get_or_add("speed", Upgrade.new("speed"))
 
 func add_upgrade_level(upgrade_name : String) -> void:
 	var upgrade = _upgrades.get(upgrade_name)
@@ -27,7 +34,8 @@ func add_upgrade_level(upgrade_name : String) -> void:
 		# before it gets increased by adding a level
 		WalletManager.update_wealth(-upgrade.price)
 		upgrade.add_level()
-		upgrades_changed.emit()
+		upgrades_changed.emit(upgrade_name)
+		print("added level to: ", upgrade_name)
 	else:
 		not_wealthy_enough.emit()
 
@@ -37,8 +45,13 @@ func get_upgrade_price(upgrade_name : String) -> int:
 func get_upgrade_level(upgrade_name : String) -> int:
 	return _upgrades.get(upgrade_name).level
 
-func get_upgrade_multiplier(upgrade_name : String) -> float:
-	return _upgrades.get(upgrade_name).multiplier
+func get_upgrade_stat_adapter(upgrade_name : String) -> float:
+	return _upgrades.get(upgrade_name).stat_adapter
 
 func has_upgrade(upgrade_name : String) -> bool:
 	return _upgrades.has(upgrade_name)
+
+func set_upgrades(upgrades : Array[Upgrade]) -> void:
+	for upgrade in upgrades:
+		if upgrade.name in _upgrade_list:
+			_upgrades[upgrade.name] = upgrade

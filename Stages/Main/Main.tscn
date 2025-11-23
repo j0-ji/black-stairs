@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw3e00mv7mbto"]
+
+[ext_resource type="Script" uid="uid://bfr5yja8l8ep0" path="res://Stages/Main/level_manager.gd" id="1_m3wgy"]
+[ext_resource type="PackedScene" uid="uid://qb7gthb0k6le" path="res://UI/HUD/hud.tscn" id="3_031fh"]
+[ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://Entities/Player/player.tscn" id="3_m3wgy"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_player", "_location_root")]
+y_sort_enabled = true
+script = ExtResource("1_m3wgy")
+_player = NodePath("GameRoot/Player")
+_location_root = NodePath("GameRoot/LocationRoot")
+
+[node name="GameRoot" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="LocationRoot" type="Node2D" parent="GameRoot"]
+y_sort_enabled = true
+
+[node name="Player" parent="GameRoot" instance=ExtResource("3_m3wgy")]
+position = Vector2(153, -193)
+
+[node name="Items" type="Node2D" parent="GameRoot"]
+
+[node name="HUD" parent="." instance=ExtResource("3_031fh")]

@@ -1,17 +1,33 @@
 extends Node
 
 signal wallet_changed
+signal got_poorer
 
-var _coins : int = 10
+var wallet : Dictionary
+
+func _ready() -> void:
+	reset_or_initialize()
+
+func reset_or_initialize() -> void:
+	wallet = {
+		"coins" : 10
+	}
 
 func add_coin() -> void:
-	_coins += 1
+	wallet.coins += 1
 	wallet_changed.emit()
 
 func get_wealth() -> int:
-	return _coins
+	return wallet.coins
 
 func update_wealth(amount : int) -> int:
-	_coins += amount
+	if amount < 0:
+		if amount < -wallet.coins:
+			amount = -wallet.coins
+			push_warning("@dev: player didn't have enough money, please first check if wealth is enough...")
+		
+		got_poorer.emit()
+	
+	wallet.coins += amount
 	wallet_changed.emit()
-	return _coins
+	return wallet.coins

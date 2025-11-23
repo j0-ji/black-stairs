@@ -62,7 +62,7 @@ texture = ExtResource("2_q5ygj")
 [node name="ShopButton" parent="MarginContainer/VBoxContainer/BaseHealth" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
-upgrade_name = "base_health"
+upgrade_name = "health"
 
 [node name="HealthRegen" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,6 +81,7 @@ size_flags_horizontal = 3
 upgrade_name = "health_regen"
 
 [node name="Damage" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Icon" type="PanelContainer" parent="MarginContainer/VBoxContainer/Damage"]

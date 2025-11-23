@@ -1,5 +1,8 @@
 extends NodeState
 
+# --- Signals ---
+signal player_dashed
+
 # --- Exported ---
 @export var player: Player
 @export var animated_sprite_2d: AnimatedSprite2D
@@ -39,6 +42,9 @@ func _on_enter() -> void:
 	# --- Animation ---
 	animated_sprite_2d.play("walk_right")
 	animated_sprite_2d.flip_h = dash_direction.x < 0
+	
+	# --- Emit signal that player dashed ---
+	player_dashed.emit()
 
 func _on_physics_process(delta: float) -> void:
 	if not is_dashing:

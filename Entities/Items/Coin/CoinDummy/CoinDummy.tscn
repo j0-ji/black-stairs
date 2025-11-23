@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2pipjmtqetkj"]
+
+[ext_resource type="Texture2D" uid="uid://cyluchwsnbaxc" path="res://Entities/Items/Coin/gold-coin.png" id="1_2hx6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diufh"]
+atlas = ExtResource("1_2hx6b")
+region = Rect2(5, 5, 6, 6)
+
+[node name="CoinDummy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = SubResource("AtlasTexture_diufh")
