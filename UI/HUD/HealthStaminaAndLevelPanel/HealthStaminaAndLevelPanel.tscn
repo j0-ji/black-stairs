@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://tdl1gn3kny6t" path="res://UI/HUD/HealthStaminaAndLevelPanel/health_stamina_and_level_panel.gd" id="2_vr2ug"]
 [ext_resource type="PackedScene" uid="uid://bno766mk53d86" path="res://UI/HUD/StatBar/StaminaBar/stamina_bar.tscn" id="3_vr2ug"]
 
-[node name="HealthStaminaAndLevelPanel" type="PanelContainer" node_paths=PackedStringArray("health_bar", "stamina_bar") groups=["receive_player_registration"]]
+[node name="HealthStaminaAndLevelPanel" type="PanelContainer" node_paths=PackedStringArray("health_bar", "stamina_bar", "location_label") groups=["receive_player_registration"]]
 offset_right = 122.0
 offset_bottom = 48.0
 theme = ExtResource("1_fpcwh")
@@ -13,6 +13,7 @@ theme_type_variation = &"DarkWoodPanel"
 script = ExtResource("2_vr2ug")
 health_bar = NodePath("MarginContainer/HBoxContainer/StatBars/HealthBar")
 stamina_bar = NodePath("MarginContainer/HBoxContainer/StatBars/StaminaBar")
+location_label = NodePath("MarginContainer/HBoxContainer/PanelContainer/LocationLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -38,7 +39,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer"]
+[node name="LocationLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"InventoryLabel"

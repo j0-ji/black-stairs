@@ -2,10 +2,11 @@ extends PanelContainer
 
 @export var health_bar : ProgressBar
 @export var stamina_bar : ProgressBar
+@export var location_label : Label
 var player : Player
 
 func _ready() -> void:
-	pass
+	SaveGameManager.global_data.location_updated.connect(update_location_label)
 
 func _update_max_health(max_health : float) -> void:
 	print("update: MAX HEALTH")
@@ -35,3 +36,13 @@ func register_player(p : Player) -> void:
 	_update_current_health(player.health.current_health)
 	_update_max_stamina(player.max_stamina)
 	_update_current_stamina(player.stamina)
+
+func update_location_label() -> void:
+	var location = SaveGameManager.global_data.current_location
+
+	if location != "Dungeon":
+		location_label.text = location
+	else:
+		var level = SaveGameManager.global_data.current_dungeon_level
+		location_label.text = location + " Level" + str(level)
+	
