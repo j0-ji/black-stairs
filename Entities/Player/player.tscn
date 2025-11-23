@@ -255,7 +255,6 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_t61fv")
 camera = NodePath("Camera")
-speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
@@ -320,4 +319,6 @@ position_smoothing_speed = 6.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_7a1se")
-max_health = 20
+
+[connection signal="player_dashed" from="StateMachine/Dash" to="." method="_on_dash_player_dashed"]
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

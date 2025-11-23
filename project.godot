@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Utilities/game_manager.gd"
 SceneManager="*res://Utilities/scene_manager.gd"
-InventoryManager="*res://Utilities/inventory_manager.gd"
 UpgradeManager="*res://Utilities/upgrade_manager.gd"
 WalletManager="*res://Utilities/wallet_manager.gd"
 EventBus="*res://Utilities/event_bus.gd"
@@ -52,6 +51,7 @@ collector="use for entities that should be able to collect objects that use the 
 attractable="use for entities that should be able to get attracted by objects that use the attractor component"
 save_data_component="used to identify entites that are saveable"
 save_level_data_component="used to identify level scenes that are saveable"
+receive_player_registration="for nodes that need to receive a player registration"
 
 [input]
 

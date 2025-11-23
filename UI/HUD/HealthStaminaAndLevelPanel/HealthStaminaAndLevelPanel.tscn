@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://x36iq3d48x17"]
+
+[ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="1_fpcwh"]
+[ext_resource type="PackedScene" uid="uid://bjbxajtv7s8mp" path="res://UI/HUD/StatBar/HealthBar/health_bar.tscn" id="2_sd6jw"]
+[ext_resource type="Script" uid="uid://tdl1gn3kny6t" path="res://UI/HUD/HealthStaminaAndLevelPanel/health_stamina_and_level_panel.gd" id="2_vr2ug"]
+[ext_resource type="PackedScene" uid="uid://bno766mk53d86" path="res://UI/HUD/StatBar/StaminaBar/stamina_bar.tscn" id="3_vr2ug"]
+
+[node name="HealthStaminaAndLevelPanel" type="PanelContainer" node_paths=PackedStringArray("health_bar", "stamina_bar") groups=["receive_player_registration"]]
+offset_right = 122.0
+offset_bottom = 48.0
+theme = ExtResource("1_fpcwh")
+theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_vr2ug")
+health_bar = NodePath("MarginContainer/HBoxContainer/StatBars/HealthBar")
+stamina_bar = NodePath("MarginContainer/HBoxContainer/StatBars/StaminaBar")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="StatBars" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HealthBar" parent="MarginContainer/HBoxContainer/StatBars" instance=ExtResource("2_sd6jw")]
+layout_mode = 2
+
+[node name="StaminaBar" parent="MarginContainer/HBoxContainer/StatBars" instance=ExtResource("3_vr2ug")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"InventoryLabel"
