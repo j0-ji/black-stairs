@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://q2frlqlrpjhg"]
+[gd_scene load_steps=42 format=3 uid="uid://q2frlqlrpjhg"]
 
 [ext_resource type="Script" uid="uid://dob8is7mdqqew" path="res://Entities/Player/player.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://pp7c3mhe6m2o" path="res://Entities/Player/character_attack.png" id="2_01a4e"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bnndl1w2q2vj8" path="res://Entities/Player/attack.gd" id="7_7a1se"]
 [ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="8_7a1se"]
 [ext_resource type="PackedScene" uid="uid://b8pcitpnv6rfm" path="res://Entities/Projectile/Arrow/arrow.tscn" id="9_x1y6q"]
+[ext_resource type="Script" uid="uid://c4wk0atruvvmm" path="res://Entities/Player/dash.gd" id="12_owvpp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
 atlas = ExtResource("2_01a4e")
@@ -306,6 +307,11 @@ script = ExtResource("7_7a1se")
 [node name="Attack_Ranged" type="Node" parent="StateMachine"]
 script = SubResource("GDScript_lub02")
 arrow_scene = ExtResource("9_x1y6q")
+
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("12_owvpp")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Camera" type="Camera2D" parent="."]
 visible = false

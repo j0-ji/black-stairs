@@ -65,7 +65,6 @@ size = Vector2(12, 8)
 
 [node name="Slime" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
-collision_mask = 7
 script = ExtResource("1_gj73b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

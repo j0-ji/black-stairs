@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv17757mqflnc"
-path="res://.godot/imported/globlin_variant_death.png-b4894b48f013886b9be047048d48b429.ctex"
+uid="uid://dputvhfj314w2"
+path="res://.godot/imported/base_goblin_spritesheet.png-00d7b482c6e36f19260346cb658186c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Goblins/Goblin Fernkampf/globlin_variant_death.png"
-dest_files=["res://.godot/imported/globlin_variant_death.png-b4894b48f013886b9be047048d48b429.ctex"]
+source_file="res://Entities/Enemies/Goblins/Goblin Nahkampf/base_goblin_spritesheet.png"
+dest_files=["res://.godot/imported/base_goblin_spritesheet.png-00d7b482c6e36f19260346cb658186c8.ctex"]
 
 [params]
 
