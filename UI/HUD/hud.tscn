@@ -28,6 +28,7 @@ size_flags_vertical = 0
 
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Shop" parent="MarginContainer/Control" instance=ExtResource("3_te8l2")]
 visible = false
