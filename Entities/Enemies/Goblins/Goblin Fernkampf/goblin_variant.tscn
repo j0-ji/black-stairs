@@ -1,9 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://fu5q07fvmno1"]
+[gd_scene load_steps=27 format=3 uid="uid://fu5q07fvmno1"]
 
 [ext_resource type="Script" uid="uid://cns3p0imjdcxa" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/goblin_variant.gd" id="1_divou"]
 [ext_resource type="Texture2D" uid="uid://bhfpqac36abkl" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/globlin_variant_attack.png" id="2_0qtef"]
 [ext_resource type="PackedScene" uid="uid://b8pcitpnv6rfm" path="res://Entities/Projectile/Arrow/arrow.tscn" id="2_kawqc"]
-[ext_resource type="PackedScene" uid="uid://m4gtuwjs5ddw" path="res://Components/SaveDataComponent/SaveSceneDataComponent/save_scene_data_component.tscn" id="3_78m5v"]
 [ext_resource type="Texture2D" uid="uid://cv17757mqflnc" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/globlin_variant_death.png" id="3_kawqc"]
 [ext_resource type="Texture2D" uid="uid://b5seqrc6qjb5d" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/globlin_variant_spritesheet.png" id="4_78m5v"]
 [ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="5_lty46"]
@@ -172,8 +171,6 @@ animations = [{
 [node name="GoblinVariant" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_divou")
 arrow_scene = ExtResource("2_kawqc")
-
-[node name="SaveSceneDataComponent" parent="." instance=ExtResource("3_78m5v")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4wriu")

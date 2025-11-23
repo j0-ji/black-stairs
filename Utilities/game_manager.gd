@@ -33,9 +33,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		_toggle_menu_pause()
 
 func new_game() -> void:
+	SaveGameManager.delete_save_game()
 	SceneManager.load_main_stage_container()
+	await get_tree().process_frame
+	SaveGameManager.save_game()
 
 func continue_game() -> void:
+	SaveGameManager.load_global_data()
 	SceneManager.load_main_stage_container()
 	SaveGameManager.load_game()
 
@@ -47,6 +51,7 @@ func save_game() -> void:
 
 func return_to_main_menu() -> void:
 	SaveGameManager.save_game()
+	_toggle_menu_pause()
 	
 	if get_tree().root.has_node(stage_main_root_path):
 		var stage_main = get_tree().root.get_node(stage_main_root_path)

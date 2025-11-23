@@ -14,8 +14,8 @@ var _upgrade_list : Array[String] = [
 ]
 
 func _ready() -> void:
-	for upgrade in _upgrade_list:
-		_upgrades.get_or_add(upgrade, Upgrade.new())
+	for upgrade_name in _upgrade_list:
+		_upgrades.get_or_add(upgrade_name, Upgrade.new(upgrade_name))
 
 func add_upgrade_level(upgrade_name : String) -> void:
 	var upgrade = _upgrades.get(upgrade_name)
@@ -42,3 +42,8 @@ func get_upgrade_multiplier(upgrade_name : String) -> float:
 
 func has_upgrade(upgrade_name : String) -> bool:
 	return _upgrades.has(upgrade_name)
+
+func set_upgrades(upgrades : Array[Upgrade]) -> void:
+	for upgrade in upgrades:
+		if upgrade.name in _upgrade_list:
+			_upgrades[upgrade.name] = upgrade
