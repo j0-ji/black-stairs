@@ -36,19 +36,16 @@ func _on_body_entered(body: Node) -> void:
 		return  # still invincible
 
 	if body.is_in_group("enemies"):
-		print("Arrow hit enemy!")
 		if body.has_node("Health"):
 			body.get_node("Health").take_damage(damage)
 		queue_free()  # arrow removed after hit
 
 	if body.is_in_group("player"):
-		print("Arrow hit player!")
 		if body.has_node("Health"):
 			body.get_node("Health").take_damage(damage)
 		queue_free()
 		return
 	elif not body.is_in_group("player"):
 		# if the arrow collides with a wall or non enemy object
-		print("Arrow hit wall or other object.")
 		queue_free()
 		return

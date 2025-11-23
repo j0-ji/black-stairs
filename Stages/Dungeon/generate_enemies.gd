@@ -7,9 +7,11 @@ extends MapLayer
 @export var slime_count := 0
 @export var goblin_count := 20
 @export var variant_goblin_count := 5
+@export var boss_count := 1
 @export var slime_scene: PackedScene
 @export var goblin_scene: PackedScene
 @export var goblin_variant_scene: PackedScene
+@export var goblin_boss_scene: PackedScene
 
 
 
@@ -52,6 +54,16 @@ func generate() -> void:
 		goblin_variant_instance.position = pos
 		map_layer.add_child.call_deferred(goblin_variant_instance)
 		print("Spawned variant goblin at: ", goblin_variant_instance.position)
+		
+	for i in range(boss_count):
+		var pos = _random_position()
+		if pos == Vector2i(-1, -1):
+			continue
+		
+		var goblin_boss_scene_instance = goblin_boss_scene.instantiate()
+		goblin_boss_scene_instance.position = pos
+		map_layer.add_child.call_deferred(goblin_boss_scene_instance)
+		print("Spawned boss goblin at: ", goblin_boss_scene_instance.position)
 	
 	transition.emit()
 
