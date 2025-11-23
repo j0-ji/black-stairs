@@ -14,6 +14,9 @@ func save_game() -> void:
 	if save_level_data_component != null:
 		save_level_data_component.save_game()
 
+	# --- global data ---
+	global_data.upgrades = UpgradeManager._upgrades
+	global_data.wallet = WalletManager.wallet
 	ResourceSaver.save(global_data, save_game_data_path + global_data.SAVE_GLOBAL_DATA_FILE_NAME)
 
 func load_global_data() -> void: 

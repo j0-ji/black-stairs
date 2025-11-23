@@ -61,31 +61,27 @@ func _on_stamina_tick():
 			stamina = clamp(stamina, 0, max_stamina)
 			stamina_regen_accumulator = 0.0
 			stamina_updated.emit(stamina)
-			print("FIRED: stamina_updated")
-				
+
 func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
 		state_machine.transition_to("attack")
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			print("Ranged")
 			state_machine.transition_to("attack_ranged")
 	if Input.is_action_just_pressed("dash"):
 		state_machine.transition_to("dash")		
-		
+
 func _update_upgrade_multiplier(upgrade_name : String) -> void:
 	if upgrade_name == "speed" and UpgradeManager.has_upgrade("speed"):
 		speed_upgrade_multiplier = UpgradeManager.get_upgrade_stat_adapter("speed")
 	elif upgrade_name == "stamina" and UpgradeManager.has_upgrade("stamina"):
 		max_stamina = base_stamina + UpgradeManager.get_upgrade_stat_adapter("stamina")
 		max_stamina_updated.emit(max_stamina)
-		print("FIRED: max_stamina_upgraded")
 	elif upgrade_name == "health" and UpgradeManager.has_upgrade("health"):
 		health.max_health = health.max_health * UpgradeManager.get_upgrade_stat_adapter("health")
 		health.current_health = health.max_health
 		max_health_updated.emit(health.max_health)
 		health_updated.emit(health.current_health)
-		print("FIRE: max_health_updated")
 	elif upgrade_name == "health_regen" and UpgradeManager.has_upgrade("health_regen"):
 		current_health_regen = base_health_regen * UpgradeManager.get_upgrade_stat_adapter("health_regen")
 	elif upgrade_name == "damage" and UpgradeManager.has_upgrade("damage"):
@@ -113,8 +109,6 @@ func _coins_removed() -> void:
 
 func _on_health_changed(new_value: float) -> void:
 	health_updated.emit(new_value)
-	print("FIRED: health_updated")
 
 func _on_dash_player_dashed() -> void:
 	stamina_updated.emit(stamina)
-	print("FIRED: stamina_updated")

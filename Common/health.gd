@@ -6,7 +6,7 @@ var max_health : float
 var current_health : float
 
 signal died
-signal health_changed
+signal health_changed(_current_health : float)
 
 func _ready():
 	max_health = base_health
@@ -14,7 +14,7 @@ func _ready():
 
 func take_damage(amount: float):
 	current_health = max(current_health - amount, 0.0)
-	emit_signal("health_changed", current_health)
+	health_changed.emit(current_health)
 	if current_health <= 0.0:
 		emit_signal("died")
 

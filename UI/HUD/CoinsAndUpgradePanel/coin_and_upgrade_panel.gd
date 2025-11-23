@@ -18,7 +18,6 @@ func _update_wallet() -> void:
 	coin_label.text = str(wealth)
 
 func _update_upgrades(_foo : String) -> void:
-	print("RUN: _update_upgrades")
 	if UpgradeManager.has_upgrade("health"):
 		health_upgrade_label.text = str(UpgradeManager.get_upgrade_level("health"))
 	

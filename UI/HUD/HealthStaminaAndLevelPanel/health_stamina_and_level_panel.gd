@@ -7,21 +7,18 @@ var player : Player
 
 func _ready() -> void:
 	SaveGameManager.global_data.location_updated.connect(update_location_label)
+	update_location_label()
 
 func _update_max_health(max_health : float) -> void:
-	print("update: MAX HEALTH")
 	health_bar.max_value = max_health
 
 func _update_current_health(current_health : float) -> void:
-	print("update: HEALTH")
 	health_bar.value = current_health
 	
 func _update_max_stamina(max_stamina : float) -> void:
-	print("update: MAX STAMINA")
 	stamina_bar.max_value = max_stamina
 
 func _update_current_stamina(current_stamina : float) -> void:
-	print("update: STAMINA")
 	stamina_bar.value = current_stamina
 
 func register_player(p : Player) -> void:

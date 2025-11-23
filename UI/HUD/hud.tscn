@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://wxagn27wle1n" path="res://UI/HUD/Shop/Shop.tscn" id="3_te8l2"]
 [ext_resource type="PackedScene" uid="uid://x36iq3d48x17" path="res://UI/HUD/HealthStaminaAndLevelPanel/HealthStaminaAndLevelPanel.tscn" id="5_radol"]
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("shop", "health_stamina_and_locaiton")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("shop", "health_stamina_and_location")]
 script = ExtResource("1_qdh7y")
 shop = NodePath("MarginContainer/Control/Shop")
-health_stamina_and_locaiton = NodePath("MarginContainer/HealthStaminaAndLevelPanel")
+health_stamina_and_location = NodePath("MarginContainer/HealthStaminaAndLevelPanel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
