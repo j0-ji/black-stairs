@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cw3e00mv7mbto"]
 
-[ext_resource type="Script" path="res://Stages/Main/level_manager.gd" id="1_m3wgy"]
+[ext_resource type="Script" uid="uid://bfr5yja8l8ep0" path="res://Stages/Main/level_manager.gd" id="1_m3wgy"]
 [ext_resource type="PackedScene" uid="uid://qb7gthb0k6le" path="res://UI/HUD/hud.tscn" id="3_031fh"]
 [ext_resource type="PackedScene" uid="uid://q2frlqlrpjhg" path="res://Entities/Player/player.tscn" id="3_m3wgy"]
-[ext_resource type="Script" path="res://Stages/Main/canvas_layer.gd" id="5_1q01y"]
+[ext_resource type="Script" uid="uid://dk00yxbdqai2i" path="res://Stages/Main/canvas_layer.gd" id="5_1q01y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q01y"]
 bg_color = Color(1, 0.3846701, 0.24168548, 1)
