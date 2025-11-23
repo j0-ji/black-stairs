@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnnw2j7e22qcv"]
+
+[ext_resource type="Texture2D" uid="uid://cafo3s6nsdlna" path="res://UI/HUD/StatBar/progress_bars.png" id="1_onyjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8kdm"]
+atlas = ExtResource("1_onyjx")
+region = Rect2(0, 36, 36, 11)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ux5b"]
+texture = SubResource("AtlasTexture_q8kdm")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 36, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qitl"]
+atlas = ExtResource("1_onyjx")
+region = Rect2(0, 12, 36, 11)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7owh"]
+texture = SubResource("AtlasTexture_3qitl")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn7on"]
+atlas = ExtResource("1_onyjx")
+region = Rect2(0, 24, 36, 11)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpbqh"]
+texture = SubResource("AtlasTexture_nn7on")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 5.0
+
+[node name="AttributeTrackingProgressBar" type="ProgressBar"]
+custom_minimum_size = Vector2(100, 11)
+offset_right = 100.0
+offset_bottom = 27.0
+theme_type_variation = &"CustomProgressBar"
+theme_override_styles/background = SubResource("StyleBoxTexture_3ux5b")
+theme_override_styles/fill = SubResource("StyleBoxTexture_g7owh")
+step = 1.0
+value = 60.0
+show_percentage = false
+
+[node name="Cover" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xpbqh")

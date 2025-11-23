@@ -7,7 +7,7 @@ func _ready() -> void:
 	_current()
 
 func _go_to_stairs() -> void:
-	SaveGameManager.global_data.current_location = "Stairs"
+	SaveGameManager.global_data.set_current_location("Stairs")
 	SceneManager.load_location(SaveGameManager.global_data.current_location)
 	await get_tree().process_frame
 	_set_listener_for_entrance()
@@ -16,16 +16,16 @@ func _go_to_stairs() -> void:
 
 func _go_to_next_dungeon_level() -> void:
 	SaveGameManager.save_game()
-	SaveGameManager.global_data.current_location = "Dungeon"
+	SaveGameManager.global_data.current_dungeon_level += 1
+	SaveGameManager.global_data.set_current_location("Dungeon")
 	SceneManager.load_location(SaveGameManager.global_data.current_location)
 	await get_tree().process_frame
-	SaveGameManager.global_data.current_dungeon_level += 1
 	_set_player_on_entrance_spawn_point()
 	_set_listener_for_exit()
 	SaveGameManager.save_game()
 
 func _go_to_village() -> void:
-	SaveGameManager.global_data.current_location = "Village"
+	SaveGameManager.global_data.set_current_location("Village")
 	SceneManager.load_location(SaveGameManager.global_data.current_location)
 	await get_tree().process_frame
 	if SaveGameManager.global_data.spawn_point == SaveGameManager.global_data.spawns.BED:

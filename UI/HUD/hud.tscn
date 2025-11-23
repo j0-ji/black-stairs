@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://qb7gthb0k6le"]
+[gd_scene load_steps=6 format=3 uid="uid://qb7gthb0k6le"]
 
 [ext_resource type="PackedScene" uid="uid://bwcg0udb6b7qk" path="res://UI/HUD/CoinsAndUpgradePanel/CoinAndUpgradePanel.tscn" id="1_ia7gp"]
 [ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="1_ing8j"]
 [ext_resource type="Script" uid="uid://c0wwde60ui6m7" path="res://UI/HUD/hud.gd" id="1_qdh7y"]
 [ext_resource type="PackedScene" uid="uid://wxagn27wle1n" path="res://UI/HUD/Shop/Shop.tscn" id="3_te8l2"]
+[ext_resource type="PackedScene" uid="uid://x36iq3d48x17" path="res://UI/HUD/HealthStaminaAndLevelPanel/HealthStaminaAndLevelPanel.tscn" id="5_radol"]
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("shop")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("shop", "health_stamina_and_location")]
 script = ExtResource("1_qdh7y")
 shop = NodePath("MarginContainer/Control/Shop")
+health_stamina_and_location = NodePath("MarginContainer/HealthStaminaAndLevelPanel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -26,6 +28,7 @@ size_flags_vertical = 0
 
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Shop" parent="MarginContainer/Control" instance=ExtResource("3_te8l2")]
 visible = false
@@ -43,3 +46,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="HealthStaminaAndLevelPanel" parent="MarginContainer" instance=ExtResource("5_radol")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0

@@ -54,20 +54,20 @@ theme_type_variation = &"InventoryLabel"
 text = "0"
 horizontal_alignment = 1
 
-[node name="BaseHealthUpgrades" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HealthUpgrades" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
 tooltip_text = "Level of total HP"
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/BaseHealthUpgrades"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HealthUpgrades"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("3_5innn")
 
-[node name="BaseHealthUpgradeLabel" type="Label" parent="MarginContainer/HBoxContainer/BaseHealthUpgrades"]
+[node name="HealthUpgradeLabel" type="Label" parent="MarginContainer/HBoxContainer/HealthUpgrades"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
@@ -95,6 +95,7 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="DamageUpgrades" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0

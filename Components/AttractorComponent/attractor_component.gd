@@ -21,7 +21,6 @@ func _ready() -> void:
 # so it can be moved towards the node passed in "thing"
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("attractable"):
-		print("found attractable")
 		bodies.append(body)
 
 # removes a body from the bodies array after it exits the attraction area

@@ -3,9 +3,15 @@ extends Node
 signal wallet_changed
 signal got_poorer
 
-var wallet : Dictionary = {
-	"coins" : 10
-}
+var wallet : Dictionary
+
+func _ready() -> void:
+	reset_or_initialize()
+
+func reset_or_initialize() -> void:
+	wallet = {
+		"coins" : 10
+	}
 
 func add_coin() -> void:
 	wallet.coins += 1

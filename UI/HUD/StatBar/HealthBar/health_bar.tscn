@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjbxajtv7s8mp"]
+
+[ext_resource type="PackedScene" uid="uid://dnnw2j7e22qcv" path="res://UI/HUD/StatBar/AttributeTrackingProgressBar.tscn" id="1_kxtct"]
+[ext_resource type="Texture2D" uid="uid://cafo3s6nsdlna" path="res://UI/HUD/StatBar/progress_bars.png" id="2_0w1ad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qitl"]
+atlas = ExtResource("2_0w1ad")
+region = Rect2(0, 12, 36, 11)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iaq4d"]
+texture = SubResource("AtlasTexture_3qitl")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.8509804, 0, 0, 1)
+
+[node name="HealthBar" instance=ExtResource("1_kxtct")]
+theme_override_styles/fill = SubResource("StyleBoxTexture_iaq4d")
