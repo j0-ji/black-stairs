@@ -13,7 +13,7 @@ func _save_data() -> Resource:
 		return null
 	
 	if save_data_resource == null:
-		push_error("save_data_resource: ", save_data_resource, parent_node.name)
+		push_error("save_data_resource: ", save_data_resource)
 		return null
 	
 	save_data_resource._save_data(parent_node)

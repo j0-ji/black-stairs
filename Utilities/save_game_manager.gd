@@ -5,10 +5,6 @@ var global_data : GlobalData = GlobalData.new()
 var save_game_data_path : String = "user://game_data/"
 var save_file_name : String = "save_game.tres"
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("save_game"):
-		save_game() 
-
 func save_game() -> void:
 	if !DirAccess.dir_exists_absolute(save_game_data_path):
 		DirAccess.make_dir_absolute(save_game_data_path)
@@ -54,8 +50,9 @@ func save_file_exists(path : String = save_game_data_path + global_data.SAVE_GLO
 	return FileAccess.file_exists(path)
 
 func delete_save_game() -> void:
-	var dir = DirAccess.open(save_game_data_path)
-	if save_file_exists(save_game_data_path + save_file_name):
-		dir.remove(save_file_name)
-	if save_file_exists():
-		dir.remove(global_data.SAVE_GLOBAL_DATA_FILE_NAME)
+	if DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(save_game_data_path)):
+		var dir = DirAccess.open(save_game_data_path)
+		if save_file_exists(save_game_data_path + save_file_name):
+			dir.remove(save_file_name)
+		if save_file_exists():
+			dir.remove(global_data.SAVE_GLOBAL_DATA_FILE_NAME)

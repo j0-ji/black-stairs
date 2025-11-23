@@ -18,7 +18,7 @@ func update_wealth(amount : int) -> int:
 	if amount < 0:
 		if amount < -wallet.coins:
 			amount = -wallet.coins
-			push_error("@dev: player didn't have enough money, please first check if wealth is enough...")
+			push_warning("@dev: player didn't have enough money, please first check if wealth is enough...")
 		
 		got_poorer.emit()
 	
