@@ -7,6 +7,8 @@ signal max_stamina_updated
 signal health_updated
 signal max_health_updated
 
+signal died
+
 const coin_dummy_scene = preload("res://Entities/Items/Coin/CoinDummy/CoinDummy.tscn")
 
 @onready var state_machine = $StateMachine
@@ -91,7 +93,7 @@ func _update_upgrade_multiplier(upgrade_name : String) -> void:
 
 func _on_died():
 	await get_tree().create_timer(0.5).timeout  # half-second delay
-	SceneManager.load_location("Village")
+	died.emit()
 
 func _coins_removed() -> void:
 	var coin_dummy_instance = coin_dummy_scene.instantiate()
@@ -105,7 +107,6 @@ func _coins_removed() -> void:
 	tween.tween_property(coin_dummy_instance, "scale", Vector2(0.5, 0.5), 1.0)
 	tween.set_parallel(false)
 	tween.tween_callback(coin_dummy_instance.queue_free)
-
 
 func _on_health_changed(new_value: float) -> void:
 	health_updated.emit(new_value)

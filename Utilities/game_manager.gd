@@ -34,9 +34,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func new_game() -> void:
 	SaveGameManager.delete_save_game()
-	SceneManager.load_main_stage_container()
+	SaveGameManager.reset_or_initialize()
 	UpgradeManager.reset_or_initialize()
 	WalletManager.reset_or_initialize()
+	SceneManager.load_main_stage_container()
 	await get_tree().process_frame
 	SaveGameManager.save_game()
 

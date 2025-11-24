@@ -1,24 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl1y8y0fwdmpr"]
+[gd_scene load_steps=3 format=3 uid="uid://cl1y8y0fwdmpr"]
 
 [ext_resource type="Script" uid="uid://puefma4vfipd" path="res://Components/HintComponent/hint_component.gd" id="1_ie7pi"]
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_re1a7"]
 
-[node name="HintComponent" type="ColorRect" node_paths=PackedStringArray("label")]
+[node name="HintComponent" type="PanelContainer" node_paths=PackedStringArray("label")]
 z_index = 2
 offset_right = 109.99999
 offset_bottom = 39.999996
 scale = Vector2(0.2, 0.2)
-color = Color(0, 0, 0, 0.5294118)
+theme = ExtResource("1_re1a7")
+theme_type_variation = &"InventoryItemPanel"
 script = ExtResource("1_ie7pi")
 label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,9 +1,12 @@
 extends Node
 
-var global_data : GlobalData = GlobalData.new()
+var global_data : GlobalData
 
 var save_game_data_path : String = "user://game_data/"
 var save_file_name : String = "save_game.tres"
+
+func _ready() -> void:
+	reset_or_initialize()
 
 func save_game() -> void:
 	if !DirAccess.dir_exists_absolute(save_game_data_path):
@@ -59,3 +62,6 @@ func delete_save_game() -> void:
 			dir.remove(save_file_name)
 		if save_file_exists():
 			dir.remove(global_data.SAVE_GLOBAL_DATA_FILE_NAME)
+
+func reset_or_initialize() -> void:
+	global_data = GlobalData.new()

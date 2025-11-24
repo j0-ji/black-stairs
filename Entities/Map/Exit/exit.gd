@@ -2,7 +2,7 @@ extends Node2D
 
 signal went_through_exit
 
-@export var hint : ColorRect
+@export var hint : PanelContainer
 var _player_inside := false
 
 func _ready() -> void:

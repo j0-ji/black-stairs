@@ -36,6 +36,7 @@ position = Vector2(272, 432)
 position = Vector2(321, 272)
 
 [node name="Exit" parent="." instance=ExtResource("2_srxlc")]
+y_sort_enabled = true
 position = Vector2(776, 392)
 
 [node name="Sprite2D" parent="Exit" index="0"]
@@ -46,6 +47,9 @@ position = Vector2(776, 392)
 rotation = 1.5707964
 
 [node name="Sprite2D" parent="Entrance" index="0"]
+visible = false
+
+[node name="HintComponent" parent="Entrance" index="1"]
 visible = false
 
 [editable path="Map/Buildings/BuildingPlayer"]

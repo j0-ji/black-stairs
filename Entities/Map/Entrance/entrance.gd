@@ -3,7 +3,7 @@ extends Node2D
 signal went_through
 
 @export var spawn_marker : Marker2D
-@export var hint : ColorRect
+@export var hint : PanelContainer
 @export var exit_enabled : bool = false
 
 var spawn_point := Vector2i(0, 0)
