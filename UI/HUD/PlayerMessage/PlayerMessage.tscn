@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dexwia16wvhsa"]
+
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_msxle"]
+[ext_resource type="Script" uid="uid://hueyonvatwtc" path="res://UI/HUD/PlayerMessage/player_message.gd" id="2_3jdgt"]
+
+[node name="PlayerMessage" type="PanelContainer" node_paths=PackedStringArray("label", "timer")]
+theme = ExtResource("1_msxle")
+theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_3jdgt")
+label = NodePath("MarginContainer/Label")
+timer = NodePath("Timer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "Placeholder"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

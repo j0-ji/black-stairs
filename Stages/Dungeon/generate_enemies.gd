@@ -1,5 +1,6 @@
 extends MapLayer
 
+@export var _dungeon : Node2D
 @export var _ground : TileMapLayer
 @export var _flora : TileMapLayer
 @export var _io : Node2D # TODO: check if enemy spawn is too close to player spawn
@@ -103,6 +104,7 @@ func generate() -> void:
 		var goblin_boss_scene_instance = goblin_boss_scene.instantiate()
 		goblin_boss_scene_instance.position = pos
 		map_layer.add_child.call_deferred(goblin_boss_scene_instance)
+		_dungeon.register_boss(goblin_boss_scene_instance)
 		print("Spawned boss goblin at: ", goblin_boss_scene_instance.position)
 	
 	transition.emit()

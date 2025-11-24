@@ -17,6 +17,8 @@ enum spawns {ENTRANCE, BED}
 @export var upgrades : Dictionary = UpgradeManager._upgrades
 @export var wallet : Dictionary = WalletManager.wallet
 
+var boss_defeated : bool = false
+
 func set_current_location(location : String) -> void:
 	current_location = location
 	location_updated.emit()
