@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://db8603oojhcai"]
 
 [ext_resource type="Script" uid="uid://bmx8u4c140sg0" path="res://UI/Menu/PauseMenu/pause_menu.gd" id="1_ko5qu"]
-[ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="2_nv1it"]
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="2_nv1it"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
@@ -77,6 +77,7 @@ theme_type_variation = &"CustomMenuButton"
 text = "Save"
 
 [node name="Options" type="Button" parent="menu/MarginContainer/PanelContainer/MarginContainer/MenuOptions"]
+visible = false
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 theme_type_variation = &"CustomMenuButton"

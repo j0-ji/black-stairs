@@ -1,6 +1,8 @@
 extends Control
 
-@onready var continue_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Continue
+@export var continue_button : Button
+
+@export var credits_screen : Control
 
 @export var _menu_camera : Camera2D
 
@@ -20,8 +22,8 @@ func _on_continue_pressed() -> void:
 	GameManager.continue_game()
 	queue_free()
 
-func _on_options_pressed() -> void:
-	pass # Replace with function body.
+func _on_credits_pressed() -> void:
+	credits_screen.visible = true
 
 func _on_quit_pressed() -> void:
 	GameManager.exit_game()

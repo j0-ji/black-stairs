@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8kdtw08ido66"]
+[gd_scene load_steps=5 format=3 uid="uid://c8kdtw08ido66"]
 
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_krb2f"]
 [ext_resource type="Script" uid="uid://csbpto2l6hlb2" path="res://UI/Menu/MainMenu/main_menu.gd" id="1_lbwne"]
 [ext_resource type="PackedScene" uid="uid://c07tu1kqw4a4k" path="res://UI/Menu/background.tscn" id="2_krb2f"]
+[ext_resource type="PackedScene" uid="uid://bqs3v5no0brmu" path="res://UI/Menu/CreditsScreen/Credits.tscn" id="4_q8ku3"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_menu_camera")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("continue_button", "credits_screen", "_menu_camera")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +16,10 @@ offset_right = -1440.0
 offset_bottom = -960.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_krb2f")
 script = ExtResource("1_lbwne")
+continue_button = NodePath("MarginContainer/MenuOptions/Continue")
+credits_screen = NodePath("Credits")
 _menu_camera = NodePath("MenuCamera")
 metadata/_edit_use_anchors_ = true
 
@@ -31,64 +36,65 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 120
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 70
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="GameTitle" type="Label" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="GameTitle" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.16438991, 0.35785383, 0.17159131, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_colors/font_shadow_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 48
 text = "Black Stairs"
 
-[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 6
 theme_override_constants/separation = 10
 
-[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="Continue" type="Button" parent="MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "Continue"
 
-[node name="NewGame" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="NewGame" type="Button" parent="MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "New Game"
 
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="Credits" type="Button" parent="MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Options"
+theme_type_variation = &"CustomMenuButton"
+text = "Credits"
 
-[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="Quit" type="Button" parent="MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
 text = "Quit
 "
 
-[node name="Version" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Version" type="Label" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.19607843)
 text = "v0.1"
 
-[node name="Credits" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.19607843)
-text = "Georgi Gerov, Lena Hartmann"
+[node name="Credits" parent="." instance=ExtResource("4_q8ku3")]
+visible = false
+layout_mode = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuOptions/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuOptions/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuOptions/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuOptions/Quit" to="." method="_on_quit_pressed"]
