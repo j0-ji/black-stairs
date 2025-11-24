@@ -14,6 +14,7 @@ func _go_to_stairs() -> void:
 	_set_listener_for_entrance()
 	_set_listener_for_exit()
 	_set_player_on_entrance_spawn_point()
+	SaveGameManager.save_game()
 
 func _go_to_next_dungeon_level() -> void:
 	SaveGameManager.save_game()
@@ -23,7 +24,6 @@ func _go_to_next_dungeon_level() -> void:
 	await get_tree().process_frame
 	_set_player_on_entrance_spawn_point()
 	_set_listener_for_exit()
-	SaveGameManager.save_game()
 
 func _go_to_village_entrance() -> void:
 	SaveGameManager.global_data.set_current_location("Village")
@@ -32,6 +32,7 @@ func _go_to_village_entrance() -> void:
 	await get_tree().process_frame
 	_set_player_on_entrance_spawn_point()
 	_set_listener_for_exit()
+	SaveGameManager.save_game()
 
 func _go_to_village_bed() -> void:
 	SaveGameManager.global_data.set_current_location("Village")
@@ -40,6 +41,7 @@ func _go_to_village_bed() -> void:
 	await get_tree().process_frame
 	_set_player_on_bed_spawn_point()
 	_set_listener_for_exit()
+	SaveGameManager.save_game()
 
 func _set_player_on_entrance_spawn_point() -> void:
 	var location = _get_valid_location()
@@ -71,11 +73,11 @@ func _set_listener_for_exit() -> void:
 func _set_listener_for_entrance() -> void:
 	var location = _get_valid_location()
 	if location.entrance == null:
-		print("Location does not have valid entrance...")
+		push_error("Location does not have valid entrance...")
 		return
 	
 	if !location.entrance.exit_enabled:
-		print("Entrance of location can not be used as exit...")
+		print("Entrance' entrance.exit_enabled not enabled for this map...")
 		return
 	
 	location.entrance.went_through.connect(_go_to_village_entrance, CONNECT_ONE_SHOT)
@@ -124,7 +126,7 @@ func _on_player_died() -> void:
 	# reset dungeon level progress
 	SaveGameManager.global_data.current_dungeon_level = 0
 	# return player to village and spawn him at bed
-	_go_to_village_bed()
+	await _go_to_village_bed()
 	# reset players health and stamina to full
 	_player.health.current_health = _player.health.max_health
 	_player.stamina = _player.max_stamina
