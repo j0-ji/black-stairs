@@ -85,7 +85,7 @@ func _set_listener_for_entrance() -> void:
 
 func _next() -> void:
 	if SaveGameManager.global_data.current_location == "Dungeon":
-		if SaveGameManager.global_data.current_dungeon_level < max_dungeon_level :
+		if SaveGameManager.global_data.current_dungeon_level < max_dungeon_level:
 			_go_to_stairs()
 		else:
 			SaveGameManager.global_data.current_dungeon_level = 0
