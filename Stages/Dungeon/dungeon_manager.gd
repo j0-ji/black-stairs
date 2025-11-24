@@ -12,7 +12,8 @@ func _ready() -> void:
 
 func register_boss(boss : CharacterBody2D) -> void:
 	if !exit.is_locked:
-		exit.is_locked = true
+		exit.lock()
+		
 	boss.died.connect(_on_boss_died)
 	amount_of_bosses += 1
 
@@ -20,4 +21,4 @@ func _on_boss_died(_pos : Vector2, _coins : int) -> void:
 	died_bosses += 1
 	
 	if died_bosses == amount_of_bosses:
-		exit.is_locked = false
+		exit.unlock()

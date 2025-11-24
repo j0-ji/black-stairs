@@ -8,9 +8,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nif8h"]
 size = Vector2(16, 16)
 
-[node name="Exit" type="Node2D" node_paths=PackedStringArray("hint")]
+[node name="Exit" type="Node2D" node_paths=PackedStringArray("hint", "sprite")]
 script = ExtResource("1_b6l0y")
 hint = NodePath("HintComponent")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xqhb7")
