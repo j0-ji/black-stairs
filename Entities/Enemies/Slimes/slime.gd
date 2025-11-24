@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# --- signal ---
+signal died(_global_position : Vector2, _coins : int)
+
 # --- Movement / burst ---
 @export var wander_speed := 40.0        # normal wandering speed
 @export var burst_speed := 150.0        # speed during lunge
@@ -12,6 +15,9 @@ extends CharacterBody2D
 @export var dash_speed := 120.0         # speed when dashing away after hit
 @export var dash_duration := 0.3        # duration of dash-away
 @export var max_health := 3.0           # slime HP
+
+# --- Items ---
+@export var coins : int = 2
 
 # --- State variables ---
 var player: Node2D
@@ -138,4 +144,5 @@ func _on_died():
 	velocity = Vector2.ZERO
 	anim.play("death") # play death animation
 	await anim.animation_finished
+	died.emit(global_position, coins)
 	queue_free()   

@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
+# --- signal ---
+signal died(_global_position : Vector2, _coins : int)
+
+# --- other vars ---
 @export var move_speed := 40.0
 @export var detection_radius := 150.0
 @export var shoot_range := 50.0
 @export var shoot_cooldown := 3
 @export var attack_delay := 0.2
 @export var max_health := 4.0
+@export var coins := 3
 @export var arrow_scene: PackedScene
 
 var player: Node2D
@@ -131,4 +136,5 @@ func _on_died():
 	anim.flip_h = last_flip
 
 	await anim.animation_finished
+	died.emit(global_position, coins)
 	queue_free()

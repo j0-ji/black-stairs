@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# --- signal ---
+signal died(_global_position : Vector2, _coins : int)
+
 # --- Exported variables ---
 @export var move_speed := 50.0
 @export var wander_speed := 25.0
@@ -26,6 +29,8 @@ extends CharacterBody2D
 @export var ranged_animation_length := 0.5
 
 @export var max_health := 10.0
+
+@export var coins : int = 10
 
 # --- Internal state ---
 var player: Node2D
@@ -305,4 +310,5 @@ func _on_died():
 	velocity = Vector2.ZERO
 	anim.play("death")
 	await anim.animation_finished
+	died.emit(global_position, coins)
 	queue_free()

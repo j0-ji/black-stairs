@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bng0docrk8use"]
+[gd_scene load_steps=13 format=3 uid="uid://bng0docrk8use"]
 
 [ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
 [ext_resource type="Texture2D" uid="uid://2358tyi4frou" path="res://Entities/Enemies/Slimes/slime_spritesheet.png" id="2_a2gep"]
 [ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_a2gep"]
+[ext_resource type="PackedScene" uid="uid://de8hrwxtewa8u" path="res://Components/ItemDropComponent/ItemDropComponent.tscn" id="4_nqm2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqm2k"]
 atlas = ExtResource("2_a2gep")
@@ -76,3 +77,5 @@ shape = SubResource("RectangleShape2D_tipj2")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_a2gep")
+
+[node name="ItemDropComponent" parent="." instance=ExtResource("4_nqm2k")]

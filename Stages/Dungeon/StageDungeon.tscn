@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jxo3hjq5iesm"]
+[gd_scene load_steps=15 format=3 uid="uid://jxo3hjq5iesm"]
 
 [ext_resource type="Script" uid="uid://b4nsyy8rvqmj1" path="res://Stages/Dungeon/dungeon_manager.gd" id="1_qfv56"]
 [ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4wl8xc6okyy" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.tscn" id="8_jx5wx"]
 [ext_resource type="PackedScene" uid="uid://fu5q07fvmno1" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/goblin_variant.tscn" id="9_jx5wx"]
 [ext_resource type="PackedScene" uid="uid://b2k2772ngsqgm" path="res://Entities/Enemies/Goblins/Goblin Boss/Boss.tscn" id="10_fuh8s"]
+[ext_resource type="Script" uid="uid://dofr8uwyyu8v5" path="res://Stages/Dungeon/enemies.gd" id="14_1rxun"]
 
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("map_generator", "entrance", "exit")]
 y_sort_enabled = true
@@ -47,8 +48,9 @@ script = ExtResource("6_mjdru")
 _ground = NodePath("../../Ground")
 _flora = NodePath("../../Flora")
 _io = NodePath("../../IO")
-goblin_count = 0
-variant_goblin_count = 0
+slime_count = 8
+goblin_count = 8
+variant_goblin_count = 8
 slime_scene = ExtResource("7_aalgh")
 goblin_scene = ExtResource("8_jx5wx")
 goblin_variant_scene = ExtResource("9_jx5wx")
@@ -68,4 +70,9 @@ tile_set = ExtResource("5_kocfg")
 
 [node name="Exit" parent="IO" instance=ExtResource("6_qfv56")]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="." node_paths=PackedStringArray("items_layer")]
+script = ExtResource("14_1rxun")
+items_layer = NodePath("../Items")
+
+[node name="Items" type="Node2D" parent="."]
+y_sort_enabled = true
