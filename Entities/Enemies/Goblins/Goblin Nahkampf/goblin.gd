@@ -114,6 +114,10 @@ func _start_attack():
 	hitbox.monitoring = false
 
 	is_attacking = false
+	
+	if health.is_dead:
+		return
+	
 	_play_idle_animation()
 	attack_timer.start()
 
@@ -156,6 +160,7 @@ func take_damage(amount: float):
 	health.take_damage(amount)
 
 func _on_died():
+	print("GOBLIN SWORD - died")
 	is_dead = true
 	is_attacking = false
 	can_attack = false

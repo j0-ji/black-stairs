@@ -140,6 +140,7 @@ func _on_health_changed(new_hp):
 	pass  # optional: add hit flash effect here
 
 func _on_died():
+	print("SLIME - died")
 	is_dead = true       # prevent further actions
 	velocity = Vector2.ZERO
 	anim.play("death") # play death animation

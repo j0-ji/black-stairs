@@ -41,19 +41,19 @@ func _on_next_transitions() -> void:
 func _activate_hitbox_temporarily() -> void:
 	await get_tree().create_timer(attack_delay).timeout
 
-	hitbox.monitoring = true
+	hitbox.set_deferred("monitoring", true)
 
 	# Ensure single connection
 	if not hitbox.is_connected("body_entered", Callable(self, "_on_hitbox_body_entered")):
 		hitbox.body_entered.connect(Callable(self, "_on_hitbox_body_entered"))
 
 	await get_tree().create_timer(hitbox_duration).timeout
-	hitbox.monitoring = false
+	hitbox.set_deferred("monitoring" ,false)
 
 
 # --- Called when hitbox hits a body ---
 func _on_hitbox_body_entered(body: Node) -> void:
-	hitbox.monitoring = false  # disable further hits this swing
+	hitbox.set_deferred("monitoring", false)  # disable further hits this swing
 	if body.is_in_group("enemies") and body.has_node("Health"):
 		body.get_node("Health").take_damage(attack_damage)
 

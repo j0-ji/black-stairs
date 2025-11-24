@@ -192,6 +192,10 @@ func start_melee_attack():
 	melee_hitbox.monitoring = false
 
 	is_attacking = false
+	
+	if health.is_dead:
+		return
+		
 	atk_timer.start()
 	play_idle_animation()
 
@@ -214,6 +218,10 @@ func start_spin_attack():
 	spin_hitbox.monitoring = false
 
 	is_attacking = false
+	
+	if health.is_dead:
+		return
+	
 	spin_timer.start()
 	play_idle_animation()
 
@@ -238,6 +246,10 @@ func start_dash_attack():
 
 	dash_hitbox.monitoring = false
 	is_dashing = false
+	
+	if health.is_dead:
+		return
+	
 	dash_timer.start()
 	play_idle_animation()
 
@@ -296,11 +308,15 @@ func enter_enraged_phase():
 
 # --- Animations ---
 func play_move_animation():
+	if health.is_dead:
+		return
 	anim.play("move")
 	anim.flip_h = velocity.x < 0
 
 
 func play_idle_animation():
+	if health.is_dead:
+		return
 	anim.play("idle")
 
 

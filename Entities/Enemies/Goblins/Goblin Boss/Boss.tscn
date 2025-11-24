@@ -254,7 +254,7 @@ script = ExtResource("1_vi125")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ilrdf")
-animation = &"ranged_attack"
+animation = &"spin_attack"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
