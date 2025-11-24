@@ -2,6 +2,7 @@ extends Node2D
 
 @export var _player : Player
 @export var _location_root : Node2D
+@export var max_dungeon_level : int = 5
 
 func _ready() -> void:
 	_player.died.connect(_on_player_died)
@@ -84,7 +85,11 @@ func _set_listener_for_entrance() -> void:
 
 func _next() -> void:
 	if SaveGameManager.global_data.current_location == "Dungeon":
-		_go_to_stairs()
+		if SaveGameManager.global_data.current_dungeon_level < max_dungeon_level:
+			_go_to_stairs()
+		else:
+			SaveGameManager.global_data.current_dungeon_level = 0
+			_go_to_village_entrance()
 	elif SaveGameManager.global_data.current_location == "Stairs":
 		_go_to_next_dungeon_level()
 	elif SaveGameManager.global_data.current_location == "Village":
