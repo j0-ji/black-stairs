@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# --- signal ---
+signal died(_global_position : Vector2, _coins : int)
+
 # --- Exported variables ---
 @export var move_speed := 50.0
 @export var wander_speed := 25.0
@@ -26,6 +29,8 @@ extends CharacterBody2D
 @export var ranged_animation_length := 0.5
 
 @export var max_health := 10.0
+
+@export var coins : int = 10
 
 # --- Internal state ---
 var player: Node2D
@@ -187,6 +192,10 @@ func start_melee_attack():
 	melee_hitbox.monitoring = false
 
 	is_attacking = false
+	
+	if health.is_dead:
+		return
+		
 	atk_timer.start()
 	play_idle_animation()
 
@@ -209,6 +218,10 @@ func start_spin_attack():
 	spin_hitbox.monitoring = false
 
 	is_attacking = false
+	
+	if health.is_dead:
+		return
+	
 	spin_timer.start()
 	play_idle_animation()
 
@@ -233,6 +246,10 @@ func start_dash_attack():
 
 	dash_hitbox.monitoring = false
 	is_dashing = false
+	
+	if health.is_dead:
+		return
+	
 	dash_timer.start()
 	play_idle_animation()
 
@@ -291,11 +308,15 @@ func enter_enraged_phase():
 
 # --- Animations ---
 func play_move_animation():
+	if health.is_dead:
+		return
 	anim.play("move")
 	anim.flip_h = velocity.x < 0
 
 
 func play_idle_animation():
+	if health.is_dead:
+		return
 	anim.play("idle")
 
 
@@ -305,4 +326,5 @@ func _on_died():
 	velocity = Vector2.ZERO
 	anim.play("death")
 	await anim.animation_finished
+	died.emit(global_position, coins)
 	queue_free()

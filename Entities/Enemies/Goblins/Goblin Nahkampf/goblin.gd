@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# --- Signal ---
+signal died(_global_position : Vector2, _coins : int)
+
 # --- Exported ---
 @export var move_speed := 50.0
 @export var wander_speed := 25.0
@@ -9,6 +12,7 @@ extends CharacterBody2D
 @export var attack_damage := 0.5
 @export var max_health := 5.0
 @export var attack_animation_length := 0.6
+@export var coins : int = 3
 
 # --- State ---
 var player: Node2D
@@ -110,6 +114,10 @@ func _start_attack():
 	hitbox.monitoring = false
 
 	is_attacking = false
+	
+	if health.is_dead:
+		return
+	
 	_play_idle_animation()
 	attack_timer.start()
 
@@ -164,4 +172,5 @@ func _on_died():
 	anim.flip_h = last_flip
 
 	await anim.animation_finished
+	died.emit(global_position, coins)
 	queue_free()

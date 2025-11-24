@@ -19,6 +19,4 @@ y_sort_enabled = true
 [node name="Player" parent="GameRoot" instance=ExtResource("3_m3wgy")]
 position = Vector2(153, -193)
 
-[node name="Items" type="Node2D" parent="GameRoot"]
-
 [node name="HUD" parent="." instance=ExtResource("3_031fh")]
