@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://wxagn27wle1n"]
 
-[ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="1_7ehp3"]
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_7ehp3"]
 [ext_resource type="Texture2D" uid="uid://c0i2hd7vot3ep" path="res://UI/UI Ressources/base_health_upgrade_icon.png" id="2_q5ygj"]
 [ext_resource type="Script" uid="uid://cbp45vxdofarb" path="res://UI/HUD/Shop/close_shop_button.gd" id="2_tk8lg"]
 [ext_resource type="PackedScene" uid="uid://jh2hkkw45rf6" path="res://UI/HUD/Shop/ShopButton/ShopButton.tscn" id="3_06n7y"]
@@ -13,8 +13,9 @@
 color = Color(0.4, 0.22352941, 0.19215687, 1)
 
 [node name="Shop" type="PanelContainer"]
-offset_right = 73.0
+offset_right = 116.0
 offset_bottom = 173.0
+size_flags_vertical = 0
 theme = ExtResource("1_7ehp3")
 theme_type_variation = &"DarkWoodPanel"
 

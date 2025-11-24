@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qb7gthb0k6le"]
 
 [ext_resource type="PackedScene" uid="uid://bwcg0udb6b7qk" path="res://UI/HUD/CoinsAndUpgradePanel/CoinAndUpgradePanel.tscn" id="1_ia7gp"]
-[ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="1_ing8j"]
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_ing8j"]
 [ext_resource type="Script" uid="uid://c0wwde60ui6m7" path="res://UI/HUD/hud.gd" id="1_qdh7y"]
 [ext_resource type="PackedScene" uid="uid://wxagn27wle1n" path="res://UI/HUD/Shop/Shop.tscn" id="3_te8l2"]
 [ext_resource type="PackedScene" uid="uid://x36iq3d48x17" path="res://UI/HUD/HealthStaminaAndLevelPanel/HealthStaminaAndLevelPanel.tscn" id="5_radol"]
@@ -41,7 +41,7 @@ anchor_bottom = 0.5
 offset_left = 50.0
 offset_top = -102.0
 offset_right = 166.0
-offset_bottom = 102.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
