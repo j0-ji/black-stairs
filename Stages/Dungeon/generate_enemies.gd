@@ -5,25 +5,69 @@ extends MapLayer
 @export var _io : Node2D # TODO: check if enemy spawn is too close to player spawn
 
 @export var slime_count := 0
-@export var goblin_count := 20
-@export var variant_goblin_count := 5
-@export var boss_count := 1
+@export var goblin_count := 0
+@export var variant_goblin_count := 0
+@export var boss_count := 0
 @export var slime_scene: PackedScene
 @export var goblin_scene: PackedScene
 @export var goblin_variant_scene: PackedScene
 @export var goblin_boss_scene: PackedScene
 
+var use_custom_count : bool
 
+const default_enemy_counts_per_level = {
+	1 : {
+		"slime_count" : 10,
+		"goblin_count" : 4,
+		"variant_goblin_count" : 0,
+		"boss_count" : 0,
+	},
+	2 : {
+		"slime_count" : 9,
+		"goblin_count" : 7,
+		"variant_goblin_count" : 5,
+		"boss_count" : 0,
+	},
+	3: {
+		"slime_count" : 7,
+		"goblin_count" : 8,
+		"variant_goblin_count" : 8,
+		"boss_count" : 0,
+	},
+	4: {
+		"slime_count" : 6,
+		"goblin_count" : 10,
+		"variant_goblin_count" : 10,
+		"boss_count" : 0,
+	},
+	5: {
+		"slime_count" : 5,
+		"goblin_count" : 8,
+		"variant_goblin_count" : 8,
+		"boss_count" : 1,
+	}
+}
 
 func _ready() -> void:
 	pass
 
 func initialize() -> void:
-	pass
+	if slime_count == 0 and goblin_count == 0 and variant_goblin_count == 0 and boss_count == 0:
+		var current_level = SaveGameManager.global_data.current_dungeon_level
+		var current_enemy_counts = default_enemy_counts_per_level[current_level]
+		
+		# assign enemy counts
+		slime_count = current_enemy_counts.slime_count
+		goblin_count = current_enemy_counts.goblin_count
+		variant_goblin_count = current_enemy_counts.variant_goblin_count
+		boss_count = current_enemy_counts.boss_count
 
 func generate() -> void:
+	print("SPAWNING:")
+	
 	# Spawn slimes
 	for i in range(slime_count):
+		print("slimes: ", slime_count)
 		# get position and check if it's valid, otherwise don't even spawn slime...
 		var pos = _random_position()
 		if pos == Vector2i(-1, -1):
@@ -36,6 +80,7 @@ func generate() -> void:
 	
 	# Spawn goblins
 	for i in range(goblin_count):
+		print("goblins_sword: ", goblin_count)
 		var pos = _random_position()
 		if pos == Vector2i(-1, -1):
 			continue
@@ -46,6 +91,7 @@ func generate() -> void:
 		print("Spawned goblin at: ", goblin_instance.position)
 		
 	for i in range(variant_goblin_count):
+		print("goblins_archer: ", variant_goblin_count)
 		var pos = _random_position()
 		if pos == Vector2i(-1, -1):
 			continue
@@ -56,6 +102,7 @@ func generate() -> void:
 		print("Spawned variant goblin at: ", goblin_variant_instance.position)
 		
 	for i in range(boss_count):
+		print("goblins_boss: ", boss_count)
 		var pos = _random_position()
 		if pos == Vector2i(-1, -1):
 			continue
