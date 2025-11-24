@@ -125,11 +125,11 @@ shape = SubResource("CircleShape2D_o0mys")
 debug_color = Color(0.71442765, 0.4051258, 0.6916874, 0.41960785)
 
 [node name="HintComponent" parent="." instance=ExtResource("7_q163y")]
-visible = false
-offset_left = -11.0
-offset_top = -24.0
-offset_right = 98.99999
-offset_bottom = 15.999996
+offset_left = -14.0
+offset_top = -22.0
+offset_right = 126.0
+offset_bottom = 18.0
+size_flags_vertical = 0
 message = "[E] Trade"
 
 [connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_idle_state_timeout"]

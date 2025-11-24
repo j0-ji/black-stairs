@@ -4,6 +4,7 @@ extends Node2D
 @export var _location_root : Node2D
 
 func _ready() -> void:
+	_player.died.connect(_on_player_died)
 	_current()
 
 func _go_to_stairs() -> void:
@@ -24,14 +25,20 @@ func _go_to_next_dungeon_level() -> void:
 	_set_listener_for_exit()
 	SaveGameManager.save_game()
 
-func _go_to_village() -> void:
+func _go_to_village_entrance() -> void:
 	SaveGameManager.global_data.set_current_location("Village")
+	SaveGameManager.global_data.spawn_point = SaveGameManager.global_data.spawns.ENTRANCE
 	SceneManager.load_location(SaveGameManager.global_data.current_location)
 	await get_tree().process_frame
-	if SaveGameManager.global_data.spawn_point == SaveGameManager.global_data.spawns.BED:
-		_set_player_on_bed_spawn_point()
-	else:
-		_set_player_on_entrance_spawn_point()
+	_set_player_on_entrance_spawn_point()
+	_set_listener_for_exit()
+
+func _go_to_village_bed() -> void:
+	SaveGameManager.global_data.set_current_location("Village")
+	SaveGameManager.global_data.spawn_point = SaveGameManager.global_data.spawns.BED
+	SceneManager.load_location(SaveGameManager.global_data.current_location)
+	await get_tree().process_frame
+	_set_player_on_bed_spawn_point()
 	_set_listener_for_exit()
 
 func _set_player_on_entrance_spawn_point() -> void:
@@ -64,14 +71,14 @@ func _set_listener_for_exit() -> void:
 func _set_listener_for_entrance() -> void:
 	var location = _get_valid_location()
 	if location.entrance == null:
-		push_error("Location does not have valid entrance...")
+		print("Location does not have valid entrance...")
 		return
 	
 	if !location.entrance.exit_enabled:
-		push_error("Entrance of location can not be used as exit...")
+		print("Entrance of location can not be used as exit...")
 		return
 	
-	location.entrance.went_through.connect(_go_to_village, CONNECT_ONE_SHOT)
+	location.entrance.went_through.connect(_go_to_village_entrance, CONNECT_ONE_SHOT)
 
 func _next() -> void:
 	if SaveGameManager.global_data.current_location == "Dungeon":
@@ -93,7 +100,10 @@ func _current() -> void:
 		_go_to_stairs()
 	elif SaveGameManager.global_data.current_location == "Village":
 		SaveGameManager.global_data.current_dungeon_level = 0
-		_go_to_village()
+		if SaveGameManager.global_data.spawn_point == SaveGameManager.global_data.spawns.ENTRANCE:
+			_go_to_village_entrance()
+		else:
+			_go_to_village_bed()
 	else:
 		push_error("Invalid location, or level manager missing targeted level")
 
@@ -109,3 +119,12 @@ func _get_valid_location(i : int = 0) -> Node2D:
 		return _get_valid_location(i+1)
 	
 	return location
+
+func _on_player_died() -> void:
+	# reset dungeon level progress
+	SaveGameManager.global_data.current_dungeon_level = 0
+	# return player to village and spawn him at bed
+	_go_to_village_bed()
+	# reset players health and stamina to full
+	_player.health.current_health = _player.health.max_health
+	_player.stamina = _player.max_stamina

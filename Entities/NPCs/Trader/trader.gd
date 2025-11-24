@@ -1,6 +1,6 @@
 extends NonPlayableCharacter
 
-@export var hint : ColorRect
+@export var hint : PanelContainer
 
 var is_focused : bool = false
 

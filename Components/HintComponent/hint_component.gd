@@ -1,4 +1,4 @@
-extends ColorRect
+extends PanelContainer
 
 @export var label : Label
 @export var message : String = "placeholder"
