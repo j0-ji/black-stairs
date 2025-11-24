@@ -9,12 +9,14 @@ const item_coin = preload("res://Entities/Items/Coin/ItemCoin.tscn")
 func _ready() -> void:
 	enemy = get_parent()
 	enemies_layer = enemy.get_parent()
-	items_layer = enemies_layer.items_layer
+	if enemies_layer.items_layer != null:
+		items_layer = enemies_layer.items_layer
+	else:
+		items_layer = enemies_layer
 	
 	enemy.died.connect(_on_died)
 
 func _on_died(_global_position : Vector2, _coin_amount : int) -> void:
-	print("amount of coins to spawn: ", _coin_amount)
 	for i in _coin_amount:
 		var multiplicator = randi_range(8, 32)
 		var base_random_position_modifier = _random_inside_unit_circle()

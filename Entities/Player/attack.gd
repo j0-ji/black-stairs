@@ -48,7 +48,7 @@ func _activate_hitbox_temporarily() -> void:
 		hitbox.body_entered.connect(Callable(self, "_on_hitbox_body_entered"))
 
 	await get_tree().create_timer(hitbox_duration).timeout
-	hitbox.set_deferred("monitoring" ,false)
+	hitbox.set_deferred("monitoring", false)
 
 
 # --- Called when hitbox hits a body ---

@@ -160,7 +160,6 @@ func take_damage(amount: float):
 	health.take_damage(amount)
 
 func _on_died():
-	print("GOBLIN SWORD - died")
 	is_dead = true
 	is_attacking = false
 	can_attack = false
