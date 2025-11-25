@@ -11,7 +11,6 @@ func _ready() -> void:
 	
 	if _health != null:
 		max_value = _health.max_health
-		print(max_value)
 		value = _health.current_health
 		_health.health_changed.connect(_on_health_changed)
 		_health.died.connect(_on_disable)
@@ -32,17 +31,16 @@ func _on_health_changed(_current_health : float) -> void:
 		
 
 func _on_enable() -> void:
-	print("healthbar enabled")
 	visible = true
 	
-	if tween.is_running():
+	if tween and tween.is_running():
 		tween.kill()
 	
 	tween = create_tween()
 	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.15)
 
 func _on_disable() -> void:
-	if tween.is_running():
+	if tween and tween.is_running():
 		tween.kill()
 	
 	tween = create_tween()
