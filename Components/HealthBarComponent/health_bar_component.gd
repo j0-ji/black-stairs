@@ -3,7 +3,7 @@ extends ProgressBar
 var _parent : CharacterBody2D
 var _health : Health
 
-var tween : Tween = create_tween()
+var tween : Tween
 
 func _ready() -> void:
 	_parent = get_parent()
