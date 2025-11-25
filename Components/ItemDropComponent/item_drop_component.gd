@@ -2,7 +2,7 @@ class_name ItemDropComponent
 extends Node
 
 @export var coin_amount : int
-@export var enemy : CharacterBody2D
+@export var enemy : Enemy
 
 var enemies_layer : Node2D
 var items_layer : Node2D
@@ -16,9 +16,9 @@ func _ready() -> void:
 	else:
 		items_layer = enemies_layer
 	
-	enemy.health.died.connect(_on_died)
+	enemy.spawn_coins.connect(_on_spawn_coins)
 
-func _on_died(_global_position : Vector2) -> void:
+func _on_spawn_coins(_global_position : Vector2) -> void:
 	for i in coin_amount:
 		var multiplicator = randi_range(8, 32)
 		var base_random_position_modifier = _random_inside_unit_circle()

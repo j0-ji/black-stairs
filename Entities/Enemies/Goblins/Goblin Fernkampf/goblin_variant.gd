@@ -109,7 +109,7 @@ func take_damage(amount: int):
 		return
 	health.take_damage(amount)
 
-func _on_died(_pos : Vector2):
+func _on_died():
 	velocity = Vector2.ZERO
 	is_shooting = false
 	can_shoot = false
@@ -119,4 +119,5 @@ func _on_died(_pos : Vector2):
 	anim.flip_h = last_flip
 
 	await anim.animation_finished
+	spawn_coins.emit(global_position)
 	queue_free()

@@ -309,8 +309,9 @@ func play_idle_animation():
 
 
 # --- Death ---
-func _on_died(_pos : Vector2):
+func _on_died():
 	velocity = Vector2.ZERO
 	anim.play("death")
 	await anim.animation_finished
+	spawn_coins.emit(global_position)
 	queue_free()

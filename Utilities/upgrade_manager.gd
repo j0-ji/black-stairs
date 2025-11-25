@@ -62,6 +62,9 @@ func add_upgrade_level(upgrade_name : String) -> void:
 	else:
 		not_wealthy_enough.emit()
 
+func get_upgrade(upgrade_name : String) -> Upgrade:
+	return _upgrades.get(upgrade_name, null)
+
 func get_upgrade_price(upgrade_name : String) -> int:
 	return _upgrades.get(upgrade_name).price
 

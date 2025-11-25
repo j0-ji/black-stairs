@@ -1,7 +1,7 @@
 class_name HealthStatComponent
 extends StatComponent
 
-signal died(global_position : Vector2)
+signal died()
 signal health_updated(new_health : int)
 signal max_health_updated(new_max_health : int)
 
@@ -38,7 +38,7 @@ func take_damage(amount: int):
 	
 		if current_stat_value <= 0:
 			is_dead = true
-			died.emit(parent.global_position)
+			died.emit()
 
 func _on_upgrade(upgrade : Upgrade) -> void:
 	super._on_upgrade(upgrade)

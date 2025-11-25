@@ -128,7 +128,7 @@ func _get_valid_location(i : int = 0) -> Node2D:
 	
 	return location
 
-func _on_player_died(_global_position : Vector2) -> void:
+func _on_player_died() -> void:
 	await EventBus.play_transition_event("", "Defeated", "As he roamed the dungeon the trader found you critically injured and brought you back to the village. What a happy coincidence.")
 	# reset dungeon level progress
 	SaveGameManager.global_data.current_dungeon_level = 0

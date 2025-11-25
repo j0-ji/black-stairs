@@ -141,7 +141,7 @@ func _play_idle_animation():
 	anim.flip_h = false
 
 # --- Health / death ---
-func _on_died(_pos : Vector2):
+func _on_died():
 	is_attacking = false
 	can_attack = false
 	velocity = Vector2.ZERO
@@ -153,4 +153,5 @@ func _on_died(_pos : Vector2):
 	anim.flip_h = last_flip
 
 	await anim.animation_finished
+	spawn_coins.emit(global_position)
 	queue_free()
