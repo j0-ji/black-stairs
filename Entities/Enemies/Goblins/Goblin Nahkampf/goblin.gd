@@ -10,7 +10,6 @@ signal died(_global_position : Vector2, _coins : int)
 @export var attack_range := 20.0
 @export var attack_cooldown := 2.0
 @export var attack_damage := 0.5
-@export var max_health := 5.0
 @export var attack_animation_length := 0.6
 @export var coins : int = 3
 
@@ -35,9 +34,8 @@ var hitbox_offset_left := Vector2(-26, 0)
 
 # --- Ready ---
 func _ready():
-	health.max_health = max_health
-	health.current_health = max_health
 	health.died.connect(_on_died)
+	health.health_changed.connect(_on_health_changed)
 
 	player = get_tree().get_first_node_in_group("player")
 
@@ -149,15 +147,11 @@ func _play_idle_animation():
 	anim.flip_h = false
 
 # --- Health / death ---
-func take_damage(amount: float):
-	if is_dead:
-		return
-	var shader_mat = anim.material as ShaderMaterial
-	if shader_mat:
-		shader_mat.set_shader_parameter("flash_amount", 1.0)
-		await get_tree().create_timer(0.1).timeout
-		shader_mat.set_shader_parameter("flash_amount", 0.0)
-	health.take_damage(amount)
+func _on_health_changed(_new_hp: float) -> void:
+	modulate = Color(1, 0, 0)
+
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
 
 func _on_died():
 	is_dead = true

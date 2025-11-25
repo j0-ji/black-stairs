@@ -28,8 +28,6 @@ signal died(_global_position : Vector2, _coins : int)
 @export var spin_animation_length := 0.8
 @export var ranged_animation_length := 0.5
 
-@export var max_health := 10.0
-
 @export var coins : int = 10
 
 # --- Internal state ---
@@ -68,8 +66,6 @@ var hitbox_offset_left := Vector2(-26, 0)
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 
-	health.max_health = max_health
-	health.current_health = max_health
 	health.died.connect(_on_died)
 	health = $Health
 	health.health_changed.connect(_on_health_changed)
@@ -288,9 +284,13 @@ func _on_health_changed(current_health: float):
 	if is_dead:
 		return
 	
-	if not enraged and current_health <= max_health * 0.5:
+	if not enraged and current_health <= health.max_health * 0.5:
 		enter_enraged_phase()
-
+	
+	modulate = Color(1, 0, 0)
+	
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
 
 func enter_enraged_phase():
 	enraged = true
