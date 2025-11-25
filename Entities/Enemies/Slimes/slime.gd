@@ -14,7 +14,6 @@ signal died(_global_position : Vector2, _coins : int)
 @export var contact_damage := 3         # damage to player on contact
 @export var dash_speed := 120.0         # speed when dashing away after hit
 @export var dash_duration := 0.3        # duration of dash-away
-@export var max_health := 3.0           # slime HP
 
 # --- Items ---
 @export var coins : int = 2
@@ -36,16 +35,14 @@ var has_hit_player := false
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
 
-func _ready():
+func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 	# Setup health
-	health.max_health = max_health
-	health.current_health = max_health
 	health.died.connect(_on_died)
 	health.health_changed.connect(_on_health_changed)
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if is_dead:
 		# Stop all movement if dead
 		velocity = Vector2.ZERO
@@ -88,7 +85,7 @@ func _physics_process(delta):
 		_wander(delta)
 
 # --- Wandering ---
-func _wander(delta):
+func _wander(delta) -> void:
 	wander_timer -= delta
 	if wander_timer <= 0:
 		wander_direction = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
@@ -103,13 +100,13 @@ func _wander(delta):
 		_play_move_animation()
 
 # --- Burst / dash ---
-func _start_burst():
+func _start_burst() -> void:
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * burst_speed
 	bursting = true
 	burst_timer = burst_duration
 
-func _hit_player():
+func _hit_player() -> void:
 	has_hit_player = true
 
 	# Deal damage
@@ -123,23 +120,26 @@ func _hit_player():
 	burst_timer = dash_duration
 
 # --- Animations ---
-func _play_move_animation():
+func _play_move_animation() -> void:
 	if is_dead:
 		return
 	anim.play("idle")
 	anim.flip_h = velocity.x < 0
 
-func _play_idle_animation():
+func _play_idle_animation() -> void:
 	if is_dead:
 		return
 	anim.play("idle")
 	anim.flip_h = false
 
 # --- Health / death ---
-func _on_health_changed(new_hp):
-	pass  # optional: add hit flash effect here
+func _on_health_changed(_new_hp : float) -> void:
+	modulate = Color(1, 0, 0)
 
-func _on_died():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
+
+func _on_died() -> void:
 	is_dead = true       # prevent further actions
 	velocity = Vector2.ZERO
 	anim.play("death") # play death animation

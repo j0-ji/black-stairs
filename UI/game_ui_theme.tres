@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dd1pwuwgg8x6q"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://dd1pwuwgg8x6q"]
 
 [ext_resource type="Texture2D" uid="uid://bkti54rrkasxm" path="res://UI/UI Ressources/ui_dark_frame.png" id="1_5q4n0"]
 [ext_resource type="Texture2D" uid="uid://rj4hltdwvf3k" path="res://UI/UI Ressources/ui_light_button.png" id="2_sesrp"]
@@ -27,6 +27,17 @@ texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 7.0
 region_rect = Rect2(0, 0, 24, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sesrp"]
+bg_color = Color(0, 0, 0, 0.7607843)
+corner_detail = 4
+anti_aliasing = false
+anti_aliasing_size = 0.92
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4no5k"]
+bg_color = Color(0.8509804, 0, 0, 1)
+corner_detail = 4
+anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5q4n0"]
 atlas = ExtResource("2_sesrp")
@@ -77,6 +88,11 @@ CustomMenuButton/styles/normal = SubResource("StyleBoxTexture_jcik5")
 CustomMenuButton/styles/pressed = SubResource("StyleBoxTexture_jcik5")
 DarkWoodPanel/base_type = &"PanelContainer"
 DarkWoodPanel/styles/panel = SubResource("StyleBoxTexture_ufipx")
+EnemyHealthBar/base_type = &"ProgressBar"
+EnemyHealthBar/font_sizes/font_size = 8
+EnemyHealthBar/fonts/font = ExtResource("3_5q4n0")
+EnemyHealthBar/styles/background = SubResource("StyleBoxFlat_sesrp")
+EnemyHealthBar/styles/fill = SubResource("StyleBoxFlat_4no5k")
 InventoryItemPanel/base_type = &"PanelContainer"
 InventoryItemPanel/styles/panel = SubResource("StyleBoxTexture_sesrp")
 InventoryLabel/base_type = &"Label"

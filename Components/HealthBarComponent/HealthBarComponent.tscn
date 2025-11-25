@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4gr44l3rff1x"]
+
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_yxe3i"]
+[ext_resource type="Script" uid="uid://csjx4gi3gv1gd" path="res://Components/HealthBarComponent/health_bar_component.gd" id="2_cql3s"]
+
+[node name="HealthBarComponent" type="ProgressBar"]
+custom_minimum_size = Vector2(24, 3)
+offset_right = 24.0
+offset_bottom = 3.0
+theme = ExtResource("1_yxe3i")
+theme_type_variation = &"EnemyHealthBar"
+step = 1.0
+show_percentage = false
+script = ExtResource("2_cql3s")

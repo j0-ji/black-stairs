@@ -9,7 +9,6 @@ signal died(_global_position : Vector2, _coins : int)
 @export var shoot_range := 50.0
 @export var shoot_cooldown := 3
 @export var attack_delay := 0.2
-@export var max_health := 4.0
 @export var coins := 3
 @export var arrow_scene: PackedScene
 
@@ -23,11 +22,10 @@ var is_shooting := false
 
 
 func _ready():
-	health.max_health = max_health
-	health.current_health = max_health
 	health.died.connect(_on_died)
+	health.health_changed.connect(_on_health_changed)
+	
 	player = get_tree().get_first_node_in_group("player")
-
 
 func _physics_process(_delta : float):
 	if is_dead:
@@ -66,7 +64,6 @@ func _physics_process(_delta : float):
 	if can_shoot and not is_shooting:
 		_start_shoot()
 
-
 func _start_shoot():
 	is_shooting = true
 	can_shoot = false
@@ -89,7 +86,6 @@ func _start_shoot():
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 
-
 func _shoot_arrow():
 	if not arrow_scene:
 		push_warning("Arrow scene not assigned!")
@@ -106,24 +102,26 @@ func _shoot_arrow():
 
 	get_parent().add_child(arrow)
 
-
 func _play_move():
 	if not is_shooting:
 		anim.play("move_right")
 		anim.flip_h = velocity.x < 0
-
 
 func _play_idle():
 	if not is_shooting:
 		anim.play("idle_right")
 		anim.flip_h = false
 
-
 func take_damage(amount: float):
 	if is_dead:
 		return
 	health.take_damage(amount)
 
+func _on_health_changed(_new_hp: float) -> void:
+	modulate = Color(1, 0, 0)
+
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
 
 func _on_died():
 	is_dead = true

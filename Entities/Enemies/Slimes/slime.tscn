@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bng0docrk8use"]
+[gd_scene load_steps=14 format=3 uid="uid://bng0docrk8use"]
 
 [ext_resource type="Script" uid="uid://c5tgcl84jyh0m" path="res://Entities/Enemies/Slimes/slime.gd" id="1_gj73b"]
 [ext_resource type="Texture2D" uid="uid://2358tyi4frou" path="res://Entities/Enemies/Slimes/slime_spritesheet.png" id="2_a2gep"]
 [ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_a2gep"]
 [ext_resource type="PackedScene" uid="uid://de8hrwxtewa8u" path="res://Components/ItemDropComponent/ItemDropComponent.tscn" id="4_nqm2k"]
+[ext_resource type="PackedScene" uid="uid://4gr44l3rff1x" path="res://Components/HealthBarComponent/HealthBarComponent.tscn" id="5_8h8lh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqm2k"]
 atlas = ExtResource("2_a2gep")
@@ -77,5 +78,13 @@ shape = SubResource("RectangleShape2D_tipj2")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_a2gep")
+base_health = 3.0
 
 [node name="ItemDropComponent" parent="." instance=ExtResource("4_nqm2k")]
+
+[node name="HealthBarComponent" parent="." instance=ExtResource("5_8h8lh")]
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 12.0
+offset_bottom = -13.0
+value = 50.0

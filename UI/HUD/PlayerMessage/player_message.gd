@@ -17,7 +17,7 @@ func _on_player_message_event(message : String) -> void:
 	label.text = message
 	visible = true
 	
-	if tween:
+	if tween and tween.is_running():
 		tween.kill()
 		
 	tween = create_tween()
