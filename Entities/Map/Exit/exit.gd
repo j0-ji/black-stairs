@@ -7,8 +7,8 @@ signal went_through_exit
 var _player_inside : bool = false
 var is_locked : bool = false
 
-var texture_unlocked : Texture = load("res://Entities/Map/Exit/exit.png")
-var texture_locked : Texture = load("res://Entities/Map/Exit/exit_locked.png")
+const TEXTURE_UNLOCKED : Texture = preload("res://Entities/Map/Exit/exit.png")
+const TEXTURE_LOCKED : Texture = preload("res://Entities/Map/Exit/exit_locked.png")
 
 func _ready() -> void:
 	hint.visible = false
@@ -32,9 +32,10 @@ func _on_interactable_deactivated(body) -> void:
 		hint.visible = false
 
 func lock() -> void:
-	sprite.texture = texture_locked
+	sprite.texture = TEXTURE_LOCKED
 	is_locked = true
 
 func unlock() -> void:
-	sprite.texture = texture_unlocked
+	sprite.texture = TEXTURE_UNLOCKED
 	is_locked = false
+	EventBus.player_message.emit("Exit unlocked")

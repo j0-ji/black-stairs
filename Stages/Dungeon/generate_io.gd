@@ -100,6 +100,6 @@ func _find_exit(spawn_point : Vector2i) -> Vector2i:
 		var ground_at_candidate = _ground.get_cell_atlas_coords(candidate)
 		var flora_at_candidate = _flora.get_cell_atlas_coords(candidate)
 		@warning_ignore("integer_division") # handled via modul division, but not recognized by IDE
-		if spawn_point.distance_to(candidate) >= ((map_size - (map_size % 2)) / 2) and ground_at_candidate != Vector2i(4, 0) and flora_at_candidate == Vector2i(-1, -1):
+		if spawn_point.distance_to(candidate) >= ((map_size - (map_size % 2)) / 2) and ground_at_candidate != Vector2i(4, 0) and ground_at_candidate != Vector2i(3, 0) and flora_at_candidate == Vector2i(-1, -1):
 			found = true
 	return candidate
