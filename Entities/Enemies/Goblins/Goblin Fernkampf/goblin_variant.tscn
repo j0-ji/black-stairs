@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b8pcitpnv6rfm" path="res://Entities/Projectile/Arrow/arrow.tscn" id="2_kawqc"]
 [ext_resource type="Texture2D" uid="uid://ke3mt332ydy1" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/variant_goblin_spritesheet.png" id="3_divou"]
 [ext_resource type="PackedScene" uid="uid://de8hrwxtewa8u" path="res://Components/ItemDropComponent/ItemDropComponent.tscn" id="5_divou"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="5_lty46"]
+[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Components/StatComponent/HealthStatComponent/health_stat_component.gd" id="5_lty46"]
 [ext_resource type="PackedScene" uid="uid://4gr44l3rff1x" path="res://Components/HealthBarComponent/HealthBarComponent.tscn" id="6_0qtef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qtef"]
@@ -137,10 +137,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0q5k"]
 
-[node name="GoblinVariant" type="CharacterBody2D" groups=["enemies"]]
+[node name="GoblinVariant" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 collision_layer = 8
 script = ExtResource("1_divou")
 arrow_scene = ExtResource("2_kawqc")
+health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4wriu")
@@ -150,12 +151,17 @@ animation = &"move_right"
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_w0q5k")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("5_lty46")
-base_health = 4.0
+base_max_health = 4
+base_health_regen_time = 4.5
+is_regeneratable = true
+parent = NodePath("..")
 metadata/_custom_type_script = "uid://dplgw62coxdtx"
 
-[node name="ItemDropComponent" parent="." instance=ExtResource("5_divou")]
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_divou")]
+coin_amount = 3
+enemy = NodePath("..")
 
 [node name="HealthBarComponent" parent="." instance=ExtResource("6_0qtef")]
 offset_left = -12.0

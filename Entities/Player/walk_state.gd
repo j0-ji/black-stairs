@@ -19,7 +19,7 @@ func _on_physics_process(_delta : float) -> void:
 	if !move_direction.is_normalized():
 		move_direction = move_direction.normalized()
 		
-	player.velocity = move_direction * player.speed * player.speed_upgrade_multiplier
+	player.velocity = move_direction * player.speed.current_stat_value
 	player.move_and_slide()
 
 func _on_next_transitions() -> void:

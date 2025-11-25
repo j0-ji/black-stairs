@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://hg2nr26dca8k"]
+[gd_scene load_steps=2 format=3 uid="uid://hg2nr26dca8k"]
 
-[ext_resource type="Script" uid="uid://bq0ylqj7p5cxr" path="res://Entities/Items/item.gd" id="1_gcuc6"]
 [ext_resource type="PackedScene" uid="uid://cdw631jn86gwi" path="res://Components/CollectableComponent/CollectableComponent.tscn" id="2_gvs0h"]
 
 [node name="ItemAnimated" type="CharacterBody2D"]
 collision_layer = 16
-script = ExtResource("1_gcuc6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 

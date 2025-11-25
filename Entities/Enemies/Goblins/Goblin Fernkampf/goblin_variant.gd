@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-# --- signal ---
-signal died(_global_position : Vector2, _coins : int)
+extends Enemy
 
 # --- other vars ---
 @export var move_speed := 40.0
@@ -9,26 +6,21 @@ signal died(_global_position : Vector2, _coins : int)
 @export var shoot_range := 50.0
 @export var shoot_cooldown := 3
 @export var attack_delay := 0.2
-@export var coins := 3
 @export var arrow_scene: PackedScene
 
 var player: Node2D
 var can_shoot := true
-var is_dead := false
 var is_shooting := false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health: Health = $Health
-
 
 func _ready():
 	health.died.connect(_on_died)
-	health.health_changed.connect(_on_health_changed)
 	
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(_delta : float):
-	if is_dead:
+	if health.is_dead:
 		return
 
 	if not player:
@@ -73,7 +65,7 @@ func _start_shoot():
 
 	await get_tree().create_timer(attack_delay).timeout
 
-	if is_dead:
+	if health.is_dead:
 		is_shooting = false
 		return
 
@@ -112,19 +104,12 @@ func _play_idle():
 		anim.play("idle_right")
 		anim.flip_h = false
 
-func take_damage(amount: float):
-	if is_dead:
+func take_damage(amount: int):
+	if health.is_dead:
 		return
 	health.take_damage(amount)
 
-func _on_health_changed(_new_hp: float) -> void:
-	modulate = Color(1, 0, 0)
-
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
-
 func _on_died():
-	is_dead = true
 	velocity = Vector2.ZERO
 	is_shooting = false
 	can_shoot = false
@@ -134,5 +119,5 @@ func _on_died():
 	anim.flip_h = last_flip
 
 	await anim.animation_finished
-	died.emit(global_position, coins)
+	spawn_coins.emit(global_position)
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://q2frlqlrpjhg"]
+[gd_scene load_steps=44 format=3 uid="uid://q2frlqlrpjhg"]
 
 [ext_resource type="Script" uid="uid://dob8is7mdqqew" path="res://Entities/Player/player.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://pp7c3mhe6m2o" path="res://Entities/Player/character_attack.png" id="2_01a4e"]
@@ -10,9 +10,11 @@
 [ext_resource type="Script" uid="uid://bugr6jfcnh27v" path="res://Entities/Player/hitbox.gd" id="4_lub02"]
 [ext_resource type="Script" uid="uid://bwu8k2nsyxuex" path="res://Entities/Player/walk_state.gd" id="5_mk55u"]
 [ext_resource type="Script" uid="uid://bnndl1w2q2vj8" path="res://Entities/Player/attack.gd" id="7_7a1se"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="8_7a1se"]
 [ext_resource type="PackedScene" uid="uid://b8pcitpnv6rfm" path="res://Entities/Projectile/Arrow/arrow.tscn" id="9_x1y6q"]
 [ext_resource type="Script" uid="uid://c4wk0atruvvmm" path="res://Entities/Player/dash.gd" id="12_owvpp"]
+[ext_resource type="PackedScene" uid="uid://dx35vot1u7gh4" path="res://Components/StatComponent/HealthStatComponent/PlayerHealthStatComponent/PlayerHealthStatComponent.tscn" id="13_xr8lj"]
+[ext_resource type="PackedScene" uid="uid://b5pteoae3vmfd" path="res://Components/StatComponent/SpeedStatComponent/PlayerSpeedStatComponent/PlayerSpeedStatComponent.tscn" id="14_r8fok"]
+[ext_resource type="PackedScene" uid="uid://4jr3q0ggnnj" path="res://Components/StatComponent/StaminaStatComponent/PlayerStaminaStatComponent/PlayerStaminaStatComponent.tscn" id="15_nhbkt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
 atlas = ExtResource("2_01a4e")
@@ -212,7 +214,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01a4e"]
-radius = 22.022715
+radius = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lub02"]
 
@@ -249,11 +251,15 @@ func _shoot_arrow_delayed() -> void:
 	get_parent().add_child(arrow)
 "
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["collector", "player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "health", "stamina", "speed", "camera") groups=["collector", "player"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_t61fv")
+state_machine = NodePath("StateMachine")
+health = NodePath("Health")
+stamina = NodePath("Stamina")
+speed = NodePath("Speed")
 camera = NodePath("Camera")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -312,13 +318,19 @@ script = ExtResource("12_owvpp")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
+[node name="Stamina" parent="." instance=ExtResource("15_nhbkt")]
+base_max_stamina = 4
+base_stamina_regen_time = 4.0
+
+[node name="Speed" parent="." instance=ExtResource("14_r8fok")]
+base_max_speed = 150
+
+[node name="Health" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_xr8lj")]
+base_max_health = 10
+base_health_regen_time = 2.0
+parent = NodePath("..")
+
 [node name="Camera" type="Camera2D" parent="."]
-visible = false
+zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
-
-[node name="Health" type="Node" parent="."]
-script = ExtResource("8_7a1se")
-
-[connection signal="player_dashed" from="StateMachine/Dash" to="." method="_on_dash_player_dashed"]
-[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

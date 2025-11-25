@@ -1,18 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://x36iq3d48x17"]
 
-[ext_resource type="Theme" uid="uid://bmbel8a7ricx8" path="res://UI/game_ui_theme.tres" id="1_fpcwh"]
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_fpcwh"]
 [ext_resource type="PackedScene" uid="uid://bjbxajtv7s8mp" path="res://UI/HUD/StatBar/HealthBar/health_bar.tscn" id="2_sd6jw"]
 [ext_resource type="Script" uid="uid://tdl1gn3kny6t" path="res://UI/HUD/HealthStaminaAndLevelPanel/health_stamina_and_level_panel.gd" id="2_vr2ug"]
 [ext_resource type="PackedScene" uid="uid://bno766mk53d86" path="res://UI/HUD/StatBar/StaminaBar/stamina_bar.tscn" id="3_vr2ug"]
 
-[node name="HealthStaminaAndLevelPanel" type="PanelContainer" node_paths=PackedStringArray("health_bar", "stamina_bar", "location_label") groups=["receive_player_registration"]]
+[node name="HealthStaminaAndLevelPanel" type="PanelContainer" node_paths=PackedStringArray("location_label") groups=["receive_player_registration"]]
 offset_right = 122.0
 offset_bottom = 48.0
 theme = ExtResource("1_fpcwh")
 theme_type_variation = &"DarkWoodPanel"
 script = ExtResource("2_vr2ug")
-health_bar = NodePath("MarginContainer/HBoxContainer/StatBars/HealthBar")
-stamina_bar = NodePath("MarginContainer/HBoxContainer/StatBars/StaminaBar")
 location_label = NodePath("MarginContainer/HBoxContainer/PanelContainer/LocationLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

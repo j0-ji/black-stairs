@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5xujinwppj3g" path="res://Entities/Enemies/Goblins/Goblin Boss/goblin_boss.gd" id="1_vi125"]
 [ext_resource type="Texture2D" uid="uid://d0r2s3vv78bha" path="res://Entities/Enemies/Goblins/Goblin Boss/goblin_boss_spritesheet.png" id="2_3q1kc"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_g52pa"]
+[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Components/StatComponent/HealthStatComponent/health_stat_component.gd" id="3_g52pa"]
 [ext_resource type="PackedScene" uid="uid://de8hrwxtewa8u" path="res://Components/ItemDropComponent/ItemDropComponent.tscn" id="4_g52pa"]
 [ext_resource type="PackedScene" uid="uid://4gr44l3rff1x" path="res://Components/HealthBarComponent/HealthBarComponent.tscn" id="5_w6khr"]
 
@@ -250,8 +250,9 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3q1kc"]
 
-[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 script = ExtResource("1_vi125")
+health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ilrdf")
@@ -269,8 +270,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Spin"]
 shape = SubResource("CircleShape2D_f55wq")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("3_g52pa")
+base_max_health = 10
+base_health_regen_time = 3.0
+is_regeneratable = true
+parent = NodePath("..")
 metadata/_custom_type_script = "uid://dplgw62coxdtx"
 
 [node name="Hitbox_Stab" type="Area2D" parent="."]
@@ -281,7 +286,9 @@ collision_mask = 2
 position = Vector2(13, 0)
 shape = SubResource("CapsuleShape2D_3q1kc")
 
-[node name="ItemDropComponent" parent="." instance=ExtResource("4_g52pa")]
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_g52pa")]
+coin_amount = 15
+enemy = NodePath("..")
 
 [node name="HealthBarComponent" parent="." instance=ExtResource("5_w6khr")]
 offset_left = -12.0

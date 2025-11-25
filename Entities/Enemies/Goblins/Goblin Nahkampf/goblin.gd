@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-# --- Signal ---
-signal died(_global_position : Vector2, _coins : int)
+extends Enemy
 
 # --- Exported ---
 @export var move_speed := 50.0
@@ -9,9 +6,8 @@ signal died(_global_position : Vector2, _coins : int)
 @export var detection_radius := 100.0
 @export var attack_range := 20.0
 @export var attack_cooldown := 2.0
-@export var attack_damage := 0.5
+@export var attack_damage : int = 1
 @export var attack_animation_length := 0.6
-@export var coins : int = 3
 
 # --- State ---
 var player: Node2D
@@ -24,7 +20,6 @@ var wander_timer := 0.0
 
 # --- Node references ---
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health: Health = $Health
 @onready var hitbox: Area2D = $Hitbox
 @onready var attack_timer := Timer.new()
 
@@ -35,7 +30,6 @@ var hitbox_offset_left := Vector2(-26, 0)
 # --- Ready ---
 func _ready():
 	health.died.connect(_on_died)
-	health.health_changed.connect(_on_health_changed)
 
 	player = get_tree().get_first_node_in_group("player")
 
@@ -50,7 +44,7 @@ func _ready():
 
 # --- Physics ---
 func _physics_process(delta):
-	if is_dead:
+	if health.is_dead:
 		return
 
 	if not player or is_attacking:
@@ -92,7 +86,7 @@ func _wander(delta):
 
 # --- Attack ---
 func _start_attack():
-	if is_dead:
+	if health.is_dead:
 		return
 
 	is_attacking = true
@@ -147,14 +141,7 @@ func _play_idle_animation():
 	anim.flip_h = false
 
 # --- Health / death ---
-func _on_health_changed(_new_hp: float) -> void:
-	modulate = Color(1, 0, 0)
-
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
-
 func _on_died():
-	is_dead = true
 	is_attacking = false
 	can_attack = false
 	velocity = Vector2.ZERO
@@ -166,5 +153,5 @@ func _on_died():
 	anim.flip_h = last_flip
 
 	await anim.animation_finished
-	died.emit(global_position, coins)
+	spawn_coins.emit(global_position)
 	queue_free()

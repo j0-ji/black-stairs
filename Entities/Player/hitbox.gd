@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage := 1.0
+@export var damage : int = 1
 
 func _ready():
 	# Connect to the signal to detect when hitbox overlaps something

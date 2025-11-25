@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-# --- signal ---
-signal died(_global_position : Vector2, _coins : int)
+extends Enemy
 
 # --- Exported variables ---
 @export var move_speed := 50.0
@@ -12,9 +9,9 @@ signal died(_global_position : Vector2, _coins : int)
 @export var dash_range := 120.0
 @export var ranged_min_distance := 80.0
 
-@export var attack_damage := 1.0
-@export var spin_damage := 1.5
-@export var dash_damage := 1.5
+@export var attack_damage : int = 1
+@export var spin_damage : int = 2
+@export var dash_damage : int = 2
 
 @export var attack_cooldown := 2.0
 @export var spin_cooldown := 4.0
@@ -28,8 +25,6 @@ signal died(_global_position : Vector2, _coins : int)
 @export var spin_animation_length := 0.8
 @export var ranged_animation_length := 0.5
 
-@export var coins : int = 10
-
 # --- Internal state ---
 var player: Node2D
 var is_attacking := false
@@ -38,7 +33,6 @@ var can_attack := true
 var can_spin := true
 var can_dash := true
 var can_ranged := true
-var is_dead := false
 var enraged := false
 
 var wander_direction := Vector2.ZERO
@@ -46,7 +40,6 @@ var wander_timer := 0.0
 
 # --- Nodes ---
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health: Health = $Health
 @onready var melee_hitbox: Area2D = $Hitbox_Stab
 @onready var spin_hitbox: Area2D = $Hitbox_Spin
 @onready var dash_hitbox: Area2D = $Hitbox_Spin
@@ -67,8 +60,8 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 
 	health.died.connect(_on_died)
-	health = $Health
-	health.health_changed.connect(_on_health_changed)
+
+	health.health_updated.connect(_on_health_updated)
 
 	_setup_timers()
 
@@ -106,7 +99,7 @@ func _setup_timers():
 
 # --- Physics ---
 func _physics_process(delta):
-	if is_dead or is_attacking or is_dashing:
+	if health.is_dead or is_attacking or is_dashing:
 		move_and_slide()
 		return
 
@@ -280,17 +273,12 @@ func shoot_projectile():
 
 
 # --- Damage & Enrage ---
-func _on_health_changed(current_health: float):
-	if is_dead:
+func _on_health_updated(current_health: int):
+	if health.is_dead:
 		return
 	
-	if not enraged and current_health <= health.max_health * 0.5:
+	if not enraged and current_health <= health.max_stat_value * 0.5:
 		enter_enraged_phase()
-	
-	modulate = Color(1, 0, 0)
-	
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
 
 func enter_enraged_phase():
 	enraged = true
@@ -322,9 +310,8 @@ func play_idle_animation():
 
 # --- Death ---
 func _on_died():
-	is_dead = true
 	velocity = Vector2.ZERO
 	anim.play("death")
 	await anim.animation_finished
-	died.emit(global_position, coins)
+	spawn_coins.emit(global_position)
 	queue_free()
