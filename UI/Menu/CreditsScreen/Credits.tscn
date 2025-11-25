@@ -1,0 +1,160 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqs3v5no0brmu"]
+
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_s1gsp"]
+[ext_resource type="Script" uid="uid://blk7dhqhshn3y" path="res://UI/Menu/CreditsScreen/credits.gd" id="2_28chl"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_s1gsp"]
+color = Color(0.7347345, 0.47379267, 0.21440089, 1)
+grow_begin = -10.0
+grow_end = -10.0
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s1gsp")
+script = ExtResource("2_28chl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5568628)
+
+[node name="CreditsPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 10
+
+[node name="CreditsLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+
+[node name="Developers" type="PanelContainer" parent="CreditsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/MarginContainer/VBoxContainer/Developers"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/MarginContainer/VBoxContainer/Developers/MarginContainer"]
+layout_mode = 2
+
+[node name="DeveloperTitleLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Developers/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Developers"
+
+[node name="HSeparator" type="HSeparator" parent="CreditsPanel/MarginContainer/VBoxContainer/Developers/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_s1gsp")
+
+[node name="DeveloperListLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Developers/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "Georgi Gerov
+Lena Hartmann"
+
+[node name="Fonts" type="PanelContainer" parent="CreditsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/MarginContainer/VBoxContainer/Fonts"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/MarginContainer/VBoxContainer/Fonts/MarginContainer"]
+layout_mode = 2
+
+[node name="FontsTitleLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Fonts/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Fonts"
+
+[node name="HSeparator" type="HSeparator" parent="CreditsPanel/MarginContainer/VBoxContainer/Fonts/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_s1gsp")
+
+[node name="FontsListLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Fonts/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "ZX Palm by Damien Guard 
+(damieng.com)"
+
+[node name="Music" type="PanelContainer" parent="CreditsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/MarginContainer/VBoxContainer/Music/MarginContainer"]
+layout_mode = 2
+
+[node name="MusicTitleLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Music/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music"
+
+[node name="HSeparator" type="HSeparator" parent="CreditsPanel/MarginContainer/VBoxContainer/Music/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_s1gsp")
+
+[node name="MusicListLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Music/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "...
+"
+
+[node name="Close" type="Button" parent="CreditsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
+
+[connection signal="pressed" from="CreditsPanel/MarginContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
