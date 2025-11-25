@@ -77,7 +77,7 @@ func _update_upgrade_multiplier(upgrade_name : String) -> void:
 	if upgrade_name == "speed" and UpgradeManager.has_upgrade("speed"):
 		speed_upgrade_multiplier = UpgradeManager.get_upgrade_stat_adapter("speed")
 	elif upgrade_name == "stamina" and UpgradeManager.has_upgrade("stamina"):
-		max_stamina = base_stamina + UpgradeManager.get_upgrade_stat_adapter("stamina")
+		max_stamina = base_stamina + int(UpgradeManager.get_upgrade_stat_adapter("stamina"))
 		max_stamina_updated.emit(max_stamina)
 	elif upgrade_name == "health" and UpgradeManager.has_upgrade("health"):
 		health.max_health = health.max_health * UpgradeManager.get_upgrade_stat_adapter("health")
@@ -92,7 +92,7 @@ func _update_upgrade_multiplier(upgrade_name : String) -> void:
 		push_warning("Invalid Upgrade")
 
 func _on_died():
-	await get_tree().create_timer(0.5).timeout  # half-second delay
+	await EventBus.play_transition_event("", "Defeated", "As he roamed the dungeon the trader found you critically injured and brought you back to the village. What a happy coincidence.")
 	died.emit()
 
 func _coins_removed() -> void:

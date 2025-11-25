@@ -83,3 +83,9 @@ func _toggle_menu_pause() -> void:
 		
 		var menu_pause_instance = menu_pause.instantiate()
 		get_tree().root.add_child(menu_pause_instance)
+
+func game_pause() -> void:
+	get_tree().paused = true
+
+func game_unpause() -> void:
+	get_tree().paused = false

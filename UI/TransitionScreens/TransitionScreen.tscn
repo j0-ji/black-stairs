@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfxk635agdtua"]
+
+[ext_resource type="Script" uid="uid://cyddnny2ri2ti" path="res://UI/TransitionScreens/transition_screen.gd" id="1_3dery"]
+[ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="2_l7wp8"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_by8sh"]
+color = Color(0.56078434, 0.3372549, 0.23137255, 1)
+grow_begin = -10.0
+grow_end = -10.0
+
+[node name="TransitionScreen" type="CanvasLayer" node_paths=PackedStringArray("root_transition_control", "dialogue_panel", "dialogue_pre_title", "dialogue_title", "dialogue_message")]
+process_mode = 3
+layer = 2
+script = ExtResource("1_3dery")
+root_transition_control = NodePath("root")
+dialogue_panel = NodePath("root/MarginContainer/Panel")
+dialogue_pre_title = NodePath("root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PreTitle")
+dialogue_title = NodePath("root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Title")
+dialogue_message = NodePath("root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Message")
+
+[node name="root" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_l7wp8")
+
+[node name="ColorRect" type="ColorRect" parent="root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="root/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="root/MarginContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"InventoryItemPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PreTitle" type="Label" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"InventoryLabel"
+text = "You defeated"
+
+[node name="Title" type="Label" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Defeated"
+
+[node name="MarginContainer" type="MarginContainer" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HSeparator" type="HSeparator" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_by8sh")
+
+[node name="Message" type="Label" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "As he roamed the dungeon the trader found you critically injured and brought you back to the village. What a happy coincidence. He wouldn't be a trader if he didn't take something in return."
+autowrap_mode = 3
+
+[node name="Continue" type="Button" parent="root/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Continue"
+
+[connection signal="pressed" from="root/MarginContainer/Panel/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
