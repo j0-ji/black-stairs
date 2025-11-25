@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	# --- Connect Signals ---
 	WalletManager.got_poorer.connect(_coins_removed)
-	WalletManager.got_richer.connect(_coins_added)
+	# WalletManager.got_richer.connect(_coins_added)
 	
 	#  --- Connect self to all other nodes that depend on player --- 
 	get_tree().call_group("receive_player_registration", "register_player", self)

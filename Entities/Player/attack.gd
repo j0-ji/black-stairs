@@ -7,7 +7,7 @@ extends NodeState
 # --- Attack configuration ---
 @export var attack_delay := 0.4         # seconds before hitbox activates
 @export var hitbox_duration := 0.2      # how long the hitbox stays active
-@export var attack_damage := 1.0        # damage dealt
+@export var attack_damage : int = 1        # damage dealt
 
 # --- Hitbox offsets ---
 @export var hitbox_offset_right := Vector2(0, 0)

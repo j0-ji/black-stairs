@@ -81,6 +81,7 @@ shape = SubResource("RectangleShape2D_tipj2")
 script = ExtResource("3_a2gep")
 base_max_health = 3
 base_health_regen_time = 5.0
+is_regeneratable = true
 parent = NodePath("..")
 
 [node name="ItemDropComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_nqm2k")]

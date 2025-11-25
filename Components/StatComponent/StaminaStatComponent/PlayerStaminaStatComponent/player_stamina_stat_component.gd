@@ -25,7 +25,10 @@ func reset() -> void:
 	set_current_stat_value(max_stat_value)
 
 func apply_upgrades_after_save() -> void:
-	var upgrade = UpgradeManager.get_upgrade("speed")
+	var upgrade = UpgradeManager.get_upgrade("stamina")
 	if upgrade != null:
-		var new_max_stat_value = round(base_max_stamina * upgrade.stat_adapter)
+		var new_max_stat_value = base_max_stamina + upgrade.level
 		set_max_stat_value(new_max_stat_value)
+	
+		var new_regen_time = base_stamina_regen_time / upgrade.stat_adapter
+		_set_regen_time(new_regen_time)

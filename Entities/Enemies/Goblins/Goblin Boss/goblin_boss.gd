@@ -9,9 +9,9 @@ extends Enemy
 @export var dash_range := 120.0
 @export var ranged_min_distance := 80.0
 
-@export var attack_damage := 1.0
-@export var spin_damage := 1.5
-@export var dash_damage := 1.5
+@export var attack_damage : int = 1
+@export var spin_damage : int = 2
+@export var dash_damage : int = 2
 
 @export var attack_cooldown := 2.0
 @export var spin_cooldown := 4.0

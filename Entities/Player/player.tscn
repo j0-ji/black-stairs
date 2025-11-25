@@ -214,7 +214,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01a4e"]
-radius = 22.022715
+radius = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lub02"]
 
@@ -334,5 +334,3 @@ parent = NodePath("..")
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
-
-[connection signal="player_dashed" from="StateMachine/Dash" to="." method="_on_dash_player_dashed"]

@@ -155,6 +155,7 @@ shape = SubResource("RectangleShape2D_w0q5k")
 script = ExtResource("5_lty46")
 base_max_health = 4
 base_health_regen_time = 4.5
+is_regeneratable = true
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://dplgw62coxdtx"
 

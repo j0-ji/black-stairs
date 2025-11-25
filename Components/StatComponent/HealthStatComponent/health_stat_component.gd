@@ -28,9 +28,6 @@ func _set_regen_time(new_regen_time) -> void:
 	super._set_regen_time(new_regen_time)
 
 func take_damage(amount: int):
-	# round amount up or down
-	# make it int
-	# subtract from current health
 	if !is_dead:
 		var current_health = max(current_stat_value - amount, 0)
 		set_current_stat_value(current_health)
