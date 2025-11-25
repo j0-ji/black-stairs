@@ -23,7 +23,6 @@ var is_shooting := false
 
 func _ready():
 	health.died.connect(_on_died)
-	health.health_changed.connect(_on_health_changed)
 	
 	player = get_tree().get_first_node_in_group("player")
 
@@ -116,12 +115,6 @@ func take_damage(amount: float):
 	if is_dead:
 		return
 	health.take_damage(amount)
-
-func _on_health_changed(_new_hp: float) -> void:
-	modulate = Color(1, 0, 0)
-
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
 
 func _on_died():
 	is_dead = true

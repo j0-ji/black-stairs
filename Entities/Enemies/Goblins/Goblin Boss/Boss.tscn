@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5xujinwppj3g" path="res://Entities/Enemies/Goblins/Goblin Boss/goblin_boss.gd" id="1_vi125"]
 [ext_resource type="Texture2D" uid="uid://d0r2s3vv78bha" path="res://Entities/Enemies/Goblins/Goblin Boss/goblin_boss_spritesheet.png" id="2_3q1kc"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="3_g52pa"]
+[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Components/StatComponent/HealthStatComponent/health_stat_component.gd" id="3_g52pa"]
 [ext_resource type="PackedScene" uid="uid://de8hrwxtewa8u" path="res://Components/ItemDropComponent/ItemDropComponent.tscn" id="4_g52pa"]
 [ext_resource type="PackedScene" uid="uid://4gr44l3rff1x" path="res://Components/HealthBarComponent/HealthBarComponent.tscn" id="5_w6khr"]
 

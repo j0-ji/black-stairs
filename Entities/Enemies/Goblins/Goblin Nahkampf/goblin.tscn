@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://byqgw38hpf0i7" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.gd" id="1_hqea3"]
 [ext_resource type="Shader" uid="uid://dbc8qlc4hudwd" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.gdshader" id="2_varqx"]
 [ext_resource type="Texture2D" uid="uid://dputvhfj314w2" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/base_goblin_spritesheet.png" id="3_mhh2a"]
-[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Common/health.gd" id="4_ag0ao"]
+[ext_resource type="Script" uid="uid://dplgw62coxdtx" path="res://Components/StatComponent/HealthStatComponent/health_stat_component.gd" id="4_ag0ao"]
 [ext_resource type="PackedScene" uid="uid://de8hrwxtewa8u" path="res://Components/ItemDropComponent/ItemDropComponent.tscn" id="5_mhh2a"]
 [ext_resource type="PackedScene" uid="uid://4gr44l3rff1x" path="res://Components/HealthBarComponent/HealthBarComponent.tscn" id="6_osqgq"]
 

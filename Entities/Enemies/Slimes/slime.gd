@@ -40,7 +40,6 @@ func _ready() -> void:
 
 	# Setup health
 	health.died.connect(_on_died)
-	health.health_changed.connect(_on_health_changed)
 
 func _physics_process(delta) -> void:
 	if is_dead:
@@ -133,12 +132,6 @@ func _play_idle_animation() -> void:
 	anim.flip_h = false
 
 # --- Health / death ---
-func _on_health_changed(_new_hp : float) -> void:
-	modulate = Color(1, 0, 0)
-
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
-
 func _on_died() -> void:
 	is_dead = true       # prevent further actions
 	velocity = Vector2.ZERO

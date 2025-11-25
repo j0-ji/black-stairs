@@ -5,7 +5,7 @@ extends Node2D
 @export var max_dungeon_level : int = 5
 
 func _ready() -> void:
-	_player.died.connect(_on_player_died)
+	_player.health.died.connect(_on_player_died)
 	_current()
 
 func _go_to_stairs() -> void:
@@ -129,6 +129,7 @@ func _get_valid_location(i : int = 0) -> Node2D:
 	return location
 
 func _on_player_died() -> void:
+	await EventBus.play_transition_event("", "Defeated", "As he roamed the dungeon the trader found you critically injured and brought you back to the village. What a happy coincidence.")
 	# reset dungeon level progress
 	SaveGameManager.global_data.current_dungeon_level = 0
 	# return player to village and spawn him at bed

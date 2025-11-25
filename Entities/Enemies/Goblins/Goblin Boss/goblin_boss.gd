@@ -68,7 +68,8 @@ func _ready():
 
 	health.died.connect(_on_died)
 	health = $Health
-	health.health_changed.connect(_on_health_changed)
+
+	health.health_updated.connect(_on_health_updated)
 
 	_setup_timers()
 
@@ -280,17 +281,12 @@ func shoot_projectile():
 
 
 # --- Damage & Enrage ---
-func _on_health_changed(current_health: float):
+func _on_health_updated(current_health: float):
 	if is_dead:
 		return
 	
 	if not enraged and current_health <= health.max_health * 0.5:
 		enter_enraged_phase()
-	
-	modulate = Color(1, 0, 0)
-	
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
 
 func enter_enraged_phase():
 	enraged = true

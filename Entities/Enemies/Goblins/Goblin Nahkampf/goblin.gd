@@ -35,7 +35,6 @@ var hitbox_offset_left := Vector2(-26, 0)
 # --- Ready ---
 func _ready():
 	health.died.connect(_on_died)
-	health.health_changed.connect(_on_health_changed)
 
 	player = get_tree().get_first_node_in_group("player")
 
@@ -147,12 +146,6 @@ func _play_idle_animation():
 	anim.flip_h = false
 
 # --- Health / death ---
-func _on_health_changed(_new_hp: float) -> void:
-	modulate = Color(1, 0, 0)
-
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
-
 func _on_died():
 	is_dead = true
 	is_attacking = false

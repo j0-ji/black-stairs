@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bno766mk53d86"]
+[gd_scene load_steps=6 format=3 uid="uid://bno766mk53d86"]
 
 [ext_resource type="PackedScene" uid="uid://dnnw2j7e22qcv" path="res://UI/HUD/StatBar/AttributeTrackingProgressBar.tscn" id="1_cswxj"]
 [ext_resource type="Texture2D" uid="uid://cafo3s6nsdlna" path="res://UI/HUD/StatBar/progress_bars.png" id="2_m87nb"]
+[ext_resource type="Script" uid="uid://dtvsgkrtwbjg8" path="res://UI/HUD/StatBar/StaminaBar/stamina_bar.gd" id="3_alq7p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qitl"]
 atlas = ExtResource("2_m87nb")
@@ -15,5 +16,6 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 modulate_color = Color(1, 0.9490196, 0, 1)
 
-[node name="StaminaBar" instance=ExtResource("1_cswxj")]
+[node name="StaminaBar" groups=["receive_player_registration"] instance=ExtResource("1_cswxj")]
 theme_override_styles/fill = SubResource("StyleBoxTexture_alq7p")
+script = ExtResource("3_alq7p")

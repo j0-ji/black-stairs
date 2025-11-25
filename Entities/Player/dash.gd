@@ -16,13 +16,12 @@ var dash_direction := Vector2.ZERO
 var dash_speed := 0.0
 
 func _on_enter() -> void:
-	# Wenn keine Stamina → Dash abbrechen
-	if player.stamina <= 0:
+	# Stamina verbrauchen
+	var used_stamina : bool = player.stamina.use_stamina(1)
+	# Falls nicht möglich, da keine stamina mehr -> Dash abbrechen
+	if !used_stamina:
 		transition.emit("idle")
 		return
-
-	# Stamina verbrauchen
-	player.stamina -= 1
 
 	is_dashing = true
 	dash_timer = dash_duration
