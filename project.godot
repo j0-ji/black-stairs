@@ -23,6 +23,7 @@ UpgradeManager="*res://Utilities/upgrade_manager.gd"
 WalletManager="*res://Utilities/wallet_manager.gd"
 EventBus="*res://Utilities/event_bus.gd"
 SaveGameManager="*res://Utilities/save_game_manager.gd"
+MusicManager="*res://Utilities/music_manager.gd"
 
 [display]
 

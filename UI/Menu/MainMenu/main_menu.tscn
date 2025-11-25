@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8kdtw08ido66"]
+[gd_scene load_steps=6 format=3 uid="uid://c8kdtw08ido66"]
 
 [ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_krb2f"]
 [ext_resource type="Script" uid="uid://csbpto2l6hlb2" path="res://UI/Menu/MainMenu/main_menu.gd" id="1_lbwne"]
 [ext_resource type="PackedScene" uid="uid://c07tu1kqw4a4k" path="res://UI/Menu/background.tscn" id="2_krb2f"]
 [ext_resource type="PackedScene" uid="uid://bqs3v5no0brmu" path="res://UI/Menu/CreditsScreen/Credits.tscn" id="4_q8ku3"]
+[ext_resource type="PackedScene" uid="uid://cttmjejp515b7" path="res://UI/Menu/SettingsScreen/Settings.tscn" id="5_5nj3q"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("continue_button", "credits_screen", "_menu_camera")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("continue_button", "credits_screen", "settings_screen", "_menu_camera")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +21,7 @@ theme = ExtResource("1_krb2f")
 script = ExtResource("1_lbwne")
 continue_button = NodePath("MarginContainer/MenuOptions/Continue")
 credits_screen = NodePath("Credits")
+settings_screen = NodePath("Settings")
 _menu_camera = NodePath("MenuCamera")
 metadata/_edit_use_anchors_ = true
 
@@ -70,6 +72,12 @@ layout_mode = 2
 theme_type_variation = &"CustomMenuButton"
 text = "New Game"
 
+[node name="Settings" type="Button" parent="MarginContainer/MenuOptions"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"CustomMenuButton"
+text = "Settings"
+
 [node name="Credits" type="Button" parent="MarginContainer/MenuOptions"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -94,7 +102,12 @@ text = "v0.1"
 visible = false
 layout_mode = 1
 
+[node name="Settings" parent="." instance=ExtResource("5_5nj3q")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MarginContainer/MenuOptions/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuOptions/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuOptions/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuOptions/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuOptions/Quit" to="." method="_on_quit_pressed"]
