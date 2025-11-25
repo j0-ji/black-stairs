@@ -28,7 +28,7 @@ func _on_enter() -> void:
 	# Start the hitbox activation process
 	_activate_hitbox_temporarily()
 
-func _on_physics_process(delta: float) -> void:
+func _on_physics_process(_delta: float) -> void:
 	owner.velocity = Vector2.ZERO
 	owner.move_and_slide()
 

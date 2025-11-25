@@ -3,21 +3,39 @@ extends Node2D
 signal went_through_exit
 
 @export var hint : PanelContainer
-var _player_inside := false
+@export var sprite : Sprite2D
+var _player_inside : bool = false
+var is_locked : bool = false
+
+const TEXTURE_UNLOCKED : Texture = preload("res://Entities/Map/Exit/exit.png")
+const TEXTURE_LOCKED : Texture = preload("res://Entities/Map/Exit/exit_locked.png")
 
 func _ready() -> void:
 	hint.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _player_inside and event.is_action_pressed("interaction"):
-		went_through_exit.emit()
+		if !is_locked:
+			went_through_exit.emit()
+		else:
+			EventBus.player_message.emit("Defeat the Boss(es) first.")
 
 func _on_interactable_activated(body) -> void:
 	if body.is_in_group("player"):
 		_player_inside = true
-		hint.visible = true
+		if !is_locked:
+			hint.visible = true
 
 func _on_interactable_deactivated(body) -> void:
 	if body.is_in_group("player"):
 		_player_inside = false
 		hint.visible = false
+
+func lock() -> void:
+	sprite.texture = TEXTURE_LOCKED
+	is_locked = true
+
+func unlock() -> void:
+	sprite.texture = TEXTURE_UNLOCKED
+	is_locked = false
+	EventBus.player_message.emit("Exit unlocked")

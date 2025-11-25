@@ -43,8 +43,9 @@ _entrance = NodePath("../../IO/Entrance")
 _exit = NodePath("../../IO/Exit")
 map_layer = NodePath("../../IO")
 
-[node name="Enemies" type="Node" parent="MapGenerator" node_paths=PackedStringArray("_ground", "_flora", "_io", "map_layer")]
+[node name="Enemies" type="Node" parent="MapGenerator" node_paths=PackedStringArray("_dungeon", "_ground", "_flora", "_io", "map_layer")]
 script = ExtResource("6_mjdru")
+_dungeon = NodePath("../..")
 _ground = NodePath("../../Ground")
 _flora = NodePath("../../Flora")
 _io = NodePath("../../IO")
