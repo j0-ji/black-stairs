@@ -88,8 +88,7 @@ func _next() -> void:
 		if SaveGameManager.global_data.current_dungeon_level < max_dungeon_level:
 			_go_to_stairs()
 		else:
-			EventBus.play_transition.emit("You defeated", "Gor'Khaz the Crown of Endless Hunger", "After defeating the boss you decided to return to the Village.")
-			await get_tree().create_timer(0.5).timeout  # half-second delay
+			await EventBus.play_transition_event("You defeated", "Gor'Khaz the Crown of Endless Hunger", "After defeating the boss you decided to return to the Village.")
 			SaveGameManager.global_data.current_dungeon_level = 0
 			_go_to_village_entrance()
 	elif SaveGameManager.global_data.current_location == "Stairs":
