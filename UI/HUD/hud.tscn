@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qb7gthb0k6le"]
+[gd_scene load_steps=7 format=3 uid="uid://qb7gthb0k6le"]
 
 [ext_resource type="PackedScene" uid="uid://bwcg0udb6b7qk" path="res://UI/HUD/CoinsAndUpgradePanel/CoinAndUpgradePanel.tscn" id="1_ia7gp"]
 [ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="1_ing8j"]
 [ext_resource type="Script" uid="uid://c0wwde60ui6m7" path="res://UI/HUD/hud.gd" id="1_qdh7y"]
 [ext_resource type="PackedScene" uid="uid://wxagn27wle1n" path="res://UI/HUD/Shop/Shop.tscn" id="3_te8l2"]
 [ext_resource type="PackedScene" uid="uid://x36iq3d48x17" path="res://UI/HUD/HealthStaminaAndLevelPanel/HealthStaminaAndLevelPanel.tscn" id="5_radol"]
+[ext_resource type="PackedScene" uid="uid://dexwia16wvhsa" path="res://UI/HUD/PlayerMessage/PlayerMessage.tscn" id="6_dhie7"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("shop", "health_stamina_and_location")]
 script = ExtResource("1_qdh7y")
@@ -51,3 +52,8 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="PlayerMessage" parent="MarginContainer" instance=ExtResource("6_dhie7")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
