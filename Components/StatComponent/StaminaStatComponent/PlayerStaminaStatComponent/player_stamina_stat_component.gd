@@ -17,9 +17,6 @@ func _set_regen_time(new_regen_time) -> void:
 func _on_upgrade(upgrade : Upgrade) -> void:
 	super._on_upgrade(upgrade)
 
-func register_parent_entity(entity : CharacterBody2D) -> void:
-	super.register_parent_entity(entity)
-
 func use_stamina(amount : int) -> bool:
 	return super.use_stamina(amount)
 

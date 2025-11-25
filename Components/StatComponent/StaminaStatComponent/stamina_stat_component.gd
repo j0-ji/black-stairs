@@ -34,11 +34,8 @@ func _on_upgrade(upgrade : Upgrade) -> void:
 	var new_regen_time = base_stamina_regen_time / upgrade.stat_adapter
 	_set_regen_time(new_regen_time)
 
-func register_parent_entity(entity : CharacterBody2D) -> void:
-	super.register_parent_entity(entity)
-
 func use_stamina(amount : int) -> bool:
-	if amount < current_stat_value:
+	if amount <= current_stat_value:
 		var new_current_stat_value = current_stat_value - amount
 		set_current_stat_value(new_current_stat_value)
 		return true

@@ -5,6 +5,9 @@ signal upgraded_health_regen(upgrade : Upgrade)
 signal upgraded_damage(upgrade : Upgrade)
 signal upgraded_stamina(upgrade : Upgrade)
 signal upgraded_speed(upgrade : Upgrade)
+
+signal upgrades_changed(upgrade_name : String)
+
 signal not_wealthy_enough
 
 var _upgrades : Dictionary
@@ -38,6 +41,8 @@ func add_upgrade_level(upgrade_name : String) -> void:
 		# before it gets increased by adding a level
 		WalletManager.update_wealth(-upgrade.price)
 		upgrade.add_level()
+		
+		upgrades_changed.emit(upgrade_name)
 		
 		match upgrade_name:
 			"health":

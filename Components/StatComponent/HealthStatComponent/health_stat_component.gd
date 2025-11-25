@@ -1,7 +1,7 @@
 class_name HealthStatComponent
 extends StatComponent
 
-signal died
+signal died(global_position : Vector2)
 signal health_updated(new_health : int)
 signal max_health_updated(new_max_health : int)
 
@@ -38,7 +38,7 @@ func take_damage(amount: int):
 	
 		if current_stat_value <= 0:
 			is_dead = true
-			died.emit()
+			died.emit(parent.global_position)
 
 func _on_upgrade(upgrade : Upgrade) -> void:
 	super._on_upgrade(upgrade)
@@ -53,12 +53,9 @@ func _on_upgrade(upgrade : Upgrade) -> void:
 		var new_regen_time = base_health_regen_time / upgrade.stat_adapter
 		_set_regen_time(new_regen_time)
 
-func register_parent_entity(entity : CharacterBody2D) -> void:
-	super.register_parent_entity(entity)
-
 func _blink_red() -> void:
 	if parent != null:
 		parent.modulate = Color(1, 0, 0)
 
 		var tween = create_tween()
-		tween.tween_property(parent, "modulate", Color(1, 1, 1), 0.15)
+		tween.tween_property(parent, "modulate", Color(1, 1, 1), 0.2)

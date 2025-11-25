@@ -5,11 +5,11 @@ var base_stat_value : int
 var max_stat_value : int
 var current_stat_value : int
 
-var is_regeneratable : bool = false
+@export var is_regeneratable : bool = false
 var regen_time : float
 var regen_accumulator : float = 0.0
 
-var parent : CharacterBody2D
+@export var parent : CharacterBody2D
 
 func _ready() -> void:
 	pass
@@ -32,6 +32,3 @@ func _set_regen_time(new_regen_time) -> void:
 
 func _on_upgrade(_upgrade : Upgrade) -> void:
 	pass
-
-func register_parent_entity(entity : CharacterBody2D) -> void:
-	parent = entity

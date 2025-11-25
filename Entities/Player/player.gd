@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	# --- Connect Signals ---
 	WalletManager.got_poorer.connect(_coins_removed)
+	WalletManager.got_richer.connect(_coins_added)
 	
 	#  --- Connect self to all other nodes that depend on player --- 
 	get_tree().call_group("receive_player_registration", "register_player", self)
@@ -41,5 +42,18 @@ func _coins_removed() -> void:
 	tween.set_parallel(true)
 	tween.tween_property(coin_dummy_instance, "position", target_position, 1.0)
 	tween.tween_property(coin_dummy_instance, "scale", Vector2(0.5, 0.5), 1.0)
+	tween.set_parallel(false)
+	tween.tween_callback(coin_dummy_instance.queue_free)
+
+func _coins_added() -> void:
+	var coin_dummy_instance = coin_dummy_scene.instantiate()
+	coin_dummy_instance.global_position = Vector2(global_position.x, global_position.y - 25)
+	get_tree().root.add_child(coin_dummy_instance)
+	var target_position = Vector2(global_position.x, global_position.y - 15)
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(coin_dummy_instance, "position", target_position, 0.5)
+	tween.tween_property(coin_dummy_instance, "scale", Vector2(0.5, 0.5), 0.5)
 	tween.set_parallel(false)
 	tween.tween_callback(coin_dummy_instance.queue_free)

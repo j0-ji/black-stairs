@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-# --- signal ---
-signal died(_global_position : Vector2, _coins : int)
+extends Enemy
 
 # --- Movement / burst ---
 @export var wander_speed := 40.0        # normal wandering speed
@@ -11,17 +8,13 @@ signal died(_global_position : Vector2, _coins : int)
 @export var burst_cooldown := 1.5       # time between bursts
 
 # --- Health / combat ---
-@export var contact_damage := 3         # damage to player on contact
+@export var contact_damage : int = 3         # damage to player on contact
 @export var dash_speed := 120.0         # speed when dashing away after hit
 @export var dash_duration := 0.3        # duration of dash-away
-
-# --- Items ---
-@export var coins : int = 2
 
 # --- State variables ---
 var player: Node2D
 var is_aggro := false
-var is_dead := false  # new variable
 
 var wander_direction := Vector2.ZERO
 var wander_timer := 0.0
@@ -33,7 +26,6 @@ var has_hit_player := false
 
 # --- Nodes ---
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health: Health = $Health
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -42,7 +34,7 @@ func _ready() -> void:
 	health.died.connect(_on_died)
 
 func _physics_process(delta) -> void:
-	if is_dead:
+	if health.is_dead:
 		# Stop all movement if dead
 		velocity = Vector2.ZERO
 		return
@@ -120,22 +112,21 @@ func _hit_player() -> void:
 
 # --- Animations ---
 func _play_move_animation() -> void:
-	if is_dead:
+	if health.is_dead:
 		return
 	anim.play("idle")
 	anim.flip_h = velocity.x < 0
 
 func _play_idle_animation() -> void:
-	if is_dead:
+	if health.is_dead:
 		return
 	anim.play("idle")
 	anim.flip_h = false
 
 # --- Health / death ---
-func _on_died() -> void:
-	is_dead = true       # prevent further actions
+func _on_died(_pos : Vector2) -> void:
 	velocity = Vector2.ZERO
+	anim.stop()
 	anim.play("death") # play death animation
 	await anim.animation_finished
-	died.emit(global_position, coins)
-	queue_free()   
+	queue_free()

@@ -10,8 +10,8 @@ func _ready() -> void:
 	_health = _parent.get_node_or_null("Health")
 	
 	if _health != null:
-		max_value = _health.max_health
-		value = _health.current_health
+		max_value = _health.max_stat_value
+		value = _health.current_stat_value
 		_health.health_updated.connect(_on_health_updated)
 		_health.died.connect(_on_disable)
 	else:

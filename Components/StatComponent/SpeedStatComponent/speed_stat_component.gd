@@ -19,6 +19,3 @@ func _on_upgrade(upgrade : Upgrade) -> void:
 	
 	var new_max_stat_value = round(base_max_speed * upgrade.stat_adapter)
 	set_max_stat_value(new_max_stat_value)
-
-func register_parent_entity(entity : CharacterBody2D) -> void:
-	super.register_parent_entity(entity)

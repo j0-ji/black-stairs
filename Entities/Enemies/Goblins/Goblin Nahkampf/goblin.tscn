@@ -150,9 +150,10 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4dfs"]
 
-[node name="Goblin" type="CharacterBody2D" groups=["enemies"]]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 collision_layer = 8
 script = ExtResource("1_hqea3")
+health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oti5c")
@@ -173,11 +174,15 @@ shape = SubResource("CapsuleShape2D_ag0ao")
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_k4dfs")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("4_ag0ao")
-base_health = 5.0
+base_max_health = 5
+base_health_regen_time = 4.5
+parent = NodePath("..")
 
-[node name="ItemDropComponent" parent="." instance=ExtResource("5_mhh2a")]
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_mhh2a")]
+coin_amount = 3
+enemy = NodePath("..")
 
 [node name="HealthBarComponent" parent="." instance=ExtResource("6_osqgq")]
 offset_left = -12.0

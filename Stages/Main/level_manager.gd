@@ -128,12 +128,12 @@ func _get_valid_location(i : int = 0) -> Node2D:
 	
 	return location
 
-func _on_player_died() -> void:
+func _on_player_died(_global_position : Vector2) -> void:
 	await EventBus.play_transition_event("", "Defeated", "As he roamed the dungeon the trader found you critically injured and brought you back to the village. What a happy coincidence.")
 	# reset dungeon level progress
 	SaveGameManager.global_data.current_dungeon_level = 0
 	# return player to village and spawn him at bed
 	await _go_to_village_bed()
 	# reset players health and stamina to full
-	_player.health.current_health = _player.health.max_health
-	_player.stamina = _player.max_stamina
+	_player.health.reset()
+	_player.stamina.reset()

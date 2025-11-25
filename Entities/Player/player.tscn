@@ -251,11 +251,15 @@ func _shoot_arrow_delayed() -> void:
 	get_parent().add_child(arrow)
 "
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["collector", "player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "health", "stamina", "speed", "camera") groups=["collector", "player"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_t61fv")
+state_machine = NodePath("StateMachine")
+health = NodePath("Health")
+stamina = NodePath("Stamina")
+speed = NodePath("Speed")
 camera = NodePath("Camera")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -321,10 +325,13 @@ base_stamina_regen_time = 4.0
 [node name="Speed" parent="." instance=ExtResource("14_r8fok")]
 base_max_speed = 150
 
-[node name="Health" parent="." instance=ExtResource("13_xr8lj")]
+[node name="Health" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_xr8lj")]
 base_max_health = 10
+base_health_regen_time = 2.0
+parent = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 

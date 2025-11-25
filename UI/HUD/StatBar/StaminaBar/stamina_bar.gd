@@ -9,8 +9,8 @@ func register_player(p : Player) -> void:
 	_player.stamina.max_stamina_updated.connect(update_max_value)
 	_player.stamina.stamina_updated.connect(update_value)
 	
-	update_max_value(_player.stamina.max_stamina)
-	update_value(_player.stamina.current_stamina)
+	update_max_value(_player.stamina.max_stat_value)
+	update_value(_player.stamina.current_stat_value)
 
 func update_max_value(_new_max_value : float) -> void:
 	super.update_max_value(_new_max_value)

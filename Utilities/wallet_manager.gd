@@ -2,6 +2,7 @@ extends Node
 
 signal wallet_changed
 signal got_poorer
+signal got_richer
 
 var wallet : Dictionary
 
@@ -16,6 +17,7 @@ func reset_or_initialize() -> void:
 func add_coin() -> void:
 	wallet.coins += 1
 	wallet_changed.emit()
+	got_richer.emit()
 
 func get_wealth() -> int:
 	return wallet.coins

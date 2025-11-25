@@ -64,9 +64,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipj2"]
 size = Vector2(12, 8)
 
-[node name="Slime" type="CharacterBody2D" groups=["enemies"]]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 collision_layer = 8
 script = ExtResource("1_gj73b")
+health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gj73b")
@@ -76,11 +77,15 @@ animation = &"idle"
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tipj2")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("3_a2gep")
-base_health = 3.0
+base_max_health = 3
+base_health_regen_time = 5.0
+parent = NodePath("..")
 
-[node name="ItemDropComponent" parent="." instance=ExtResource("4_nqm2k")]
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_nqm2k")]
+coin_amount = 2
+enemy = NodePath("..")
 
 [node name="HealthBarComponent" parent="." instance=ExtResource("5_8h8lh")]
 offset_left = -12.0
