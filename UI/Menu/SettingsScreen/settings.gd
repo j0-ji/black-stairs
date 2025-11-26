@@ -2,6 +2,7 @@ extends Control
 
 func _on_close_pressed() -> void:
 	visible = false
+	SaveGameManager.save_settings()
 
 func _on_h_slider_value_changed(value: float) -> void:
 	MusicManager.set_volume(value)
