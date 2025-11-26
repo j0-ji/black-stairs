@@ -223,6 +223,7 @@ script/source = "extends NodeState
 
 @onready var anim: AnimatedSprite2D = $\"../../AnimatedSprite2D\"
 
+@export var player : Player
 @export var attack_delay := 0.2         # animation plays for a bit
 @export var arrow_scene: PackedScene    # arrow scene
 @export var attack_speed := 300.0       # arrow speed
@@ -242,8 +243,9 @@ func _on_next_transitions() -> void:
 
 func _shoot_arrow_delayed() -> void:
 	await get_tree().create_timer(attack_delay).timeout
-	var arrow = arrow_scene.instantiate()
-	arrow.position = owner.global_position
+	var arrow : Arrow = arrow_scene.instantiate()
+	arrow.set_collision_layer_and_mask(player)
+	arrow.position = owner.global_position + Vector2(0, -6) # put  the arrow 8 pixel up to match the sprite of the player
 	# direction to mouse pointer
 	var target = owner.get_global_mouse_position()
 	arrow.direction = (target - owner.global_position).normalized()
@@ -308,8 +310,9 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("7_7a1se")
 
-[node name="Attack_Ranged" type="Node" parent="StateMachine"]
+[node name="Attack_Ranged" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = SubResource("GDScript_lub02")
+player = NodePath("../..")
 arrow_scene = ExtResource("9_x1y6q")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
