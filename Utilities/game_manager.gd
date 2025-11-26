@@ -71,7 +71,8 @@ func _toggle_menu_pause() -> void:
 	if get_tree().paused:
 		# Unpause
 		get_tree().paused = false
-		
+		MusicManager.stop_menu_music()
+		MusicManager.resume_music()
 		if get_tree().root.has_node(menu_pause_root_path):
 			var menu_pause_node = get_tree().root.get_node(menu_pause_root_path)
 			menu_pause_node.queue_free()
@@ -80,7 +81,8 @@ func _toggle_menu_pause() -> void:
 	else:
 		# Pause
 		get_tree().paused = true
-		
+		MusicManager.pause_music()
+		MusicManager.play_menu_music(MusicManager.music_menu)
 		var menu_pause_instance = menu_pause.instantiate()
 		get_tree().root.add_child(menu_pause_instance)
 

@@ -15,6 +15,7 @@ func _go_to_stairs() -> void:
 	_set_listener_for_entrance()
 	_set_listener_for_exit()
 	_set_player_on_entrance_spawn_point()
+	MusicManager.play_preloaded(MusicManager.music_menu)
 	SaveGameManager.save_game()
 
 func _go_to_next_dungeon_level() -> void:
@@ -25,6 +26,10 @@ func _go_to_next_dungeon_level() -> void:
 	await get_tree().process_frame
 	_set_player_on_entrance_spawn_point()
 	_set_listener_for_exit()
+	if(SaveGameManager.global_data.current_dungeon_level < 5):
+		MusicManager.play_preloaded(MusicManager.music_dungeon)
+	else:
+		MusicManager.play_preloaded(MusicManager.music_boss)
 
 func _go_to_village_entrance() -> void:
 	SaveGameManager.global_data.set_current_location("Village")
@@ -33,6 +38,7 @@ func _go_to_village_entrance() -> void:
 	await get_tree().process_frame
 	_set_player_on_entrance_spawn_point()
 	_set_listener_for_exit()
+	MusicManager.play_preloaded(MusicManager.music_village)
 	SaveGameManager.save_game()
 
 func _go_to_village_bed() -> void:
@@ -42,6 +48,7 @@ func _go_to_village_bed() -> void:
 	await get_tree().process_frame
 	_set_player_on_bed_spawn_point()
 	_set_listener_for_exit()
+	MusicManager.play_preloaded(MusicManager.music_village)
 	SaveGameManager.save_game()
 
 func _set_player_on_entrance_spawn_point() -> void:
