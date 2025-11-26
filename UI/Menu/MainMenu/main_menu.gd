@@ -4,6 +4,8 @@ extends Control
 
 @export var credits_screen : Control
 
+@export var settings_screen: Control
+
 @export var _menu_camera : Camera2D
 
 func _ready() -> void:
@@ -13,6 +15,8 @@ func _ready() -> void:
 	if !SaveGameManager.save_file_exists():
 		continue_button.disabled = true
 		continue_button.focus_mode = Control.FOCUS_NONE
+	
+	MusicManager.play_preloaded(MusicManager.music_menu)	
 
 func _on_new_game_pressed() -> void:
 	GameManager.new_game()
@@ -24,6 +28,9 @@ func _on_continue_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	credits_screen.visible = true
+
+func _on_settings_pressed() -> void:
+	settings_screen.visible = true
 
 func _on_quit_pressed() -> void:
 	GameManager.exit_game()

@@ -148,7 +148,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_s1gsp")
 [node name="MusicListLabel" type="Label" parent="CreditsPanel/MarginContainer/VBoxContainer/Music/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"InventoryLabel"
-text = "...
+text = "Doug Terhune (itch.io/profile/juzek)
 "
 
 [node name="Close" type="Button" parent="CreditsPanel/MarginContainer/VBoxContainer"]
