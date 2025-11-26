@@ -7,9 +7,9 @@ func _on_process(_delta: float) -> void:
 	pass
 
 func _on_physics_process(_delta: float) -> void:		
-	if player.anim_direction == Vector2.LEFT:
+	if player.anim_direction.x == Vector2.LEFT.x:
 		animated_sprite_2d.play('idle_left')
-	elif player.anim_direction == Vector2.RIGHT:
+	elif player.anim_direction.x == Vector2.RIGHT.x:
 		animated_sprite_2d.play('idle_right')
 	else:
 		animated_sprite_2d.play('idle_right') 
