@@ -9,7 +9,7 @@ var _base_stat_adapter : float
 var _base_adapter_of_stat_adapter : float
 var _price_increase : int
 
-func _init(_name : String = "placeholder", _price : int = 2, _level : int = 0, _stat_adapter : float = 1.0, base_stat_adapter : float = 0.3, base_adapter_of_stat_adapter : float = 0.9, base_price_increase : int = 1) -> void:
+func _init(_name : String = "placeholder", _price : int = 10, _level : int = 0, _stat_adapter : float = 1.0, base_stat_adapter : float = 0.05, base_adapter_of_stat_adapter : float = 0.90, base_price_increase : int = 2) -> void:
 	name = _name
 	price = _price
 	level = _level

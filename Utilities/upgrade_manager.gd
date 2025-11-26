@@ -28,7 +28,7 @@ func reset_or_initialize() -> void:
 	_upgrades.get_or_add("health", Upgrade.new("health"))
 	_upgrades.get_or_add("health_regen", Upgrade.new("health_regen"))
 	_upgrades.get_or_add("damage", Upgrade.new("damage"))
-	_upgrades.get_or_add("stamina", Upgrade.new("stamina", 5, 0, 1.0, 0.95, 2))
+	_upgrades.get_or_add("stamina", Upgrade.new("stamina", 10, 0, 1.0, 0.5, 0.95, 2))
 	_upgrades.get_or_add("speed", Upgrade.new("speed"))
 
 func add_upgrade_level(upgrade_name : String) -> void:
