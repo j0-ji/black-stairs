@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://dd1pwuwgg8x6q"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dd1pwuwgg8x6q"]
 
 [ext_resource type="Texture2D" uid="uid://bkti54rrkasxm" path="res://UI/UI Ressources/ui_dark_frame.png" id="1_5q4n0"]
 [ext_resource type="Texture2D" uid="uid://rj4hltdwvf3k" path="res://UI/UI Ressources/ui_light_button.png" id="2_sesrp"]
@@ -8,7 +8,51 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxs55"]
 atlas = ExtResource("2_sesrp")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4no5k"]
+texture = SubResource("AtlasTexture_vxs55")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
+modulate_color = Color(0.54509807, 0.54509807, 0.54509807, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcik5"]
+texture = SubResource("AtlasTexture_vxs55")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ommfv"]
+texture = SubResource("AtlasTexture_vxs55")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
+modulate_color = Color(0.84313726, 0.7529412, 0.7019608, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7fkgw"]
+texture = SubResource("AtlasTexture_vxs55")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
+modulate_color = Color(0.89275575, 0.89275575, 0.8927557, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_54p2f"]
+texture = SubResource("AtlasTexture_vxs55")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
+modulate_color = Color(0.84313726, 0.7529412, 0.7019608, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tctf"]
 texture = SubResource("AtlasTexture_vxs55")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
@@ -54,17 +98,6 @@ texture_margin_bottom = 6.0
 atlas = ExtResource("4_sesrp")
 region = Rect2(5, 5, 6, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sesrp"]
-atlas = ExtResource("2_sesrp")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxs55"]
-texture = SubResource("AtlasTexture_sesrp")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 6.0
-
 [resource]
 default_font = ExtResource("3_5q4n0")
 Button/colors/font_color = Color(0.94509804, 0.8352941, 0.7647059, 1)
@@ -72,20 +105,21 @@ Button/colors/font_hover_pressed_color = Color(0.8901961, 0.69803923, 0.57254905
 Button/colors/font_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("3_5q4n0")
+Button/styles/disabled = SubResource("StyleBoxTexture_4no5k")
 Button/styles/focus = SubResource("StyleBoxTexture_jcik5")
-Button/styles/hover = SubResource("StyleBoxTexture_jcik5")
+Button/styles/hover = SubResource("StyleBoxTexture_ommfv")
 Button/styles/normal = SubResource("StyleBoxTexture_jcik5")
-Button/styles/pressed = SubResource("StyleBoxTexture_jcik5")
+Button/styles/pressed = SubResource("StyleBoxTexture_7fkgw")
 CustomMenuButton/base_type = &"Button"
 CustomMenuButton/colors/font_color = Color(0.94509804, 0.8352941, 0.7647059, 1)
-CustomMenuButton/colors/font_hover_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
-CustomMenuButton/colors/font_pressed_color = Color(0.8901961, 0.69803923, 0.57254905, 1)
+CustomMenuButton/colors/font_hover_pressed_color = Color(0.94509804, 0.8352941, 0.7647059, 1)
+CustomMenuButton/colors/font_pressed_color = Color(0.94509804, 0.8352941, 0.7647059, 1)
 CustomMenuButton/font_sizes/font_size = 16
 CustomMenuButton/fonts/font = ExtResource("3_5q4n0")
-CustomMenuButton/styles/focus = SubResource("StyleBoxTexture_jcik5")
-CustomMenuButton/styles/hover = SubResource("StyleBoxTexture_jcik5")
+CustomMenuButton/styles/focus = SubResource("StyleBoxTexture_ommfv")
+CustomMenuButton/styles/hover = SubResource("StyleBoxTexture_54p2f")
 CustomMenuButton/styles/normal = SubResource("StyleBoxTexture_jcik5")
-CustomMenuButton/styles/pressed = SubResource("StyleBoxTexture_jcik5")
+CustomMenuButton/styles/pressed = SubResource("StyleBoxTexture_8tctf")
 DarkWoodPanel/base_type = &"PanelContainer"
 DarkWoodPanel/styles/panel = SubResource("StyleBoxTexture_ufipx")
 EnemyHealthBar/base_type = &"ProgressBar"
@@ -111,8 +145,3 @@ ShopBuyButton/colors/font_pressed_color = Color(0.8901961, 0.69803923, 0.5725490
 ShopBuyButton/font_sizes/font_size = 8
 ShopBuyButton/fonts/font = ExtResource("3_5q4n0")
 ShopBuyButton/icons/icon = SubResource("AtlasTexture_4no5k")
-ShopBuyButton/styles/disabled = SubResource("StyleBoxTexture_vxs55")
-ShopBuyButton/styles/focus = SubResource("StyleBoxTexture_vxs55")
-ShopBuyButton/styles/hover = SubResource("StyleBoxTexture_vxs55")
-ShopBuyButton/styles/normal = SubResource("StyleBoxTexture_vxs55")
-ShopBuyButton/styles/pressed = SubResource("StyleBoxTexture_vxs55")
