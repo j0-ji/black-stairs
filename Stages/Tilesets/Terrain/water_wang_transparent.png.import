@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsx56jvm4gvim"
-path="res://.godot/imported/minimal-terrain-placeholders-atlas.png-02e7bf2d5608ef7fb0f1d02f418ed758.ctex"
+uid="uid://syby8ujwnjja"
+path="res://.godot/imported/water_wang_transparent.png-65cc544d832a63d237bad2eb24efac9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Tilesets/Terrain/minimal-terrain-placeholders-atlas.png"
-dest_files=["res://.godot/imported/minimal-terrain-placeholders-atlas.png-02e7bf2d5608ef7fb0f1d02f418ed758.ctex"]
+source_file="res://Stages/Tilesets/Terrain/water_wang_transparent.png"
+dest_files=["res://.godot/imported/water_wang_transparent.png-65cc544d832a63d237bad2eb24efac9a.ctex"]
 
 [params]
 

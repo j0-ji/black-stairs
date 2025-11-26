@@ -1,5 +1,7 @@
 extends MapLayer
 
+signal translate_tile_map_layer
+
 # Flags
 @export var feature_flag_hole_filling = true
 
@@ -68,6 +70,7 @@ func generate() -> void:
 			_update_cell(x, y)
 	
 	map_layer.update_internals()
+	translate_tile_map_layer.emit()
 	transition.emit()
 
 func _configure_noise() -> void:
