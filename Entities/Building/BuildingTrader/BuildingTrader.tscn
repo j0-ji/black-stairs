@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://c37hhq6bbhpdi"]
+[gd_scene load_steps=5 format=4 uid="uid://c37hhq6bbhpdi"]
 
 [ext_resource type="PackedScene" uid="uid://biubca7lr7sv8" path="res://Entities/Building/Building.tscn" id="1_1odly"]
 [ext_resource type="PackedScene" uid="uid://6ywuvds6mef2" path="res://Entities/NPCs/Trader/Trader.tscn" id="2_j8atw"]
+[ext_resource type="PackedScene" uid="uid://bytq6ry02bwg8" path="res://Entities/Map/Signs/WallSign/WallSign.tscn" id="3_dba1k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j8atw"]
 vertices = PackedVector2Array(89, 21.882813, 89, 75, 22, 75, 22, 21.109375)
@@ -24,3 +25,9 @@ navigation_polygon = SubResource("NavigationPolygon_j8atw")
 
 [node name="Trader" parent="NPCs" index="1" instance=ExtResource("2_j8atw")]
 position = Vector2(55, 40)
+
+[node name="WallSign" parent="." index="4" instance=ExtResource("3_dba1k")]
+position = Vector2(75, 96)
+message = "The Hero's Anvil
+
+Opening hours: 24/7"

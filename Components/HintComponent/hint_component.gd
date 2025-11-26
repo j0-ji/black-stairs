@@ -1,3 +1,4 @@
+class_name HintComponent
 extends PanelContainer
 
 @export var label : Label

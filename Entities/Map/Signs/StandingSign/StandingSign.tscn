@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2o7u2eeecpeg"]
+
+[ext_resource type="PackedScene" uid="uid://b40nucv2hc23a" path="res://Entities/Map/Signs/Sign.tscn" id="1_xjc1y"]
+[ext_resource type="Texture2D" uid="uid://cknltq4xqew5f" path="res://Entities/Map/Signs/signs.png" id="2_yv4un"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icwts"]
+atlas = ExtResource("2_yv4un")
+region = Rect2(16, 0, 16, 16)
+
+[node name="StandingSign" instance=ExtResource("1_xjc1y")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -7)
+texture = SubResource("AtlasTexture_icwts")
+
+[node name="HintComponent" parent="." index="2"]
+offset_top = -27.0
+offset_bottom = 12.999996

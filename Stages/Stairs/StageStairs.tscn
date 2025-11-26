@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b0lgpcbuvi3vr"]
+[gd_scene load_steps=9 format=4 uid="uid://b0lgpcbuvi3vr"]
 
 [ext_resource type="Script" uid="uid://ipvv3h1fic44" path="res://Stages/Stairs/stage_stairs.gd" id="1_dkl33"]
 [ext_resource type="TileSet" uid="uid://83ggmi0rh775" path="res://Stages/Tilesets/Terrain/terrain_tileset.tres" id="1_yqsrh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ckwy3x013o0on" path="res://Components/WorldToDisplayMapTranslationComponent/WorldToDisplayMapTranslationComponent.tscn" id="3_3m16u"]
 [ext_resource type="PackedScene" uid="uid://bvctap60e3v5l" path="res://Entities/Map/Exit/Exit.tscn" id="3_7tc4h"]
 [ext_resource type="PackedScene" uid="uid://6ywuvds6mef2" path="res://Entities/NPCs/Trader/Trader.tscn" id="5_7tc4h"]
+[ext_resource type="PackedScene" uid="uid://d2o7u2eeecpeg" path="res://Entities/Map/Signs/StandingSign/StandingSign.tscn" id="7_adr0d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3m16u"]
 vertices = PackedVector2Array(281, 170, 199.14063, 170, 176.78906, 147.64844, 165, 110.46094, 165, 97.14844, 174.02344, 58.34375, 197.84375, 37, 281, 37)
@@ -50,5 +51,13 @@ offset_top = -11.0
 offset_right = 127.99999
 offset_bottom = 28.999992
 rotation = 1.5707964
+
+[node name="NextLevelSign" parent="." instance=ExtResource("7_adr0d")]
+position = Vector2(85, 127)
+message = "Next Level, wuuu \\(°-°)/"
+
+[node name="BackToVillageSign" parent="." instance=ExtResource("7_adr0d")]
+position = Vector2(80, 46)
+message = "Here you can also go back to the village."
 
 [editable path="IO/Entrance"]
