@@ -1,3 +1,4 @@
+class_name WorldToDisplayMapTranslationComponent
 extends Node2D
 
 enum TileType {
@@ -11,7 +12,7 @@ enum TileType {
 
 @export var world_map: TileMapLayer
 
-# 4 TileMapLayers, ordered from bottom to top
+# Display TileMapLayers, ordered from bottom to top
 @export var display_layers: Array[TileMapLayer]
 
 ## For maps that are randomly generated
@@ -104,7 +105,7 @@ func set_world_tile(coord: Vector2i, t: TileType) -> void:
 	# or just store t in an own data structure.
 	_set_world_tile_visual(coord, t)
 
-	# Update the 4 display tiles that depend on this world coord
+	# Update the 4-5 display tiles that depend on this world coord
 	for offset in NEIGHBOURS:
 		var display_coord := coord - offset
 		_set_display_tile(display_coord)
@@ -137,11 +138,11 @@ func _refresh_all_display_tiles() -> void:
 
 
 func _set_display_tile(display_coord: Vector2i) -> void:
-	# Clear the 4 display layers at this coord
+	# Clear the display layers at this coord
 	for layer in display_layers:
 		layer.set_cell(display_coord, -1)
 	
-	# Get the 4 world materials for this tile (one per corner)
+	# Get the world materials for this tile (one per corner)
 	var corner_types: Array[TileType] = []
 	for offset in NEIGHBOURS:
 		var wc := display_coord + offset
@@ -162,7 +163,7 @@ func _set_display_tile(display_coord: Vector2i) -> void:
 			has_water = true
 			break
 	
-	# if theres water, also add sand to be displayed under it
+	# if there is water, also add sand to be displayed under it
 	if has_water and not unique_materials.has(TileType.SAND):
 		unique_materials.append(TileType.SAND)
 	
@@ -198,10 +199,10 @@ func _compute_mask_for_material(ground_material: int, corner_types: Array[TileTy
 	var mask := 0
 	
 	# order: [br, bl, tr, tl] matching NEIGHBOURS
-	if corner_types[0] == ground_material: mask |= 1 << 3 # bottom-right
-	if corner_types[1] == ground_material: mask |= 1 << 2 # bottom-left
-	if corner_types[2] == ground_material: mask |= 1 << 1 # top-right
-	if corner_types[3] == ground_material: mask |= 1 << 0 # top-left
+	if corner_types[0] == ground_material: mask |= 1 << 3 # top-left
+	if corner_types[1] == ground_material: mask |= 1 << 2 # top-right
+	if corner_types[2] == ground_material: mask |= 1 << 1 # bottom-left
+	if corner_types[3] == ground_material: mask |= 1 << 0 # bottom-right
 	
 	return mask
 
