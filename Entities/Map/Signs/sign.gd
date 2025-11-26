@@ -1,3 +1,4 @@
+class_name Sign
 extends Node2D
 
 @export_multiline var message : String
@@ -6,19 +7,17 @@ extends Node2D
 var _is_active : bool
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action("interaction") and _is_active:
+	if event.is_action_pressed("interaction") and _is_active:
 		EventBus.player_message.emit(message)
 
 
 func _on_interactable_activated(body : Node2D) -> void:
 	if body.is_in_group("player"):
 		_is_active = true
-	
-	hint_component.visible = true
+		hint_component.visible = true
 
 
 func _on_interactable_deactivated(body : Node2D) -> void:
 	if body.is_in_group("player"):
 		_is_active = false
-	
-	hint_component.visible = false
+		hint_component.visible = false

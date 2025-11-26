@@ -46,7 +46,7 @@ message = "Dungeon Entrance ->"
 
 [node name="HintSign" parent="Map/Buildings" instance=ExtResource("8_qkx38")]
 position = Vector2(165, 42)
-message = "I heared the endboss is at the 5th Dungeon level."
+message = "I heard the endboss is at the 5th Dungeon level."
 
 [node name="HintSign2" parent="Map/Buildings" instance=ExtResource("8_qkx38")]
 position = Vector2(91, 393)
@@ -54,7 +54,7 @@ message = "I really need to learn swimming :o"
 
 [node name="HintSign3" parent="Map/Buildings" instance=ExtResource("8_qkx38")]
 position = Vector2(612, 652)
-message = "I heared the boss is quite hard. Prepare good."
+message = "I heard the boss is quite hard. Prepare well."
 
 [node name="EntranceSign" parent="Map/Buildings" instance=ExtResource("8_qkx38")]
 position = Vector2(748, 381)
