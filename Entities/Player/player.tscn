@@ -131,7 +131,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 10.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,7 +151,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_ranged",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -265,8 +265,7 @@ camera = NodePath("Camera")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hv5x3")
-animation = &"idle_left"
-frame_progress = 0.1237764
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player_hitbox"]]
 position = Vector2(0, -2)
@@ -318,12 +317,14 @@ script = ExtResource("12_owvpp")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Stamina" parent="." instance=ExtResource("15_nhbkt")]
-base_max_stamina = 4
+[node name="Stamina" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("15_nhbkt")]
+base_max_stamina = 3
 base_stamina_regen_time = 4.0
+parent = NodePath("..")
 
-[node name="Speed" parent="." instance=ExtResource("14_r8fok")]
-base_max_speed = 150
+[node name="Speed" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("14_r8fok")]
+base_max_speed = 80
+parent = NodePath("..")
 
 [node name="Health" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_xr8lj")]
 base_max_health = 10

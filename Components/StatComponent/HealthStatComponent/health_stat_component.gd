@@ -41,7 +41,7 @@ func _on_upgrade(upgrade : Upgrade) -> void:
 	super._on_upgrade(upgrade)
 	
 	if upgrade.name == "health":
-		var new_max_stat_value = round(base_max_health * upgrade.stat_adapter)
+		var new_max_stat_value = base_max_health + upgrade.level * 2
 		set_max_stat_value(new_max_stat_value)
 	elif upgrade.name == "health_regen":
 		if !is_regeneratable:
