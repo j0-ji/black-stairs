@@ -14,7 +14,11 @@ func _ready():
 	add_child(menu_player)
 	music_player.bus = "Master"
 	menu_player.bus = "Master"
-	set_volume(SaveGameManager.settings.current_volume)
+	
+	if SaveGameManager != null and SaveGameManager.settings != null:
+		set_volume(SaveGameManager.settings.current_volume)
+	else:
+		set_volume(0.5)
 
 func play_preloaded(track: AudioStream):
 	music_player.stream = track

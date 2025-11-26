@@ -22,11 +22,11 @@ func save_game() -> void:
 	# --- global data ---
 	global_data.upgrades = UpgradeManager._upgrades
 	global_data.wallet = WalletManager.wallet
-	ResourceSaver.save(global_data, save_game_data_path + global_data.SAVE_GLOBAL_DATA_FILE_NAME)
+	ResourceSaver.save(global_data, save_game_data_path + GlobalData.SAVE_GLOBAL_DATA_FILE_NAME)
 
 func load_global_data() -> void: 
-	if save_file_exists(global_data.SAVE_GLOBAL_DATA_FILE_NAME):
-		global_data = ResourceLoader.load(save_game_data_path + global_data.SAVE_GLOBAL_DATA_FILE_NAME).duplicate(true)
+	if save_file_exists(GlobalData.SAVE_GLOBAL_DATA_FILE_NAME):
+		global_data = ResourceLoader.load(save_game_data_path + GlobalData.SAVE_GLOBAL_DATA_FILE_NAME).duplicate(true)
 	
 	# global data preparation if the player was in the dungeon location
 	if global_data.current_location == "Dungeon":
@@ -54,7 +54,7 @@ func load_game() -> void:
 	if save_level_data_component != null:
 		save_level_data_component.load_game()
 
-func save_file_exists(path : String = save_game_data_path + global_data.SAVE_GLOBAL_DATA_FILE_NAME) -> bool:
+func save_file_exists(path : String = save_game_data_path + GlobalData.SAVE_GLOBAL_DATA_FILE_NAME) -> bool:
 	return FileAccess.file_exists(path)
 
 func delete_save_game() -> void:
@@ -63,7 +63,7 @@ func delete_save_game() -> void:
 		if save_file_exists(save_game_data_path + save_file_name):
 			dir.remove(save_file_name)
 		if save_file_exists():
-			dir.remove(global_data.SAVE_GLOBAL_DATA_FILE_NAME)
+			dir.remove(GlobalData.SAVE_GLOBAL_DATA_FILE_NAME)
 
 
 # --- Settings ---
@@ -71,11 +71,11 @@ func save_settings() -> void:
 	if !DirAccess.dir_exists_absolute(save_game_data_path):
 		DirAccess.make_dir_absolute(save_game_data_path)
 	
-	ResourceSaver.save(settings, save_game_data_path + settings.SETTINGS_FILE_NAME)
+	ResourceSaver.save(settings, save_game_data_path + Settings.SETTINGS_FILE_NAME)
 
 func load_settings() -> void:
 	if save_file_exists(save_game_data_path + settings.SETTINGS_FILE_NAME):
-		settings = ResourceLoader.load(save_game_data_path + settings.SETTINGS_FILE_NAME).duplicate(true)
+		settings = ResourceLoader.load(save_game_data_path + Settings.SETTINGS_FILE_NAME).duplicate(true)
 
 
 # --- Utils ---
