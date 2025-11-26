@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b40nucv2hc23a"]
+
+[ext_resource type="Script" uid="uid://nynv8t7udkpp" path="res://Entities/Map/Signs/sign.gd" id="2_0d5u0"]
+[ext_resource type="PackedScene" uid="uid://vtpeed7japi1" path="res://Components/InteractableComponent/InteractableComponent.tscn" id="3_omaw6"]
+[ext_resource type="PackedScene" uid="uid://cl1y8y0fwdmpr" path="res://Components/HintComponent/HintComponent.tscn" id="3_xrcsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4tf5"]
+size = Vector2(32, 16)
+
+[node name="Sign" type="Node2D" node_paths=PackedStringArray("hint_component")]
+y_sort_enabled = true
+script = ExtResource("2_0d5u0")
+hint_component = NodePath("HintComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_omaw6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_k4tf5")
+
+[node name="HintComponent" parent="." instance=ExtResource("3_xrcsi")]
+visible = false
+offset_left = -11.0
+offset_top = -24.0
+offset_right = 98.99999
+offset_bottom = 15.999996
+message = "[E] Read"
+
+[connection signal="interactable_activated" from="InteractableComponent" to="." method="_on_interactable_activated"]
+[connection signal="interactable_deactivated" from="InteractableComponent" to="." method="_on_interactable_deactivated"]

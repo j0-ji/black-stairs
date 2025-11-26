@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bytq6ry02bwg8"]
+
+[ext_resource type="PackedScene" uid="uid://b40nucv2hc23a" path="res://Entities/Map/Signs/Sign.tscn" id="1_ayw5x"]
+[ext_resource type="Texture2D" uid="uid://cknltq4xqew5f" path="res://Entities/Map/Signs/signs.png" id="2_wrpqp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48eip"]
+atlas = ExtResource("2_wrpqp")
+region = Rect2(0, 0, 16, 16)
+
+[node name="WallSign" instance=ExtResource("1_ayw5x")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_48eip")
