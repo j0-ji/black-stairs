@@ -6,7 +6,6 @@ var music_dungeon := preload("res://Assets/Soundtrack/Theme.ogg")
 var music_boss := preload("res://Assets/Soundtrack/BattleMusic.ogg")
 var music_player := AudioStreamPlayer.new()
 var menu_player := AudioStreamPlayer.new()
-var current_volume := 0.5
 var paused_position: float = 0.0
 var is_paused: bool = false
 
@@ -15,7 +14,7 @@ func _ready():
 	add_child(menu_player)
 	music_player.bus = "Master"
 	menu_player.bus = "Master"
-	set_volume(current_volume)
+	set_volume(SaveGameManager.settings.current_volume)
 
 func play_preloaded(track: AudioStream):
 	music_player.stream = track
@@ -43,5 +42,5 @@ func stop_menu_music():
 		menu_player.stop()		
 
 func set_volume(value: float):
-	current_volume = value
+	SaveGameManager.settings.current_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))

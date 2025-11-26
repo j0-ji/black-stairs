@@ -1,12 +1,14 @@
 extends Node
 
 var global_data : GlobalData
+var settings : Settings
 
 var save_game_data_path : String = "user://game_data/"
 var save_file_name : String = "save_game.tres"
 
 func _ready() -> void:
 	reset_or_initialize()
+	load_settings()
 
 func save_game() -> void:
 	if !DirAccess.dir_exists_absolute(save_game_data_path):
@@ -63,5 +65,20 @@ func delete_save_game() -> void:
 		if save_file_exists():
 			dir.remove(global_data.SAVE_GLOBAL_DATA_FILE_NAME)
 
+
+# --- Settings ---
+func save_settings() -> void:
+	if !DirAccess.dir_exists_absolute(save_game_data_path):
+		DirAccess.make_dir_absolute(save_game_data_path)
+	
+	ResourceSaver.save(settings, save_game_data_path + settings.SETTINGS_FILE_NAME)
+
+func load_settings() -> void:
+	if save_file_exists(save_game_data_path + settings.SETTINGS_FILE_NAME):
+		settings = ResourceLoader.load(save_game_data_path + settings.SETTINGS_FILE_NAME).duplicate(true)
+
+
+# --- Utils ---
 func reset_or_initialize() -> void:
 	global_data = GlobalData.new()
+	settings = Settings.new()
