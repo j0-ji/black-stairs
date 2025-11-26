@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckwy3x013o0on"]
+
+[ext_resource type="Script" uid="uid://sb8jvca4nm7o" path="res://Components/TMLTranslationComponent/tml_translation_component.gd" id="1_vjn3t"]
+[ext_resource type="TileSet" uid="uid://dufn2cm683wl1" path="res://Stages/Tilesets/Terrain/wang_tileset.tres" id="3_yyhyt"]
+
+[node name="TmlTranslationComponent" type="Node2D" node_paths=PackedStringArray("world_map", "display_layers")]
+script = ExtResource("1_vjn3t")
+world_map = NodePath("")
+display_layers = [NodePath("display0"), NodePath("display1"), NodePath("display2"), NodePath("display3"), NodePath("display4")]
+
+[node name="display0" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_set = ExtResource("3_yyhyt")
+
+[node name="display1" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_set = ExtResource("3_yyhyt")
+
+[node name="display2" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_set = ExtResource("3_yyhyt")
+
+[node name="display3" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_set = ExtResource("3_yyhyt")
+
+[node name="display4" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_set = ExtResource("3_yyhyt")

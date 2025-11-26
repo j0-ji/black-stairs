@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jxo3hjq5iesm"]
+[gd_scene load_steps=16 format=3 uid="uid://jxo3hjq5iesm"]
 
 [ext_resource type="Script" uid="uid://b4nsyy8rvqmj1" path="res://Stages/Dungeon/dungeon_manager.gd" id="1_qfv56"]
 [ext_resource type="Script" uid="uid://byknax1krjyp5" path="res://Common/MapGenerator/map_generator.gd" id="2_mwpf2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4wl8xc6okyy" path="res://Entities/Enemies/Goblins/Goblin Nahkampf/goblin.tscn" id="8_jx5wx"]
 [ext_resource type="PackedScene" uid="uid://fu5q07fvmno1" path="res://Entities/Enemies/Goblins/Goblin Fernkampf/goblin_variant.tscn" id="9_jx5wx"]
 [ext_resource type="PackedScene" uid="uid://b2k2772ngsqgm" path="res://Entities/Enemies/Goblins/Goblin Boss/Boss.tscn" id="10_fuh8s"]
+[ext_resource type="PackedScene" uid="uid://ckwy3x013o0on" path="res://Components/TMLTranslationComponent/TMLTranslationComponent.tscn" id="12_8wjqi"]
 [ext_resource type="Script" uid="uid://dofr8uwyyu8v5" path="res://Stages/Dungeon/enemies.gd" id="14_1rxun"]
 
 [node name="Dungeon" type="Node2D" node_paths=PackedStringArray("map_generator", "entrance", "exit")]
@@ -57,6 +58,11 @@ map_layer = NodePath("../../Enemies")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 tile_set = ExtResource("5_kocfg")
+
+[node name="TmlTranslationComponent" parent="." node_paths=PackedStringArray("world_map", "awaiting_signal_from") instance=ExtResource("12_8wjqi")]
+world_map = NodePath("../Ground")
+await_signal = true
+awaiting_signal_from = NodePath("../MapGenerator/Ground")
 
 [node name="Flora" type="TileMapLayer" parent="."]
 y_sort_enabled = true
