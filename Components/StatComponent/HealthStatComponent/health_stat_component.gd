@@ -35,6 +35,7 @@ func take_damage(amount: int):
 	
 		if current_stat_value <= 0:
 			is_dead = true
+			is_regeneratable = false
 			died.emit()
 
 func _on_upgrade(upgrade : Upgrade) -> void:
