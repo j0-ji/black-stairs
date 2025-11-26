@@ -29,15 +29,19 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Header" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="ShopLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ShopLabel" type="Label" parent="MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
-theme_type_variation = &"InventoryLabel"
-text = "Upgrade Shop"
+size_flags_horizontal = 0
+text = "Shop"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("shop")]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Header" node_paths=PackedStringArray("shop")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -49,85 +53,149 @@ shop = NodePath("../../../..")
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_83lax")
 
-[node name="BaseHealth" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Info" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="InfoLeft" type="Label" parent="MarginContainer/VBoxContainer/Info"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"InventoryLabel"
+text = "Upgrades"
+
+[node name="InfoRight" type="Label" parent="MarginContainer/VBoxContainer/Info"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"InventoryLabel"
+text = "Buy"
+
+[node name="Upgrade" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Icon" type="PanelContainer" parent="MarginContainer/VBoxContainer/BaseHealth"]
+[node name="Health" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade"]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BaseHealth/Icon"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade/Health"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade/Health/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_q5ygj")
 
-[node name="ShopButton" parent="MarginContainer/VBoxContainer/BaseHealth" instance=ExtResource("3_06n7y")]
+[node name="UpgradeName" type="Label" parent="MarginContainer/VBoxContainer/Upgrade/Health/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "HP Increase"
+
+[node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
 upgrade_name = "health"
 
-[node name="HealthRegen" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Upgrade1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Icon" type="PanelContainer" parent="MarginContainer/VBoxContainer/HealthRegen"]
+[node name="Upgrade" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade1"]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HealthRegen/Icon"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_83lax")
 
-[node name="ShopButton" parent="MarginContainer/VBoxContainer/HealthRegen" instance=ExtResource("3_06n7y")]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "HP Regeneration"
+
+[node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade1" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
 upgrade_name = "health_regen"
 
-[node name="Damage" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Upgrade2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Icon" type="PanelContainer" parent="MarginContainer/VBoxContainer/Damage"]
+[node name="Damage" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade2"]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Damage/Icon"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade2/Damage"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade2/Damage/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_06n7y")
 
-[node name="ShopButton" parent="MarginContainer/VBoxContainer/Damage" instance=ExtResource("3_06n7y")]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade2/Damage/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "Damage"
+
+[node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade2" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
 upgrade_name = "damage"
 
-[node name="Stamina" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Upgrade3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Icon" type="PanelContainer" parent="MarginContainer/VBoxContainer/Stamina"]
+[node name="Stamina" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade3"]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Stamina/Icon"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade3/Stamina"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade3/Stamina/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_6agvy")
 
-[node name="ShopButton" parent="MarginContainer/VBoxContainer/Stamina" instance=ExtResource("3_06n7y")]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade3/Stamina/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "Stamina"
+
+[node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade3" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
 upgrade_name = "stamina"
 
-[node name="Speed" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Upgrade4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Icon" type="PanelContainer" parent="MarginContainer/VBoxContainer/Speed"]
+[node name="Speed" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade4"]
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Speed/Icon"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade4/Speed"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade4/Speed/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_g7d5f")
 
-[node name="ShopButton" parent="MarginContainer/VBoxContainer/Speed" instance=ExtResource("3_06n7y")]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade4/Speed/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "Speed"
+
+[node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade4" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
 upgrade_name = "speed"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="MarginContainer/VBoxContainer/HBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/Button" to="MarginContainer/VBoxContainer/Header/Button" method="_on_pressed"]
