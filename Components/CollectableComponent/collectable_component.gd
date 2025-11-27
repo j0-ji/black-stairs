@@ -17,7 +17,10 @@ func _on_body_entered(body: Node2D) -> void:
 		if collectable_name.contains("coin"):
 			WalletManager.add_coin()
 		if collectable_name.contains("scroll_of_knowledge"):
-			EventBus.play_transition.emit("Short Introduction", "Scroll of Knowledge", "The trader gave you a dagger (left mouse button) and a bow (right mouse button). You also have the ability to dash (Shift). Time to explore the dungeon :D")
+			EventBus.play_transition.emit(
+				"Short Introduction", 
+				"Scroll of Knowledge", 
+				"The trader gave you a dagger (left mouse button) and a bow (right mouse button). You also have the ability to dash (schift). Using your dash ability and your bow consumes stamina (yellow bar; top left). Time to explore the dungeon Adventurer!")
 			SaveGameManager.global_data.collected_scroll_of_knowledge = true
 		
 		get_parent().queue_free()
