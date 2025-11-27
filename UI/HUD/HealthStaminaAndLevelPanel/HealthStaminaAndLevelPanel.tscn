@@ -28,6 +28,8 @@ layout_mode = 2
 
 [node name="HealthBar" parent="MarginContainer/HBoxContainer/StatBars" instance=ExtResource("2_sd6jw")]
 layout_mode = 2
+tooltip_text = "
+"
 
 [node name="StaminaBar" parent="MarginContainer/HBoxContainer/StatBars" instance=ExtResource("3_vr2ug")]
 layout_mode = 2
@@ -35,6 +37,8 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+tooltip_text = "This component indicates your
+current location."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="LocationLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer"]

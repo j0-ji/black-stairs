@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dd1pwuwgg8x6q"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://dd1pwuwgg8x6q"]
 
 [ext_resource type="Texture2D" uid="uid://bkti54rrkasxm" path="res://UI/UI Ressources/ui_dark_frame.png" id="1_5q4n0"]
 [ext_resource type="Texture2D" uid="uid://rj4hltdwvf3k" path="res://UI/UI Ressources/ui_light_button.png" id="2_sesrp"]
@@ -98,6 +98,18 @@ texture_margin_bottom = 6.0
 atlas = ExtResource("4_sesrp")
 region = Rect2(5, 5, 6, 6)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sesrp"]
+atlas = ExtResource("2_sesrp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxs55"]
+texture = SubResource("AtlasTexture_sesrp")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 24, 24)
+modulate_color = Color(0.728822, 0.728822, 0.728822, 0.93333334)
+
 [resource]
 default_font = ExtResource("3_5q4n0")
 Button/colors/font_color = Color(0.94509804, 0.8352941, 0.7647059, 1)
@@ -145,3 +157,7 @@ ShopBuyButton/colors/font_pressed_color = Color(0.8901961, 0.69803923, 0.5725490
 ShopBuyButton/font_sizes/font_size = 8
 ShopBuyButton/fonts/font = ExtResource("3_5q4n0")
 ShopBuyButton/icons/icon = SubResource("AtlasTexture_4no5k")
+TooltipLabel/font_sizes/font_size = 8
+TooltipLabel/fonts/font = ExtResource("3_5q4n0")
+TooltipPanel/font_sizes/title_font_size = 8
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_vxs55")

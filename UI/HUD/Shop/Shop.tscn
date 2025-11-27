@@ -78,6 +78,8 @@ layout_mode = 2
 [node name="Health" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade increases your max
+Health Points (HP)."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade/Health"]
@@ -100,19 +102,22 @@ upgrade_name = "health"
 [node name="Upgrade1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Upgrade" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade1"]
+[node name="HealthRegen" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade1"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade first unlocks and
+then increases your Health Point
+(HP) regeneration."
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade1/HealthRegen"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade1/HealthRegen/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_83lax")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade1/HealthRegen/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"InventoryLabel"
 text = "HP Regeneration"
@@ -129,6 +134,8 @@ layout_mode = 2
 [node name="Damage" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade2"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade increases the
+damage you deal to enemies."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade2/Damage"]
@@ -154,6 +161,10 @@ layout_mode = 2
 [node name="Stamina" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade3"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgade increases your
+stamina and stamina
+regeneration speed needed for
+dashing and using your bow."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade3/Stamina"]
@@ -179,6 +190,8 @@ layout_mode = 2
 [node name="Speed" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade4"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade increases 
+your movement speed."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade4/Speed"]
