@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b034y26j8y7mi"
-path="res://.godot/imported/dirt_wang_transparent.png-1529267da50d4431d161b0949fd9a894.ctex"
+uid="uid://c4iqx1v7cnt2x"
+path="res://.godot/imported/wang_tileset_grass.png-431c7161f52d6683fd93639bc34972ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Tilesets/Terrain/dirt_wang_transparent.png"
-dest_files=["res://.godot/imported/dirt_wang_transparent.png-1529267da50d4431d161b0949fd9a894.ctex"]
+source_file="res://Stages/Tilesets/Terrain/wang_tileset_grass.png"
+dest_files=["res://.godot/imported/wang_tileset_grass.png-431c7161f52d6683fd93639bc34972ff.ctex"]
 
 [params]
 

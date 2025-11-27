@@ -188,6 +188,12 @@ func _set_display_tile(display_coord: Vector2i) -> void:
 		var shape_atlas : Vector2i = MASK_TO_ATLAS[mask]
 		var source_id : int = MATERIAL_SOURCE_ID[ground_material]
 		var layer : TileMapLayer = display_layers[i]
+		
+		if ground_material == TileType.SAND:
+			shape_atlas += _get_random_unweighted_tile_variation_vector(3)
+		if ground_material == TileType.GRASS:
+			shape_atlas += _get_random_unweighted_tile_variation_vector(2)
+		
 		layer.set_cell(display_coord, source_id, shape_atlas)
 
 
@@ -223,3 +229,13 @@ func _get_world_tile_type(coord: Vector2i) -> int:
 		return TileType.WATER
 	else:
 		return TileType.ROCK
+
+
+func _get_random_unweighted_tile_variation_vector(available_tileset_variations : int) -> Vector2i:
+	var num : int = randi_range(0, available_tileset_variations-1)
+	
+	if num == 0:
+		return Vector2i(0, 0)
+	else:
+		return Vector2i(0, num * 4)
+		

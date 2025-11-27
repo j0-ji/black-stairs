@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://syby8ujwnjja"
-path="res://.godot/imported/water_wang_transparent.png-65cc544d832a63d237bad2eb24efac9a.ctex"
+uid="uid://je5w73gkbj2h"
+path="res://.godot/imported/walls-wip.png-c0a393165938221fe4a68b44ad204a3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Tilesets/Terrain/water_wang_transparent.png"
-dest_files=["res://.godot/imported/water_wang_transparent.png-65cc544d832a63d237bad2eb24efac9a.ctex"]
+source_file="res://Stages/Tilesets/Buildings/walls-wip.png"
+dest_files=["res://.godot/imported/walls-wip.png-c0a393165938221fe4a68b44ad204a3b.ctex"]
 
 [params]
 

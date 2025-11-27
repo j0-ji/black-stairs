@@ -28,8 +28,8 @@ func _transition_fade_in(_pre_title : String, _title : String, _message : String
 	dialogue_title.text = _title
 	dialogue_message.text = _message
 	
-	root_transition_control.modulate = Color(0, 0, 0, 0)
-	dialogue_panel.modulate = Color(0, 0, 0, 0)
+	root_transition_control.modulate = Color(1, 1, 1, 0)
+	dialogue_panel.modulate = Color(1, 1, 1, 0)
 	root_transition_control.visible = true
 	
 	var tween = create_tween()
@@ -46,14 +46,14 @@ func _dialogue_fade_in_() -> void:
 func _dialogue_fade_out() -> void:
 	GameManager.game_unpause()
 	var tween = create_tween()
-	tween.tween_property(dialogue_panel, "modulate", Color(0, 0, 0, 0), ui_fade_transition_time)
+	tween.tween_property(dialogue_panel, "modulate", Color(1, 1, 1, 0), ui_fade_transition_time)
 	tween.connect("finished", Callable(self, "_transition_fade_out"))
 
 func _transition_fade_out() -> void:
 	dialogue_panel.visible = false
 	
 	var tween = create_tween()
-	tween.tween_property(root_transition_control, "modulate", Color(0, 0, 0, 0), background_fade_transition_time)
+	tween.tween_property(root_transition_control, "modulate", Color(1, 1, 1, 0), background_fade_transition_time)
 	tween.connect("finished", Callable(self, "_transition_fade_out_finish"))
 
 func _transition_fade_out_finish() -> void:

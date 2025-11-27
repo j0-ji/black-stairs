@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbdypbhpvrhy7"
-path="res://.godot/imported/rock_wang_transparent.png-d4861393e497195deddb696f475d6c8e.ctex"
+uid="uid://do6fa0ya1t0yi"
+path="res://.godot/imported/wang_tileset_water.png-a58ca5a9551b0d2745035ebbbc5adf03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Tilesets/Terrain/rock_wang_transparent.png"
-dest_files=["res://.godot/imported/rock_wang_transparent.png-d4861393e497195deddb696f475d6c8e.ctex"]
+source_file="res://Stages/Tilesets/Terrain/wang_tileset_water.png"
+dest_files=["res://.godot/imported/wang_tileset_water.png-a58ca5a9551b0d2745035ebbbc5adf03.ctex"]
 
 [params]
 
