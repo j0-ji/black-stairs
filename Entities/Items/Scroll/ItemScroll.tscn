@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://deh1gwxu2hu7h"]
+
+[ext_resource type="PackedScene" uid="uid://crg36661ikui7" path="res://Entities/Items/ItemStatic.tscn" id="1_w8hwf"]
+[ext_resource type="Texture2D" uid="uid://dh0m3cnnxyysw" path="res://Entities/Map/Signs/scroll.png" id="2_bpq0q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpq0q"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glwta"]
+radius = 4.0
+
+[node name="ItemScroll" instance=ExtResource("1_w8hwf")]
+collision_layer = 16
+collision_mask = 37
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -6)
+texture = ExtResource("2_bpq0q")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_bpq0q")
+
+[node name="CollectableComponent" parent="." index="2"]
+collectable_name = "scroll_of_knowledge"
+
+[node name="CollisionShape2D" parent="CollectableComponent" index="0"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_glwta")

@@ -85,12 +85,12 @@ func _shoot_arrow():
 
 	var direction = (player.global_position - global_position).normalized()
 
-	var arrow = arrow_scene.instantiate()
+	var arrow : Arrow = arrow_scene.instantiate()
+	arrow.set_collision_layer_and_mask(self)
 	arrow.direction = direction
 
 	# Spawn outside the goblin's body
-	var spawn_offset = direction * 18
-	arrow.global_position = global_position + spawn_offset
+	arrow.global_position = global_position + Vector2(0, -6) # put  the arrow 6 pixels up to match the sprite of the enemy
 
 	get_parent().add_child(arrow)
 

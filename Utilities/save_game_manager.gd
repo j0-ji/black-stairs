@@ -10,7 +10,7 @@ func _ready() -> void:
 	reset_or_initialize()
 	load_settings()
 
-func save_game() -> void:
+func save_game() -> bool:
 	if !DirAccess.dir_exists_absolute(save_game_data_path):
 		DirAccess.make_dir_absolute(save_game_data_path)
 	
@@ -22,7 +22,9 @@ func save_game() -> void:
 	# --- global data ---
 	global_data.upgrades = UpgradeManager._upgrades
 	global_data.wallet = WalletManager.wallet
-	ResourceSaver.save(global_data, save_game_data_path + GlobalData.SAVE_GLOBAL_DATA_FILE_NAME)
+	var result = ResourceSaver.save(global_data, save_game_data_path + GlobalData.SAVE_GLOBAL_DATA_FILE_NAME)
+	
+	return result == 0
 
 func load_global_data() -> void: 
 	if save_file_exists(GlobalData.SAVE_GLOBAL_DATA_FILE_NAME):

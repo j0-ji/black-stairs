@@ -1,12 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://hg2nr26dca8k"]
+[gd_scene load_steps=2 format=3 uid="uid://d0wygycjfy3fs"]
 
-[ext_resource type="PackedScene" uid="uid://cdw631jn86gwi" path="res://Components/CollectableComponent/CollectableComponent.tscn" id="2_gvs0h"]
+[ext_resource type="PackedScene" uid="uid://lwkji5sut4xb" path="res://Entities/Items/Item.tscn" id="1_yu5mp"]
 
-[node name="ItemAnimated" type="CharacterBody2D"]
-collision_layer = 16
+[node name="Item" instance=ExtResource("1_yu5mp")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-
-[node name="CollectableComponent" parent="." instance=ExtResource("2_gvs0h")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" groups=["attractable"]]

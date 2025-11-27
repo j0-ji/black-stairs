@@ -61,7 +61,7 @@ animations = [{
 radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0mys"]
-radius = 14.0
+radius = 22.022715
 
 [node name="Trader" type="CharacterBody2D" node_paths=PackedStringArray("hint")]
 y_sort_enabled = true
@@ -109,6 +109,7 @@ interactable_component = NodePath("../../InteractableComponent")
 idle_focus_state_timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/IdleFocus"]
+one_shot = true
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d", "navigation_agent_2d", "interactable_component")]
 script = ExtResource("4_ib60h")

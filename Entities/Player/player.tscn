@@ -214,7 +214,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01a4e"]
-radius = 24.0
+radius = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lub02"]
 
@@ -223,7 +223,7 @@ script/source = "extends NodeState
 
 @onready var anim: AnimatedSprite2D = $\"../../AnimatedSprite2D\"
 
-@export var player: Player
+@export var player : Player
 @export var attack_delay := 0.2         # animation plays for a bit
 @export var arrow_scene: PackedScene    # arrow scene
 @export var attack_speed := 300.0       # arrow speed
@@ -247,8 +247,9 @@ func _on_next_transitions() -> void:
 
 func _shoot_arrow_delayed() -> void:
 	await get_tree().create_timer(attack_delay).timeout
-	var arrow = arrow_scene.instantiate()
-	arrow.position = owner.global_position
+	var arrow : Arrow = arrow_scene.instantiate()
+	arrow.set_collision_layer_and_mask(player)
+	arrow.position = owner.global_position + Vector2(0, -6) # put  the arrow 6 pixels up to match the sprite of the player
 	# direction to mouse pointer
 	var target = owner.get_global_mouse_position()
 	arrow.direction = (target - owner.global_position).normalized()
@@ -339,5 +340,3 @@ parent = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 6.0

@@ -17,5 +17,7 @@ texture_margin_bottom = 5.0
 modulate_color = Color(1, 0.9490196, 0, 1)
 
 [node name="StaminaBar" groups=["receive_player_registration"] instance=ExtResource("1_cswxj")]
+tooltip_text = "This bar indicates how many
+Stamina Points (SP) you have."
 theme_override_styles/fill = SubResource("StyleBoxTexture_alq7p")
 script = ExtResource("3_alq7p")

@@ -78,6 +78,8 @@ layout_mode = 2
 [node name="Health" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade increases your max
+Health Points (HP)."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade/Health"]
@@ -95,24 +97,28 @@ text = "HP Increase"
 [node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 upgrade_name = "health"
 
 [node name="Upgrade1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Upgrade" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade1"]
+[node name="HealthRegen" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade1"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade first unlocks and
+then increases your Health Point
+(HP) regeneration."
 theme_type_variation = &"InventoryItemPanel"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade1/HealthRegen"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Upgrade1/HealthRegen/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_83lax")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade1/Upgrade/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Upgrade1/HealthRegen/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"InventoryLabel"
 text = "HP Regeneration"
@@ -120,6 +126,7 @@ text = "HP Regeneration"
 [node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade1" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 upgrade_name = "health_regen"
 
 [node name="Upgrade2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -129,6 +136,8 @@ layout_mode = 2
 [node name="Damage" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade2"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade increases the
+damage you deal to enemies."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade2/Damage"]
@@ -154,6 +163,10 @@ layout_mode = 2
 [node name="Stamina" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade3"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgade increases your
+stamina and stamina
+regeneration speed needed for
+dashing and using your bow."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade3/Stamina"]
@@ -171,6 +184,7 @@ text = "Stamina"
 [node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade3" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 upgrade_name = "stamina"
 
 [node name="Upgrade4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -179,6 +193,8 @@ layout_mode = 2
 [node name="Speed" type="PanelContainer" parent="MarginContainer/VBoxContainer/Upgrade4"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+tooltip_text = "This upgrade increases 
+your movement speed."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Upgrade4/Speed"]
@@ -196,6 +212,7 @@ text = "Speed"
 [node name="ShopButton" parent="MarginContainer/VBoxContainer/Upgrade4" instance=ExtResource("3_06n7y")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 upgrade_name = "speed"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Header/Button" to="MarginContainer/VBoxContainer/Header/Button" method="_on_pressed"]

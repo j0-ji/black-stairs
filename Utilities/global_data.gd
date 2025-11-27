@@ -15,6 +15,7 @@ enum spawns {ENTRANCE, BED}
 	"layer_ground" : randi(),
 	"layer_flora" : randi(),
 }
+@export var collected_scroll_of_knowledge = false
 @export var upgrades : Dictionary = UpgradeManager._upgrades
 @export var wallet : Dictionary = WalletManager.wallet
 

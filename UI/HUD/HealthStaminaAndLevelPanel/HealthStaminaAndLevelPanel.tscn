@@ -35,6 +35,8 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+tooltip_text = "This component indicates your
+current location."
 theme_type_variation = &"InventoryItemPanel"
 
 [node name="LocationLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer"]

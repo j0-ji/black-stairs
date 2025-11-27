@@ -63,30 +63,35 @@ theme_override_constants/separation = 10
 [node name="Continue" type="Button" parent="MarginContainer/MenuOptions"]
 custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
+focus_mode = 0
 theme_type_variation = &"CustomMenuButton"
 text = "Continue"
 
 [node name="NewGame" type="Button" parent="MarginContainer/MenuOptions"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+focus_mode = 0
 theme_type_variation = &"CustomMenuButton"
 text = "New Game"
 
 [node name="Settings" type="Button" parent="MarginContainer/MenuOptions"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+focus_mode = 0
 theme_type_variation = &"CustomMenuButton"
 text = "Settings"
 
 [node name="Credits" type="Button" parent="MarginContainer/MenuOptions"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+focus_mode = 0
 theme_type_variation = &"CustomMenuButton"
 text = "Credits"
 
 [node name="Quit" type="Button" parent="MarginContainer/MenuOptions"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+focus_mode = 0
 theme_type_variation = &"CustomMenuButton"
 text = "Quit
 "

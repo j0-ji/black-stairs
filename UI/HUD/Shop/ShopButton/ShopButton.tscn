@@ -10,6 +10,7 @@ region = Rect2(5, 5, 6, 6)
 [node name="ShopButton" type="Button"]
 custom_minimum_size = Vector2(50, 0)
 size_flags_vertical = 4
+focus_mode = 0
 theme_type_variation = &"ShopBuyButton"
 text = "500"
 icon = SubResource("AtlasTexture_06n7y")

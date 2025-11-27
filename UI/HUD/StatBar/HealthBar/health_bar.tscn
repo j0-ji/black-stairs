@@ -19,3 +19,7 @@ modulate_color = Color(0.8509804, 0, 0, 1)
 [node name="HealthBar" groups=["receive_player_registration"] instance=ExtResource("1_kxtct")]
 theme_override_styles/fill = SubResource("StyleBoxTexture_iaq4d")
 script = ExtResource("3_iaq4d")
+
+[node name="Cover" parent="." index="0"]
+tooltip_text = "This bar indicates how many
+Health Points (HP) you have."

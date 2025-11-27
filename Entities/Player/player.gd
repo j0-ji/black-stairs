@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	# --- Connect Signals ---
 	WalletManager.got_poorer.connect(_coins_removed)
-	# WalletManager.got_richer.connect(_coins_added)
+	WalletManager.got_richer.connect(_coins_added)
 	
 	#  --- Connect self to all other nodes that depend on player --- 
 	get_tree().call_group("receive_player_registration", "register_player", self)
@@ -34,9 +34,9 @@ func _unhandled_input(event):
 
 func _coins_removed() -> void:
 	var coin_dummy_instance = coin_dummy_scene.instantiate()
-	coin_dummy_instance.global_position = Vector2(global_position.x, global_position.y - 15)
-	get_tree().root.add_child(coin_dummy_instance)
-	var target_position = Vector2(global_position.x, global_position.y - 25)
+	self.add_child(coin_dummy_instance)
+	coin_dummy_instance.position = Vector2(0, -15)
+	var target_position = Vector2(0, -25)
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
@@ -47,9 +47,9 @@ func _coins_removed() -> void:
 
 func _coins_added() -> void:
 	var coin_dummy_instance = coin_dummy_scene.instantiate()
-	coin_dummy_instance.global_position = Vector2(global_position.x, global_position.y - 25)
-	get_tree().root.add_child(coin_dummy_instance)
-	var target_position = Vector2(global_position.x, global_position.y - 15)
+	self.add_child(coin_dummy_instance)
+	coin_dummy_instance.position = Vector2(0, -25)
+	var target_position = Vector2(0, -15)
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
