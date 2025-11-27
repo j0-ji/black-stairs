@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://db8603oojhcai"]
+[gd_scene load_steps=6 format=3 uid="uid://db8603oojhcai"]
 
 [ext_resource type="Script" uid="uid://bmx8u4c140sg0" path="res://UI/Menu/PauseMenu/pause_menu.gd" id="1_ko5qu"]
 [ext_resource type="Theme" uid="uid://dd1pwuwgg8x6q" path="res://UI/game_ui_theme.tres" id="2_nv1it"]
 [ext_resource type="PackedScene" uid="uid://cttmjejp515b7" path="res://UI/Menu/SettingsScreen/Settings.tscn" id="3_jy25q"]
+[ext_resource type="Texture2D" uid="uid://jwjot1cp2cc" path="res://UI/Menu/PauseMenu/check.png" id="3_xqvn8"]
+[ext_resource type="Texture2D" uid="uid://blwombtpufftm" path="res://UI/Menu/PauseMenu/cross.png" id="4_l2p05"]
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("settings_screen")]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("settings_screen", "save_feedback_psitive", "save_feedback_negative")]
 process_mode = 2
 layer = 3
 script = ExtResource("1_ko5qu")
 settings_screen = NodePath("menu/Settings")
+save_feedback_psitive = NodePath("menu/MarginContainer/SaveFeedbackPositive")
+save_feedback_negative = NodePath("menu/MarginContainer/SaveFeedbackNegative")
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 3
@@ -94,6 +98,44 @@ focus_mode = 0
 theme_type_variation = &"CustomMenuButton"
 text = "Return to main menu
 "
+
+[node name="SaveFeedbackPositive" type="PanelContainer" parent="menu/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="menu/MarginContainer/SaveFeedbackPositive"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="menu/MarginContainer/SaveFeedbackPositive/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_xqvn8")
+
+[node name="SaveFeedbackNegative" type="PanelContainer" parent="menu/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="menu/MarginContainer/SaveFeedbackNegative"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="menu/MarginContainer/SaveFeedbackNegative/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_l2p05")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu/MarginContainer"]
 layout_mode = 2

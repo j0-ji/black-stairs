@@ -12,7 +12,8 @@ var _player : Node2D
 
 
 func _ready() -> void:
-	idle_focus_state_timer.wait_time = randf_range(min_idle_focus_state_time_interval, max_idle_focus_state_time_interval)
+	# idle_focus_state_timer.wait_time = randf_range(min_idle_focus_state_time_interval, max_idle_focus_state_time_interval)
+	pass
 
 func _on_process(_delta: float) -> void:
 	pass
@@ -33,13 +34,12 @@ func _on_next_transitions() -> void:
 func _on_enter() -> void:
 	animated_sprite_2d.play("idle")
 	_idle_state_timeout = false
-	idle_focus_state_timer.wait_time = randf_range(min_idle_focus_state_time_interval, max_idle_focus_state_time_interval)
-	idle_focus_state_timer.start()
+	# idle_focus_state_timer.wait_time = randf_range(min_idle_focus_state_time_interval, max_idle_focus_state_time_interval)
+	# idle_focus_state_timer.start()
 
 func _on_exit() -> void:
 	_player = null
 	animated_sprite_2d.stop()
-	idle_focus_state_timer.stop()
 
 func _on_interactable_activated(body : Node2D) -> void:
 	_player = body
