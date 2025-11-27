@@ -28,8 +28,6 @@ layout_mode = 2
 
 [node name="HealthBar" parent="MarginContainer/HBoxContainer/StatBars" instance=ExtResource("2_sd6jw")]
 layout_mode = 2
-tooltip_text = "
-"
 
 [node name="StaminaBar" parent="MarginContainer/HBoxContainer/StatBars" instance=ExtResource("3_vr2ug")]
 layout_mode = 2

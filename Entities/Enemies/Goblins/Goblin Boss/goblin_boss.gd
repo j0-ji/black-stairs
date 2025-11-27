@@ -268,7 +268,7 @@ func start_ranged_attack():
 func shoot_projectile():
 	var arrow : Arrow = projectile_scene.instantiate()
 	arrow.set_collision_layer_and_mask(self)
-	arrow.global_position = global_position + Vector2(0, -6) # put  the arrow 8 pixel up to match the sprite of the enemy
+	arrow.global_position = global_position + Vector2(0, -6) # put  the arrow 6 pixels up to match the sprite of the enemy
 	arrow.direction = (player.global_position - global_position).normalized()
 	get_parent().add_child(arrow)
 

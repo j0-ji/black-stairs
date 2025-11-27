@@ -25,7 +25,7 @@ var stage_main_root_path : String = "/root/Main"
 var menu_main_root_path : String = "/root/MainMenu"
 var menu_pause_root_path : String = "/root/PauseMenu"
 
-var is_main_menu_on = true
+var is_main_menu_active = true
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -42,13 +42,13 @@ func new_game() -> void:
 	SceneManager.load_main_stage_container()
 	await get_tree().process_frame
 	SaveGameManager.save_game()
-	is_main_menu_on = false
+	is_main_menu_active = false
 
 func continue_game() -> void:
 	SaveGameManager.load_global_data()
 	SceneManager.load_main_stage_container()
 	SaveGameManager.load_game()
-	is_main_menu_on = false
+	is_main_menu_active = false
 
 func continue_from_pause() -> void:
 	_toggle_menu_pause()
@@ -67,13 +67,13 @@ func return_to_main_menu() -> void:
 	# TODO: switch to main menu
 	var menu_main_instance = menu_main.instantiate()
 	get_tree().root.add_child(menu_main_instance)
-	is_main_menu_on = true
+	is_main_menu_active = true
 
 func exit_game() -> void:
 	get_tree().quit()
 
 func _toggle_menu_pause() -> void:
-	if is_main_menu_on:
+	if is_main_menu_active:
 		return
 	
 	if get_tree().paused:

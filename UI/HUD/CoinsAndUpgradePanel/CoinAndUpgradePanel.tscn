@@ -37,7 +37,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Your entire wealth."
+tooltip_text = "Your entire wealth"
 focus_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 script = ExtResource("3_fa5ch")
@@ -59,7 +59,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Level of total Health Points (HP)."
+tooltip_text = "Level of total Health Points (HP)"
 focus_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
@@ -80,7 +80,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Level of HP regeneration,"
+tooltip_text = "Level of HP regeneration"
 focus_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
@@ -123,7 +123,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Level of movement speed."
+tooltip_text = "Level of movement speed"
 focus_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 
@@ -144,7 +144,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(28, 35)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Level of stamina regeneration."
+tooltip_text = "Level of stamina regeneration"
 focus_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 

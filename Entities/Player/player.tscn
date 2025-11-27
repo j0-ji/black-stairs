@@ -249,7 +249,7 @@ func _shoot_arrow_delayed() -> void:
 	await get_tree().create_timer(attack_delay).timeout
 	var arrow : Arrow = arrow_scene.instantiate()
 	arrow.set_collision_layer_and_mask(player)
-	arrow.position = owner.global_position + Vector2(0, -6) # put  the arrow 8 pixel up to match the sprite of the player
+	arrow.position = owner.global_position + Vector2(0, -6) # put  the arrow 6 pixels up to match the sprite of the player
 	# direction to mouse pointer
 	var target = owner.get_global_mouse_position()
 	arrow.direction = (target - owner.global_position).normalized()

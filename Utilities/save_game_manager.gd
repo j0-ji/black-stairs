@@ -24,10 +24,7 @@ func save_game() -> bool:
 	global_data.wallet = WalletManager.wallet
 	var result = ResourceSaver.save(global_data, save_game_data_path + GlobalData.SAVE_GLOBAL_DATA_FILE_NAME)
 	
-	if result == 0:
-		return true
-	else:
-		return false
+	return result == 0
 
 func load_global_data() -> void: 
 	if save_file_exists(GlobalData.SAVE_GLOBAL_DATA_FILE_NAME):

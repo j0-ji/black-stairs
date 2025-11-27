@@ -90,7 +90,7 @@ func _shoot_arrow():
 	arrow.direction = direction
 
 	# Spawn outside the goblin's body
-	arrow.global_position = global_position + Vector2(0, -6) # put  the arrow 8 pixel up to match the sprite of the enemy
+	arrow.global_position = global_position + Vector2(0, -6) # put  the arrow 6 pixels up to match the sprite of the enemy
 
 	get_parent().add_child(arrow)
 

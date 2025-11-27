@@ -6,13 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://jwjot1cp2cc" path="res://UI/Menu/PauseMenu/check.png" id="3_xqvn8"]
 [ext_resource type="Texture2D" uid="uid://blwombtpufftm" path="res://UI/Menu/PauseMenu/cross.png" id="4_l2p05"]
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("settings_screen", "save_feedback_psitive", "save_feedback_negative")]
+[node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
 layer = 3
 script = ExtResource("1_ko5qu")
-settings_screen = NodePath("menu/Settings")
-save_feedback_psitive = NodePath("menu/MarginContainer/SaveFeedbackPositive")
-save_feedback_negative = NodePath("menu/MarginContainer/SaveFeedbackNegative")
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 3
