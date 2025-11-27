@@ -18,7 +18,7 @@ func _ready():
 	if SaveGameManager != null and SaveGameManager.settings != null:
 		set_volume(SaveGameManager.settings.current_volume)
 	else:
-		set_volume(0.5)
+		set_volume(0.3)
 
 func play_preloaded(track: AudioStream):
 	music_player.stream = track
@@ -43,7 +43,7 @@ func resume_music():
 
 func stop_menu_music():
 	if menu_player.playing:
-		menu_player.stop()		
+		menu_player.stop()
 
 func set_volume(value: float):
 	SaveGameManager.settings.current_volume = value

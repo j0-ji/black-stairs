@@ -140,6 +140,8 @@ animations = [{
 [node name="GoblinVariant" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 collision_layer = 8
 script = ExtResource("1_divou")
+detection_radius = 200.0
+shoot_cooldown = 2
 arrow_scene = ExtResource("2_kawqc")
 health = NodePath("Health")
 
@@ -153,7 +155,7 @@ shape = SubResource("RectangleShape2D_w0q5k")
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("5_lty46")
-base_max_health = 4
+base_max_health = 8
 base_health_regen_time = 4.5
 is_regeneratable = true
 parent = NodePath("..")

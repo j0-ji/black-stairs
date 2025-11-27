@@ -252,6 +252,10 @@ animations = [{
 
 [node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 script = ExtResource("1_vi125")
+detection_radius = 200.0
+attack_damage = 8
+spin_damage = 5
+dash_damage = 1
 health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -272,7 +276,7 @@ shape = SubResource("CircleShape2D_f55wq")
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("3_g52pa")
-base_max_health = 10
+base_max_health = 100
 base_health_regen_time = 3.0
 is_regeneratable = true
 parent = NodePath("..")
