@@ -229,6 +229,10 @@ script/source = "extends NodeState
 @export var attack_speed := 300.0       # arrow speed
 
 func _on_enter() -> void:
+	var used_stamina : bool = player.stamina.use_stamina(1)
+	if !used_stamina:
+		transition.emit(\"idle\")
+		return
 	anim.flip_h = owner.anim_direction.x < 0
 	anim.play(\"attack_ranged\")
 	_shoot_arrow_delayed()
@@ -309,6 +313,7 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("7_7a1se")
+attack_damage = 5
 
 [node name="Attack_Ranged" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = SubResource("GDScript_lub02")
@@ -321,8 +326,8 @@ player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Stamina" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("15_nhbkt")]
-base_max_stamina = 3
-base_stamina_regen_time = 4.0
+base_max_stamina = 6
+base_stamina_regen_time = 6.0
 parent = NodePath("..")
 
 [node name="Speed" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("14_r8fok")]
@@ -331,7 +336,6 @@ parent = NodePath("..")
 
 [node name="Health" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_xr8lj")]
 base_max_health = 10
-base_health_regen_time = 2.0
 parent = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="."]

@@ -153,6 +153,8 @@ animations = [{
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("health") groups=["enemies"]]
 collision_layer = 8
 script = ExtResource("1_hqea3")
+detection_radius = 200.0
+attack_damage = 4
 health = NodePath("Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -176,7 +178,7 @@ shape = SubResource("RectangleShape2D_k4dfs")
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("parent")]
 script = ExtResource("4_ag0ao")
-base_max_health = 5
+base_max_health = 10
 base_health_regen_time = 4.5
 is_regeneratable = true
 parent = NodePath("..")
