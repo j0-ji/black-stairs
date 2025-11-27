@@ -1,67 +1,31 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqijtxq0dgwm4"]
+[gd_scene load_steps=6 format=3 uid="uid://coqlon84seqpd"]
 
-[ext_resource type="PackedScene" uid="uid://hg2nr26dca8k" path="res://Entities/Items/ItemAnimated.tscn" id="1_bkct7"]
-[ext_resource type="Texture2D" uid="uid://cyluchwsnbaxc" path="res://Entities/Items/Coin/gold-coin.png" id="2_27jno"]
+[ext_resource type="PackedScene" uid="uid://d0wygycjfy3fs" path="res://Entities/Items/ItemAnimated.tscn" id="1_r3801"]
+[ext_resource type="SpriteFrames" uid="uid://bj3ls2dljwf4f" path="res://Entities/Items/Coin/coin_sprite_frame.tres" id="2_5dulv"]
 [ext_resource type="Script" uid="uid://b6qqelpjk1emu" path="res://Entities/Items/Coin/item_coin.gd" id="2_my5ag"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2dog8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_27jno"]
 radius = 3.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5dulv"]
-atlas = ExtResource("2_27jno")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_kr4dk"]
+radius = 3.1622777
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_27jno"]
-atlas = ExtResource("2_27jno")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kr4dk"]
-atlas = ExtResource("2_27jno")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ife1p"]
-atlas = ExtResource("2_27jno")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_l5i28"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5dulv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_27jno")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kr4dk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ife1p")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5dulv"]
-radius = 3.0
-
-[node name="ItemCoin" groups=["attractable"] instance=ExtResource("1_bkct7")]
-y_sort_enabled = true
+[node name="ItemCoin" instance=ExtResource("1_r3801")]
+collision_layer = 16
+collision_mask = 33
 script = ExtResource("2_my5ag")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_2dog8")
+sprite_frames = ExtResource("2_5dulv")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -3)
-sprite_frames = SubResource("SpriteFrames_l5i28")
-autoplay = "default"
+shape = SubResource("CircleShape2D_27jno")
 
 [node name="CollectableComponent" parent="." index="2"]
 collectable_name = "coin"
 
 [node name="CollisionShape2D" parent="CollectableComponent" index="0"]
 position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_5dulv")
+shape = SubResource("CircleShape2D_kr4dk")

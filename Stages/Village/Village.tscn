@@ -57,7 +57,7 @@ position = Vector2(612, 652)
 message = "I heard the boss is quite hard. Prepare well."
 
 [node name="EntranceSign" parent="Map/Buildings" instance=ExtResource("8_qkx38")]
-position = Vector2(748, 381)
+position = Vector2(730, 373)
 message = "Dungeon Entrance"
 
 [node name="IO" type="Node2D" parent="."]

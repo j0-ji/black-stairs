@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://crg36661ikui7"]
+
+[ext_resource type="PackedScene" uid="uid://lwkji5sut4xb" path="res://Entities/Items/Item.tscn" id="1_sq3fy"]
+
+[node name="Item" instance=ExtResource("1_sq3fy")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" groups=["attractable"]]
