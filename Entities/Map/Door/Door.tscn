@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close_door",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -65,7 +65,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -82,14 +82,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"open_door",
-"speed": 8.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3lqr"]
-size = Vector2(16, 14)
+size = Vector2(16, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kyca"]
-size = Vector2(14, 32)
+size = Vector2(24, 25)
 
 [node name="Door" type="StaticBody2D"]
 collision_mask = 10
@@ -100,10 +100,12 @@ sprite_frames = SubResource("SpriteFrames_705we")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_g3lqr")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("3_hkd1y")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_3kyca")
 debug_color = Color(0.6861328, 0.38197324, 0.827842, 0.41960785)

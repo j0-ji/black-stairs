@@ -15,7 +15,7 @@ spawn_marker = NodePath("SpawnMarker")
 texture = ExtResource("2_w40kh")
 
 [node name="SpawnMarker" type="Marker2D" parent="."]
-position = Vector2(8, -16)
+position = Vector2(8, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
